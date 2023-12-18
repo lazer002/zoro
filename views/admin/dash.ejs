@@ -1,0 +1,205 @@
+<%- include('header.ejs') %>
+
+
+
+    <div class="container-fluid">
+        <div class="d-flex">
+            <div class="">sidebar</div>
+            <div class="w-100  p-3">
+            <div class=" rounded-3 border p-3">
+            
+                    <div class="d-flex justify-content-between border-bottom pb-3">
+                        <div class="">
+                            <h3>Product</h3>
+                            <div>Manage Product in Store</div>
+                        </div>
+
+                        <div><button class="btn border" data-bs-toggle="modal" data-bs-target="#addproduct">+ Add
+                                Product</button></div>
+                    </div>
+                    
+                <div class="py-3">
+                    <div id="search"><input type="text" placeholder="Search..." class="form-control w-25"></div>
+                </div>
+                <div class="container-fluid p-0">
+                    <div class="table-responsive border rounded-3">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Name</th>
+                                    <th>Carausal Image</th>
+                                    <th>Discription </th>
+                                    <th>Product Link</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>
+                                        <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                        <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                        <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>
+                                        <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                        <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                        <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>ffffff</td>
+                                    <td>
+                                        <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                        <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                        <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="addproduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div>
+                            <div>Carausal Image</div>
+                            <input type="file" name="" id="carausal_image" class="form-control">
+                        </div>
+                        <div>
+                            <div>Carausal Title</div>
+                        <input type="text" name="" id="carausal_title" class="form-control">
+                        </div>
+                        <div>
+                            <div>Carausal Category</div>
+                        <select name="" id="carausal_category"  class="form-control">
+                            <option value="first_carausal">First Carausal</option>
+                            <option value="second_carausal">Second Carausal</option>
+                        </select>
+                        </div>
+                        <div>
+                            <div>Carausal Discription</div>
+                        <input type="text" name="" id="carausal_dis" class="form-control">
+                        </div>
+                        <div>
+                            <div>Product Link</div>
+                        <input type="text" name="" id="carausal_link" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                    <button type="submit" id="category_sbbtn" class="btn btn-primary">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('#category_sbbtn').on('click', function () {
+                var carausal_image = $('#carausal_image')[0].files[0];
+                var carausal_title = $('#carausal_title').val();
+                var carausal_category = $('#carausal_category').val();
+                var carausal_dis = $('#carausal_dis').val();
+                var carausal_link = $('#carausal_link').val();
+                var formdata = new FormData()
+                formdata.append('carausal_image', carausal_image)
+                formdata.append('carausal_title', carausal_title)
+                formdata.append('carausal_category', carausal_category)
+                formdata.append('carausal_dis', carausal_dis)
+                formdata.append('carausal_link', carausal_link)
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/carausal_banner',
+                    data: formdata,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                     window.location.reload()
+                    }
+                })
+
+            })
+        })
+    </script>

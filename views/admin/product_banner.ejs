@@ -1,0 +1,75 @@
+
+<head>
+  
+</head>
+<body>
+
+<%- include('header.ejs') %>
+
+<input type="file" name="" id="product_banner">
+<input type="text" name="" id="product_title">
+<input type="text" name="" id="product_category">
+<input type="text" name="" id="product_link">
+
+<button type="submit" id="sbbtn" class="btn">click</button>
+
+
+
+<script>
+
+        $(document).ready(function () {
+            $('#sbbtn').on('click', function () {
+                var product_banner = $('#product_banner')[0].files[0];
+                var product_title = $('#product_title').val();
+                var product_category = $('#product_category').val();
+                var product_link = $('#product_link').val();
+                var formdata = new FormData()
+                formdata.append('product_banner',product_banner)
+                formdata.append('product_title',product_title)
+                formdata.append('product_category',product_category)
+                formdata.append('product_link',product_link)
+                console.log(formdata);
+
+                $.ajax({
+                    type: 'post',
+                    url: '/product_bann',
+                    data: formdata,
+                    contentType:false,
+                    processData:false,
+                    success: function (response) {
+                        console.log(response, 'ajax data')
+                        window.location.reload()
+                    },error:function(err){
+
+                        console.log(err);
+                    }
+                })
+            })
+
+
+        })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>

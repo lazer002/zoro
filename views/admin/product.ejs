@@ -1,0 +1,346 @@
+<%- include('header.ejs') %>
+
+
+    <select name="" id="product_category">
+        <%for( let i=0; i< category.length; i++ ) { %>
+            <option value="<%=category[i].product_category %>">
+                <%=category[i].product_category %>
+            </option>
+            <% } %>
+    </select>
+    <input type="hidden" name="" id="product_id">
+    <input type="file" name="product_image" id="product_image" multiple>
+    <input type="text" name="" id="product_name">
+    <input type="text" name="" id="product_dis">
+    <input type="text" name="" id="product_price">
+    <input type="text" name="" id="orignal_price">
+
+    <button type="submit" id="category_sbbtn" class="btn">click</button>
+
+
+
+
+    <script>
+
+        $(document).on('change', '#product_category', function () {
+            var value = $('#product_category').val();
+            if (value === 'PC') {
+
+                console.log(value);
+                $('#category_sbbtn').on('click', function () {
+                    function rendom(e) {
+                        randomid = Math.floor(Math.random() * e)
+                        _id = `product_${randomid}`
+                        return _id
+                    }
+                    idd = rendom(1000)
+                    $('#product_id').val(idd);
+
+                    var product_category = $('#product_category').val();
+                    var product_id = $('#product_id').val();
+                    var product_name = $('#product_name').val();
+                    var product_dis = $('#product_dis').val();
+                    var product_price = $('#product_price').val();
+                    var orignal_price = $('#orignal_price').val();
+
+                    var formdata = new FormData();
+                    formdata.append('product_category', product_category);
+                    formdata.append('product_id', product_id);
+                    formdata.append('product_name', product_name);
+                    formdata.append('product_dis', product_dis);
+                    formdata.append('product_price', product_price);
+                    formdata.append('orignal_price', orignal_price);
+
+
+                    var product_image = $('#product_image')[0].files;
+                    for (var i = 0; i < product_image.length; i++) {
+                        formdata.append('product_image', product_image[i]);
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/pc',
+                        data: formdata,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+alert('product added')
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
+                        },
+
+                        error: function (error) {
+
+                        }
+                    });
+                });
+            }
+            else if (value === 'CONTROLLER') {
+                console.log(value, 'value')
+                $('#category_sbbtn').on('click', function () {
+                    function rendom(e) {
+                        randomid = Math.floor(Math.random() * e)
+                        _id = `product_${randomid}`
+                        return _id
+                    }
+                    idd = rendom(1000)
+                    $('#product_id').val(idd);
+
+                    var product_category = $('#product_category').val();
+                    var product_id = $('#product_id').val();
+                    var product_name = $('#product_name').val();
+                    var product_dis = $('#product_dis').val();
+                    var product_price = $('#product_price').val();
+                    var orignal_price = $('#orignal_price').val();
+
+                    var formdata = new FormData();
+                    formdata.append('product_category', product_category);
+                    formdata.append('product_id', product_id);
+                    formdata.append('product_name', product_name);
+                    formdata.append('product_dis', product_dis);
+                    formdata.append('product_price', product_price);
+                    formdata.append('orignal_price', orignal_price);
+
+                    // Append each file to formdata
+                    var product_image = $('#product_image')[0].files;
+                    for (var i = 0; i < product_image.length; i++) {
+                        formdata.append('product_image', product_image[i]);
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/controller',
+                        data: formdata,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            alert('product added')
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
+                        },
+
+                        error: function (error) {
+                            // Handle error
+                        }
+                    });
+                });
+            }
+
+
+            else if (value === 'HEADPHONE') {
+                console.log(value, 'value')
+                $('#category_sbbtn').on('click', function () {
+                    function rendom(e) {
+                        randomid = Math.floor(Math.random() * e)
+                        _id = `product_${randomid}`
+                        return _id
+                    }
+                    idd = rendom(1000)
+                    $('#product_id').val(idd);
+
+                    var product_category = $('#product_category').val();
+                    var product_id = $('#product_id').val();
+                    var product_name = $('#product_name').val();
+                    var product_dis = $('#product_dis').val();
+                    var product_price = $('#product_price').val();
+                    var orignal_price = $('#orignal_price').val();
+
+                    var formdata = new FormData();
+                    formdata.append('product_category', product_category);
+                    formdata.append('product_id', product_id);
+                    formdata.append('product_name', product_name);
+                    formdata.append('product_dis', product_dis);
+                    formdata.append('product_price', product_price);
+                    formdata.append('orignal_price', orignal_price);
+
+                    // Append each file to formdata
+                    var product_image = $('#product_image')[0].files;
+                    for (var i = 0; i < product_image.length; i++) {
+                        formdata.append('product_image', product_image[i]);
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/HEADPHONE',
+                        data: formdata,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            alert('product added')
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
+                        },
+
+                        error: function (error) {
+                            // Handle error
+                        }
+                    });
+                });
+            }
+
+
+
+            else if (value === 'KEYBOARD') {
+                console.log(value, 'value')
+                $('#category_sbbtn').on('click', function () {
+                    function rendom(e) {
+                        randomid = Math.floor(Math.random() * e)
+                        _id = `product_${randomid}`
+                        return _id
+                    }
+                    idd = rendom(1000)
+                    $('#product_id').val(idd);
+
+                    var product_category = $('#product_category').val();
+                    var product_id = $('#product_id').val();
+                    var product_name = $('#product_name').val();
+                    var product_dis = $('#product_dis').val();
+                    var product_price = $('#product_price').val();
+                    var orignal_price = $('#orignal_price').val();
+
+                    var formdata = new FormData();
+                    formdata.append('product_category', product_category);
+                    formdata.append('product_id', product_id);
+                    formdata.append('product_name', product_name);
+                    formdata.append('product_dis', product_dis);
+                    formdata.append('product_price', product_price);
+                    formdata.append('orignal_price', orignal_price);
+
+                    // Append each file to formdata
+                    var product_image = $('#product_image')[0].files;
+                    for (var i = 0; i < product_image.length; i++) {
+                        formdata.append('product_image', product_image[i]);
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/KEYBOARD',
+                        data: formdata,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            alert('product added')
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
+                        },
+
+                        error: function (error) {
+                            // Handle error
+                        }
+                    });
+                });
+            }
+
+
+
+            else if (value === 'LAPTOP') {
+                console.log(value, 'value')
+                $('#category_sbbtn').on('click', function () {
+                    function rendom(e) {
+                        randomid = Math.floor(Math.random() * e)
+                        _id = `product_${randomid}`
+                        return _id
+                    }
+                    idd = rendom(1000)
+                    $('#product_id').val(idd);
+
+                    var product_category = $('#product_category').val();
+                    var product_id = $('#product_id').val();
+                    var product_name = $('#product_name').val();
+                    var product_dis = $('#product_dis').val();
+                    var product_price = $('#product_price').val();
+                    var orignal_price = $('#orignal_price').val();
+
+                    var formdata = new FormData();
+                    formdata.append('product_category', product_category);
+                    formdata.append('product_id', product_id);
+                    formdata.append('product_name', product_name);
+                    formdata.append('product_dis', product_dis);
+                    formdata.append('product_price', product_price);
+                    formdata.append('orignal_price', orignal_price);
+
+                    // Append each file to formdata
+                    var product_image = $('#product_image')[0].files;
+                    for (var i = 0; i < product_image.length; i++) {
+                        formdata.append('product_image', product_image[i]);
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/LAPTOP',
+                        data: formdata,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            alert('product added')
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
+                        },
+
+                        error: function (error) {
+                            // Handle error
+                        }
+                    });
+                });
+            }
+
+
+            else if (value === 'MOUSE') {
+                console.log(value, 'value')
+                $('#category_sbbtn').on('click', function () {
+                    function rendom(e) {
+                        randomid = Math.floor(Math.random() * e)
+                        _id = `product_${randomid}`
+                        return _id
+                    }
+                    idd = rendom(1000)
+                    $('#product_id').val(idd);
+
+                    var product_category = $('#product_category').val();
+                    var product_id = $('#product_id').val();
+                    var product_name = $('#product_name').val();
+                    var product_dis = $('#product_dis').val();
+                    var product_price = $('#product_price').val();
+                    var orignal_price = $('#orignal_price').val();
+
+                    var formdata = new FormData();
+                    formdata.append('product_category', product_category);
+                    formdata.append('product_id', product_id);
+                    formdata.append('product_name', product_name);
+                    formdata.append('product_dis', product_dis);
+                    formdata.append('product_price', product_price);
+                    formdata.append('orignal_price', orignal_price);
+
+                    // Append each file to formdata
+                    var product_image = $('#product_image')[0].files;
+                    for (var i = 0; i < product_image.length; i++) {
+                        formdata.append('product_image', product_image[i]);
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/MOUSE',
+                        data: formdata,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            alert('product added')
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
+                        },
+
+                        error: function (error) {
+                            // Handle error
+                        }
+                    });
+                });
+            }
+        });
+
+    </script>

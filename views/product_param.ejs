@@ -1,0 +1,79 @@
+<%- include('header.ejs') %>     
+
+
+  <!-- product img carousel -->
+  <div class="container mt-5 pt-5">
+    <div class="row ">
+      <div class="col-md-5 py-5 1">
+        <div id="carouselExampleSlidesOnly" class=" carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <% const image = product[0].product_image.split(',') %>
+                <% image.forEach((element, index) => { %>
+                    <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-bs-interval="2000">
+                        <img src="/static/images/category/product/<%= element %>" class=" img-fluid" alt="...">
+                    </div>
+                <% }) %>
+                <input type="hidden" name="" id="cart_product" value="<%= product[0] %>">
+        
+            </div>
+        </div>
+      </div>
+
+      <!-- product description -->
+      <div class="col-md-7 text-light pt-5 ">
+        <h2 class="fw-bold fcolor lol l25"><%= product[0].product_name %></h2>
+        <i class=" l27 text-warning">BY CORSAIR</i>
+        <h2 class="fw-bold l26">₹<%= product[0].product_price %></h2>
+        <p class="text-danger l26">(27% off )</p>
+        <p class="fw-bold l27">Save ₹1,708 <del> MSRP ₹6,299 </del>(Inc of all taxes)</p>
+        <img src="product/revv.png" alt=""  class="l29">
+        <div class="p-0 l28">
+          <p>Product Model: 150-Matel-F490-BLACK <br><span>Availability: <i class="text-success">In Stock</i> </span>
+          </p>
+        </div>
+
+        <div class="my-5 l29" >Credit Card EMI Plans start from ₹410 <a href="" class="text-decoration-none text-success">
+            View More ></a></div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="container ">
+    <button class="btn btn-outline-success bcolor px-5 py-2 my-3 text-light lol " id="cartbtn">Add to Cart</button>
+    <button class="btn btn-outline-dark px-5 py-2 my-3 text-light lol lala15">Buy Now</button>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+        $(document).ready(function () {
+            $('#cartbtn').on('click', function () {
+
+                var cart_product = $('#cart_product').val();
+                console.log(cart_product);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/cart',
+                    data: { cart_product: cart_product },
+                    success: function (response) {
+                        console.log('fwafwffafwaf');
+                    }
+                })
+            })
+        })
+
+
+  </script>

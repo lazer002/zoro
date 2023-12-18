@@ -1,0 +1,247 @@
+
+
+body {
+    background-image: url(image/bgg.jpg);
+}
+
+.headcarousal {
+    text-align: left;
+}
+
+#la {
+    width: 500px;
+    background-color: rgba(8, 8, 8, 0.932);
+}
+
+#collapseExample {
+    width: 850px;
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+}
+
+
+.bar {
+    background-image: url(service/bg.jpg);
+    background-size: cover;
+    height: 500px;
+}
+
+.b li {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.fcolor {
+    color: rgb(0, 196, 0);
+}
+
+.bcolor {
+    background-color: rgb(0, 196, 0);
+}
+
+.out {
+    outline: rgb(4, 245, 4);
+    border: 2px solid rgb(17, 241, 17);
+}
+
+
+.footer {
+    list-style: none;
+}
+
+.x {
+    position: relative;
+}
+
+.x button {
+    background-color: rgb(2, 141, 2);
+}
+
+
+
+.footer input {
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-size: large;
+    outline: black;
+}
+
+.footer button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: none;
+    padding: 12px;
+}
+
+.z {
+    font-size: xx-small;
+}
+
+#apex {
+    width: 10%;
+}
+
+.hp img {
+    height: 400px;
+}
+
+.faltu {
+    height: auto;
+    width: 100%;
+}
+
+.carousel-caption td {
+    line-height: 1px;
+}
+
+.lol:hover {
+    transform: scale(1.10)
+}
+
+.lul:hover {
+    transform: scale(1.03)
+}
+
+
+.carts {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+}
+
+.discord:hover {
+    background-color: rgb(77, 35, 194);
+    box-shadow: 10px 10px 100px 5px rgb(77, 35, 194);
+}
+
+.insta:hover {
+    background-image: url(community/fawf.png);
+    box-shadow: 10px 10px 100px 5px #cd017a;
+    background-size: cover;
+}
+
+.meta:hover {
+    background-color: rgb(0, 102, 255);
+    box-shadow: 10px 10px 100px 5px rgb(4, 113, 255);
+}
+
+.reddit:hover {
+    background-color: rgb(241, 109, 0);
+    box-shadow: 10px 10px 100px 5px rgb(255, 103, 2);
+}
+
+.twitter:hover {
+    background-color: rgb(0, 183, 255);
+    box-shadow: 10px 10px 100px 5px rgb(0, 153, 255);
+}
+
+.tiktok:hover {
+    background-color: rgb(0, 255, 255);
+    box-shadow: 10px 10px 100px 5px rgb(3, 255, 242);
+}
+
+.twitch:hover {
+    background-color: #926bfd;
+    box-shadow: 10px 10px 100px 5px rgb(92, 37, 243);
+}
+
+
+@media (max-width: 767px) {
+    .carousel-inner .carousel-item>div {
+        display: none;
+    }
+
+    .carousel-inner .carousel-item>div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(25%);
+    }
+
+    .carousel-inner .carousel-item-start.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-25%);
+    }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start {
+    transform: translateX(0);
+}
+
+
+@media only screen and (max-width: 992px) {
+    #collapseExample {
+        right: 10px;
+        top: 10px;
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 350px ) {
+    .con{font-size: small;}
+      
+    }
+
+@font-face {
+    font-family: f1;
+    src: url(fonts/Aldrich-Regular.ttf)
+}
+
+@font-face {
+    font-family: f2;
+    src: url(fonts/ShadowsIntoLight-Regular.ttf);
+}
+
+@font-face {
+    font-family: f3;
+    src: url(fonts/Asap-Italic-VariableFont_wdth\,wght.ttf);
+}
+
+
+* {
+    font-family: f1
+}
+
+.f2 {
+    font-family: f2;
+}
+
+.f3 {
+    font-family: f3;
+}
+
+/* animation tags */
+
+.lala11{animation-delay: 0.59s;}
+.lala12{animation-delay: 0.2s;}
+.lala13{animation-delay: 0.4s;}
+.lala14{animation-delay: 0.6s;}
+.lala15{animation-delay: 0.8s;}
+.lala1{animation-timing-function:cubic-bezier(0.165, 0.84, 0.44, 1);}
+.tabs{animation-delay: 0.2s;}
+.lala19{animation-iteration-count: 3;}
+.l25{animation-delay: 0.3s;}
+.l26{animation-delay: 0.6s;}
+.l266{animation-delay: 0.6s;}
+.l27{animation-delay: 0.9s;}
+.l28{animation-delay: 1.2s;}
+.l29{animation-delay: 1.5s;}
+.l30{animation-delay: 1.8s;}
+.l277{animation-delay: 0.9s;}

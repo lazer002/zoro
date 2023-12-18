@@ -1,0 +1,37 @@
+<%- include('header.ejs') %>
+
+
+    <input type="text" name="" id="user_email">
+    <input type="text" name="" id="user_pass">
+    <input type="submit" name="" id="sbbtn">
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('#sbbtn').on('click', function () {
+
+                var user_email = $('#user_email').val();
+                var user_pass = $('#user_pass').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/login',
+                    data: { user_email: user_email, user_pass: user_pass },
+                    success: function (response) {
+                        let user_type = response.user_role
+                        console.log(user_type);
+                        if (user_type == 'user') {
+                            window.location.href = '/'
+                        } else if (user_type == 'admin') {
+                            window.location.href = '/admin'
+                        } else {
+                            window.location.href = '/signup'
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+
+

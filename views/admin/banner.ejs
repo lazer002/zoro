@@ -1,0 +1,71 @@
+
+<head>
+  
+</head>
+<body>
+
+<%- include('header.ejs') %>
+
+<input type="file" name="" id="main_banner">
+<input type="text" name="" id="banner_title">
+<input type="text" name="" id="banner_dis">
+<input type="text" name="" id="banner_link">
+
+<button type="submit" id="sbbtn" class="btn">click</button>
+
+
+
+<script>
+
+        $(document).ready(function () {
+            $('#sbbtn').on('click', function () {
+                var main_banner = $('#main_banner')[0].files[0];
+                var banner_title = $('#banner_title').val();
+                var banner_dis = $('#banner_dis').val();
+                var banner_link = $('#banner_link').val();
+                var formdata = new FormData()
+                formdata.append('main_banner',main_banner)
+                formdata.append('banner_title',banner_title)
+                formdata.append('banner_dis',banner_dis)
+                formdata.append('banner_link',banner_link)
+
+                $.ajax({
+                    type: 'post',
+                    url: '/dash_banner',
+                    data: formdata,
+                    contentType:false,
+                    processData:false,
+                    success: function (response) {
+                        console.log(response, 'ajax data')
+                    }
+
+                })
+            })
+
+
+        })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>

@@ -1,0 +1,70 @@
+<%- include('header.ejs') %>
+
+
+
+
+
+
+
+<input name="" id="product_category">
+<input type="file" name="" id="product_image">
+<input type="file" name="" id="sub_product_image">
+<input type="text" name="" id="product_name">
+
+<button type="submit" id="category_sbbtn" class="btn">click</button>
+
+
+<%for(i=0;i< category.length;i++)    {  %>
+    <td> <img src="/static/images/category/pro_category/<%=category[i].product_image %> " alt="">  </td>
+  <% } %>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+// first dahsboard catogary
+
+    $(document).ready(function(){
+        $('#category_sbbtn').on('click',function(){
+            var product_image = $('#product_image')[0].files[0];
+            var sub_product_image = $('#sub_product_image')[0].files[0];
+            var product_category = $('#product_category').val();
+            var product_name = $('#product_name').val();
+            var formdata = new FormData()
+            formdata.append('product_category',product_category)
+            formdata.append('product_image',product_image)
+            formdata.append('sub_product_image',sub_product_image)
+            formdata.append('product_name',product_name)
+            console.log(formdata,'formdata');
+$.ajax({
+    type:'POST',
+    url:'/category',
+    data:formdata,
+    contentType:false,
+    processData:false,
+    success:function(response){
+console.log('category added')
+    }
+})
+})
+})
+    // first dahsboard catogary
+
+
+
+
+
+
+
+
+
+
+</script>

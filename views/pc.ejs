@@ -1,0 +1,63 @@
+
+<%- include('header.ejs') %>     
+
+
+<div class="row">
+
+    <%for( let i=0; i < pc.length; i++ ) { %>
+        <a href="/product/<%= pc[i].product_category %>/<%= pc[i].product_id %>">
+        <div class="card col-lg-4 col-md-6 bg-transparent border border-0 lol ">
+  
+            <div id="carouselExampleSlidesOnly" class=" carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                  <% const image = pc[i].product_image.split(',') %>
+                  <% image.forEach((element, index) => { %>
+                      <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-bs-interval="2000">
+                          <img src="/static/images/category/product/<%= element %>" class=" img-fluid" alt="...">
+                      </div>
+                  <% }) %>
+                  
+              
+         
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">  <%= pc[i].product_name %></p>
+              <p class="card-text bg-transparent"><img src="pc/rev3.png" alt=""></p>
+              <p class="card-text fw-bold fcolor">₹<%= pc[i].product_price %> </p><del>₹<%= pc[i].orignal_price %></del>
+            </div>
+        
+        </div> 
+    </a>
+        <% } %></div>
+
+
+        
+<div class="row">
+
+    <%for( let i=0; i < controller.length; i++ ) { %>
+        <a href="/product/<%= controller[i].product_category %>/<%= controller[i].product_id %>">
+        <div class="card col-lg-4 col-md-6 bg-transparent border border-0 lol ">
+  
+            <div id="carouselExampleSlidesOnly" class=" carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                  <% const image = controller[i].product_image.split(',') %>
+                  <% image.forEach((element, index) => { %>
+                      <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-bs-interval="2000">
+                          <img src="/static/images/category/product/<%= element %>" class=" img-fluid" alt="...">
+                      </div>
+                  <% }) %>
+                  
+              
+         
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">  <%= controller[i].product_name %></p>
+              <p class="card-text bg-transparent"><img src="controller/rev3.png" alt=""></p>
+              <p class="card-text fw-bold fcolor">₹<%= controller[i].product_price %> </p><del>₹<%= controller[i].orignal_price %></del>
+            </div>
+        
+        </div> 
+    </a>
+        <% } %></div>
