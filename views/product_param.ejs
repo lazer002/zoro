@@ -10,10 +10,10 @@
                 <% const image = product[0].product_image.split(',') %>
                 <% image.forEach((element, index) => { %>
                     <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-bs-interval="2000">
-                        <img src="/static/images/category/product/<%= element %>" class=" img-fluid" alt="...">
+                        <img src="/static/images/category/product/<%= element %>" class=" img-fluid" alt="..." id="cart_img">
                     </div>
                 <% }) %>
-                <input type="hidden" name="" id="cart_product" value="<%= product[0] %>">
+          
         
             </div>
         </div>
@@ -21,12 +21,14 @@
 
       <!-- product description -->
       <div class="col-md-7 text-light pt-5 ">
-        <h2 class="fw-bold fcolor lol l25"><%= product[0].product_name %></h2>
+        <h2 class="fw-bold fcolor lol l25" id="cart_pname"><%= product[0].product_name %></h2>
+        <input type="hidden" id="product_id" value="<%= product[0].product_id %>">
+        <input type="hidden" id="product_category" value="<%= product[0].product_category %>">
         <i class=" l27 text-warning">BY CORSAIR</i>
-        <h2 class="fw-bold l26">₹<%= product[0].product_price %></h2>
+        <h2 class="fw-bold l26" id="cart_pprice">₹<%= product[0].product_price %></h2>
         <p class="text-danger l26">(27% off )</p>
         <p class="fw-bold l27">Save ₹1,708 <del> MSRP ₹6,299 </del>(Inc of all taxes)</p>
-        <img src="product/revv.png" alt=""  class="l29">
+        <!-- <img src="product/revv.png" alt=""  class="l29"> -->
         <div class="p-0 l28">
           <p>Product Model: 150-Matel-F490-BLACK <br><span>Availability: <i class="text-success">In Stock</i> </span>
           </p>
@@ -47,7 +49,15 @@
 
 
 
+<%for(i=0;i<results1.length;i++){ %>
+ <div><%= results1[i].product_category %></div> 
+ <div><%= results1[i].product_quantity %></div> 
+ <div><%= results1[i].product_id %></div> 
+ <div><%= results1[i].cart_img %></div> 
+ <div><%= results1[i].cart_pname %></div> 
+ <div><%= results1[i].cart_pprice %></div> 
 
+<% } %>
 
 
 
@@ -59,19 +69,31 @@
 
   <script>
         $(document).ready(function () {
+          var product_quantity = 0 ;
             $('#cartbtn').on('click', function () {
+              product_quantity+=1;
+                var cartproduct = $('#cart_img').attr('src');
+          var   bb=   cartproduct.split('/')
+         
+        var  cart_img=  bb[5]
 
-                var cart_product = $('#cart_product').val();
-                console.log(cart_product);
+                var cart_pname = document.getElementById('cart_pname').innerText;
+                var cart_pprice = document.getElementById('cart_pprice').innerHTML;
+                var product_id = $('#product_id').val()
+                var product_category = $('#product_category').val()
+                data={product_category:product_category,product_quantity:product_quantity,product_id:product_id,cart_img:cart_img,cart_pname:cart_pname,cart_pprice:cart_pprice};
 
                 $.ajax({
                     type: 'POST',
                     url: '/cart',
-                    data: { cart_product: cart_product },
+                    data: data,
                     success: function (response) {
-                        console.log('fwafwffafwaf');
+                      
+                    
+
                     }
-                })
+                }
+                )
             })
         })
 
