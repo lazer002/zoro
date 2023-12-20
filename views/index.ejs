@@ -32,52 +32,20 @@
 
     </div>
     <div class="carousel-inner ">
-      <div class="carousel-item active" data-bs-interval="2000">
+      <%for( let i=0; i < banner.length; i++ ) { %>
+      <div class="carousel-item <%= i === 0 ? 'active' : '' %> " data-bs-interval="4000">
         <video autoplay loop preload>
-          <source src="video/2.mp4">
+          <source src="/static/images/category/banner/<%= banner[i].main_banner %>">
         </video>
         <div class="carousel-caption d-none d-md-block mb-3 headcarousal">
-          <h1 class="fw-bold fcolor lala5">K100 RBG OPX</h1>
-          <h6 class="my-2 lala55">Exclusive OPX optical-mechanical keyswitches for top-tier gaming performance.</h6>
-          <a href="accessories.html" class="text-decoration-none text-light">
+          <h1 class="fw-bold fcolor lala5"><%= banner[i].banner_title %></h1>
+          <h6 class="my-2 lala55"><%= banner[i].banner_dis %></h6>
+          <a href="<%= banner[i].banner_link %>" class="text-decoration-none text-light">
           <button class="btn btn-outline-warning my-4 lol lala5">SHOP NOW </button></a>
         </div>
       </div>
-      <div class="carousel-item">
-        <video autoplay="" loop="" preload="" data-bs-interval="2000">
-          <source src="video/33.mp4">
-        </video>
-        <div class="carousel-caption d-none d-md-block headcarousal">
-          <h1 class="fw-bold fcolor lala5">RGB OMNIX OPX</h1>
-          <h6 class="my-2 lala55"> hyper-fast input with just 1.0mm actuation distance and smooth linear travel for top-tier
-            SOUND QUALITY</h6>
-            <a href="accessories headpphone.html" class="text-decoration-none text-light">
-              <button class="btn btn-outline-warning my-4 lol lala5">SHOP NOW </button></a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <video autoplay="" loop="" preload="" data-bs-interval="2000">
-          <source src="video/11.mp4">
-        </video>
-        <div class="carousel-caption d-none d-md-block headcarousal">
-          <h1 class="fw-bold fcolor lala5">PREDETOR #1 </h1>
-          <h6 class="my-2 lala55">with just 1.0mm actuation distance and smooth linear travel for top-tier gaming performance.
-          </h6>
-          <a href="accessories mouse.html" class="text-decoration-none text-light">
-            <button class="btn btn-outline-warning my-4 lol lala5">SHOP NOW </button></a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <video autoplay="" loop="" preload="" data-bs-interval="2000">
-          <source src="video/3_1.mp4">
-        </video>
-        <div class="carousel-caption d-none d-md-block headcarousal">
-          <h1 class="fw-bold fcolor lala5">MG SONIC 10</h1>
-          <h6 class="my-2 lala55">Exclusive CORSAIR OPX optical-mechanical keyswitches performance.</h6>
-          <a href="accessories.html" class="text-decoration-none text-light">
-            <button class="btn btn-outline-warning my-4 lol lala5">SHOP NOW </button></a>
-        </div>
-      </div>
+      <% } %>
+
     </div>
 
   </div>

@@ -42,8 +42,12 @@ router.get('/signup', async (req, res) => {
 
 
 router.get('/', async (req, res) => {
-   await res.render('index')
-})
+   query1 = `select * from 	
+   banner`
+    connection.query(query1, (err, banner) => {
+      if (err) throw err;
+    res.render('index',{banner:banner})
+})})
 
 router.get('/admin', async (req, res) => {
    if(req.session.user){
