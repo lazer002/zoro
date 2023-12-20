@@ -365,6 +365,7 @@ router.post('/product_bann', bnnr_upload.single('product_banner'), async (req, r
 
 
 router.get('/pcc', async (req, res) => {
+   if(req.session.user){
    query = `select * from pc`
     connection.query(query, (err, results) => {
       if (err) throw err;
@@ -374,23 +375,30 @@ router.get('/pcc', async (req, res) => {
          if (err) throw err;
       res.render('pc', { pc: results,controller:results1 })
    })
-})})
+})}
+else{
+   res.redirect('/login')
+}
+})
 
 
 
 
 router.get('/product/:product_category/:product_id', async (req, res) => {
- 
+   if(req.session.user){
 const {product_id,product_category}=req.params
 let category = `select * from ${product_category} where product_id = '${product_id}'`
 connection.query(category, (err, results) => {
    if (err) throw err;
-   let product = `select * from cart where product_id = '${product_id}'`
+   let product = `select * from cart where product_id = '${product_id}' and user_email = '${req.session.user[0].user_email}'`
    connection.query(product, (err, results1) => {
     if (err) throw err;
       res.render('product_param',{product:results,results1:results1})
   
-})})})
+})})}
+else{
+   res.redirect('/login')
+}})
 
 
 
@@ -401,27 +409,45 @@ const cart_upload = multer({ dest: '/public/images/category/cart' })
 
 router.post('/cart',cart_upload.single('cart_img'), async (req, res) => {
    console.log(req.body);
+
  const {product_category,product_quantity,cart_img,product_id,cart_pname,cart_pprice}=req.body
-// const cart_img = req.file.cart_img
-  let product = `select * from cart where product_id = '${product_id}'`
+ let user= req.session.user[0].user_email;
+  let product = `select * from cart where product_id = '${product_id}' and user_email = '${user}'`
   connection.query(product, (err, results) => {
    if (err) throw err;
    else{
       if(results.length>0){
-         let quantity = `UPDATE cart SET product_quantity = '${product_quantity}'  where product_id = '${product_id}'`
+         let quantity = `UPDATE cart SET product_quantity = '${product_quantity}'  where product_id = '${product_id}' and user_email = '${user}'`
          connection.query(quantity, (err, results) => {
             if (err) throw err;
          else{}})         
       }else{
-         let query = 'INSERT INTO cart (product_category, product_quantity, product_id,cart_image,cart_pname,cart_pprice) VALUES (?, ?, ?, ?, ?, ?)';
-         connection.query(query, [product_category, product_quantity, product_id, cart_img, cart_pname, cart_pprice], (err, results) => {
+         let query = 'INSERT INTO cart (product_category, product_quantity, product_id,cart_image,cart_pname,cart_pprice,user_email) VALUES (?, ?, ?, ?, ?, ?,?)';
+         connection.query(query, [product_category, product_quantity, product_id, cart_img, cart_pname, cart_pprice,user], (err, results) => {
             if (err) throw err;
          else{}})   
 
-      }
+      } 
    }
 })})
 
+
+
+
+
+
+router.get('/cart_page', async (req, res) => {
+   if(req.session.user){
+
+   let product = `select * from cart where user_email = '${req.session.user[0].user_email}'`
+   connection.query(product, (err, results) => {
+    if (err) throw err;
+      res.render('cart_page',{product:results})
+  
+})}
+else{
+   res.redirect('/login')
+}})
 
 
 
