@@ -59,18 +59,19 @@
       <span class="display-4 fw-bold fcolor tabss">EXPLORE PRODUCTS</span>
     </div>
     <div class="row" >
+      <%for( let i=0; i < product.length; i++ ) { %>
       <div class="col-xl-2 col-lg-4 col-sm-6 my-3 lol l277 ">
-        <a href="pc.html" class="text-decoration-none text-light">
+        <a href="/<%= product[i].product_category %>" class="text-decoration-none text-light">
           <div class="card p-0 border border-dark">
-            <img src="image/pc.jpg" class="card-img-top fit" alt="...">
+            <img src="/static/images/category/product/<%= product[i].product_image %>" class="card-img-top fit" alt="...">
             <div class="card-body text-center py-1 bg-black">
-              <h5 class="card-text fcolor">PC</h5>
+              <h5 class="card-text fcolor"><%= product[i].product_name %></h5>
             </div>
           </div>
         </a>
       </div>
-
-
+      <% } %>
+<!-- 
       <div class="col-xl-2 col-lg-4  col-sm-6 my-3 lol lala14">
         <a href="Laptop.html" class="text-decoration-none text-light">
           <div class="card p-0 border border-dark">
@@ -124,7 +125,7 @@
             </div>
           </div>
         </a>
-      </div>
+      </div> -->
 
     </div>
 
