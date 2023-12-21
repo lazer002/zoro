@@ -46,8 +46,12 @@ router.get('/', async (req, res) => {
    banner`
     connection.query(query1, (err, banner) => {
       if (err) throw err;
-    res.render('index',{banner:banner})
-})})
+      query1 = `select * from 	
+      category`
+       connection.query(query1, (err, category) => {
+         if (err) throw err;
+    res.render('index',{banner:banner,product:category})
+})})})
 
 router.get('/admin', async (req, res) => {
    if(req.session.user){
