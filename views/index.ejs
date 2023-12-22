@@ -63,7 +63,7 @@
       <div class="col-xl-2 col-lg-4 col-sm-6 my-3 lol l277 ">
         <a href="/<%= product[i].product_category %>" class="text-decoration-none text-light">
           <div class="card p-0 border border-dark">
-            <img src="/static/images/category/product/<%= product[i].product_image %>" class="card-img-top fit" alt="...">
+            <img src="/static/images/category/pro_category/<%= product[i].product_image %>" class="card-img-top fit" alt="...">
             <div class="card-body text-center py-1 bg-black">
               <h5 class="card-text fcolor"><%= product[i].product_name %></h5>
             </div>
@@ -71,61 +71,7 @@
         </a>
       </div>
       <% } %>
-<!-- 
-      <div class="col-xl-2 col-lg-4  col-sm-6 my-3 lol lala14">
-        <a href="Laptop.html" class="text-decoration-none text-light">
-          <div class="card p-0 border border-dark">
-            <img src="image/lappy.jpg" class="card-img-top fit" alt="...">
-            <div class="card-body text-center py-1 bg-black ">
-              <h5 class="card-text fcolor">LAPTOP</h5>
-            </div>
-          </div>
-        </a>
-      </div>
 
-      <div class="col-xl-2 col-lg-4 col-sm-6 my-3 lol l25">
-        <a href="accessories mouse.html" class="text-decoration-none text-light">
-          <div class="card p-0 border border-dark">
-            <img src="image/mouse1.jpg" class="card-img-top fit" alt="...">
-            <div class="card-body text-center py-1 bg-black">
-              <h5 class="card-text fcolor">MOUSE</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-xl-2 col-lg-4 col-sm-6 my-3 lol lala12">
-        <a href="accessories.html" class="text-decoration-none text-light">
-          <div class="card p-0 border border-dark">
-            <img src="image/keyboard.jpg" class="card-img-top fit" alt="...">
-            <div class="card-body text-center py-1 bg-black">
-              <h5 class="card-text fcolor">KEYBOARD</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-xl-2 col-lg-4 col-sm-6 my-3 lol l26">
-        <a href="accessories headpphone.html" class="text-decoration-none text-light">
-          <div class="card p-0 border border-dark">
-            <img src="image/HEADPHONE.jpg" class="card-img-top fit" alt="...">
-            <div class="card-body text-center py-1 bg-black">
-              <h5 class="card-text fcolor">HEADPHONE</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-xl-2 col-lg-4 col-sm-6 my-3 lol l27">
-        <a href="console.html" class="text-decoration-none text-light">
-          <div class="card p-0 border border-dark">
-            <img src="image/CONTRO.jpg" class="card-img-top fit" alt="...">
-            <div class="card-body text-center py-1 bg-black">
-              <h5 class="card-text fcolor">CONTROLLER</h5>
-            </div>
-          </div>
-        </a>
-      </div> -->
 
     </div>
 
@@ -148,15 +94,17 @@
               aria-label="Slide 4"></button>
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active " data-bs-interval="3000">
-              <img src="image/ffff.webp.png" class="d-block w-100 rounded-1" alt="...">
+            <%for( let i=0; i < carausal.length; i++ ) { %>
+              <%console.log( carausal[i].carausal_image ) %>
+            <div class="carousel-item <%= i === 0 ? 'active' : '' %> " data-bs-interval="3000">
+              <img src="/static/images/category/carousel/<%= carausal[i].carausal_image %>" class="d-block w-100 rounded-1" alt="...">
               <div class="carousel-caption text-light">
                 <table class="faltu text-center">
                   <tr>
                     <td class="align-top">
-                      <h1 class="fcolor fw-bold lala5">NEW ZORO LZZZR 16</h1>
-                      <h6 class="lala55">Powerful CPU cooling with a customizable LCD screen..</h6>
-                      <a href="pc.html" class="text-decoration-none">
+                      <h1 class="fcolor fw-bold lala5"><%= carausal[i].carausal_title %></h1>
+                      <h6 class="lala55"><%= carausal[i].carausal_dis %></h6>
+                      <a href="<%= carausal[i].carausal_link %>" class="text-decoration-none">
                         <h4 class="text-warning lol lala5">SHOP NOW ></h4>
                       </a>
                     </td>
@@ -164,54 +112,8 @@
                 </table>
               </div>
             </div>
-            <div class="carousel-item" data-bs-interval="3000">
-              <img src="image/fff.jpg" class="d-block w-100 rounded-1" alt="...">
-              <div class="carousel-caption d-flex text-light">
-                <table class="faltu  text-center">
-                  <tr>
-                    <td class="align-top ">
-                      <h1 class=" fw-bold fcolor lala5">NEW RS SUPER </h1>
-                      <h6 class="lala55">PORTABLE. POWERFUL. PERFECTION</h6>
-                      <a href="accessories.html" class="text-decoration-none">
-                        <h4 class="text-warning lol lala5">SHOP NOW ></h4>
-                      </a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="3000">
-              <img src="image/mbg3.jpg" class="d-block w-100 rounded-1" alt="...">
-              <div class="carousel-caption d-flex text-light">
-                <table class="faltu  text-center">
-                  <tr>
-                    <td class="align-top ">
-                      <h1 class="fw-bold fcolor lala5">NEW ZORO NOVA LIGHT</h1>
-                      <h6 class="lala55">Ultra light. Hyper fast.</h6>
-                      <a href="accessories mouse.html" class="text-decoration-none">
-                        <h4 class="text-warning lol lala5">SHOP NOW ></h4>
-                      </a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="3000">
-              <img src="image/31waf.jpg" class="d-block w-100 rounded-1" alt="...">
-              <div class="carousel-caption d-flex text-light">
-                <table class="faltu  text-center">
-                  <tr>
-                    <td class="align-top ">
-                      <h1 class="fw-bold fcolor lala5">NEW SONIC LIGHT</h1>
-                      <h6 class="lala55">Ultra light. Hyper fast.</h6>
-                      <a href="accessories headpphone.html" class="text-decoration-none">
-                        <h4 class="text-warning lol lala5">SHOP NOW ></h4>
-                      </a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
+            <%}%>
+
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev">
@@ -268,15 +170,17 @@
               aria-label="Slide 4"></button>
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active " data-bs-interval="2000">
-              <img src="image/MBG1.jpg" class="d-block w-100 " alt="...">
-              <div class="carousel-caption text-light  ">
-                <table class="faltu  text-center">
+            <%for( let i=0; i < carausal2.length; i++ ) { %>
+           
+            <div class="carousel-item <%= i === 0 ? 'active' : '' %> " data-bs-interval="3000">
+              <img src="/static/images/category/carousel/<%= carausal2[i].carausal_image %>" class="d-block w-100 rounded-1" alt="...">
+              <div class="carousel-caption text-light">
+                <table class="faltu text-center">
                   <tr>
-                    <td class="align-top ">
-                      <h1 class=" fw-semilight fcolor lala5">NEW ZORO LZZZR 16</h1>
-                      <h6 class="lala55">PORTABLE. POWERFUL. PERFECTION</h6>
-                      <a href="accessories mouse.html" class="text-decoration-none">
+                    <td class="align-top">
+                      <h1 class="fcolor fw-bold lala5"><%= carausal2[i].carausal_title %></h1>
+                      <h6 class="lala55"><%= carausal2[i].carausal_dis %></h6>
+                      <a href="<%= carausal2[i].carausal_link %>" class="text-decoration-none">
                         <h4 class="text-warning lol lala5">SHOP NOW ></h4>
                       </a>
                     </td>
@@ -284,54 +188,8 @@
                 </table>
               </div>
             </div>
-            <div class="carousel-item" data-bs-interval="2000">
-              <img src="image/hbg3.jpg" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-flex text-light">
-                <table class="faltu  text-center">
-                  <tr>
-                    <td class="align-top ">
-                      <h1 class="fw-semilight fcolor lala5">NEW ZORO LZZZR 16</h1>
-                      <h6 class="lala55">Powerful CPU cooling with a customizable LCD screen..</h6>
-                      <a href="accessories headpphone.html" class="text-decoration-none">
-                        <h4 class="text-warning lol lala5">SHOP NOW ></h4>
-                      </a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-              <img src="image/bg-3.webp.png" class="d-block w-100 " alt="...">
-              <div class="carousel-caption d-flex text-light">
-                <table class="faltu  text-center">
-                  <tr>
-                    <td class="align-top ">
-                      <h1 class="fw-semilight fcolor lala5">NEW ZORO LZZZR 16</h1>
-                      <h6 class="lala55">Ultra light. Hyper fast.</h6>
-                      <a href="pc.html" class="text-decoration-none">
-                        <h4 class="text-warning lol lala5">SHOP NOW ></h4>
-                      </a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-              <img src="image/BG-11.jpg" class="d-block w-100 " alt="...">
-              <div class="carousel-caption d-flex text-light">
-                <table class="faltu  text-center">
-                  <tr>
-                    <td class="align-top ">
-                      <h1 class="fw-semilight fcolor lala5">NEW ZORO LZZZR 16</h1>
-                      <h6 class="lala55">Ultra light. Hyper fast.</h6>
-                      <a href="accessories.html" class="text-decoration-none">
-                        <h4 class="text-warning lol lala5">SHOP NOW ></h4>
-                      </a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
+            <%}%>
+   
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
             data-bs-slide="prev">
@@ -356,10 +214,10 @@
     <div class="row">
       <div class="col-sm-6 col-12 py-3 l26 ">
         <div class="card text-bg-dark">
-          <img src="image/c.jpg" class="card-img" alt="...">
+          <img src="/static/images/category/pro_category/<%=product[5].sub_product_image %>" class="card-img" alt="...">
           <div class="card-img-overlay">
             <h5 class="card-title l266"> NEW CUSTOM CONTROLLER</h5>
-            <span><a href="console.html" class="text-decoration-none">
+            <span><a href="/<%=product[5].product_name %>" class="text-decoration-none">
                 <h6 class="text-warning l27">SHOP NOW ></h6>
               </a>
             </span>
@@ -369,10 +227,10 @@
 
       <div class="col-sm-6 col-12 py-3 lol l266">
         <div class="card text-bg-dark">
-          <img src="image/6-2.jpg" class="card-img" alt="...">
+          <img src="/static/images/category/pro_category/<%=product[3].sub_product_image %>" class="card-img" alt="...">
           <div class="card-img-overlay">
-            <h5 class="card-title l28">GAMING LAPTOP</h5>
-            <span><a href="Laptop.html" class="text-decoration-none">
+            <h5 class="card-title l28">RGB KEYBOARD</h5>
+            <span><a href="/<%=product[3].product_name %>" class="text-decoration-none">
                 <h6 class="text-warning l27">SHOP NOW ></h6>
               </a> </span>
           </div>
@@ -390,10 +248,10 @@
     <div class="row">
       <div class="col-sm-4 col-12 py-3 lol l25">
         <div class="card text-bg-dark">
-          <img src="image/2.jpg" class="card-img img-fluid" alt="...">
+          <img src="/static/images/category/pro_category/<%=product[0].sub_product_image %>" class="card-img img-fluid" alt="...">
           <div class="card-img-overlay">
             <h5 class="card-title l27">CUSTEM BUILT</h5>
-            <span><a href="pc.html" class="text-decoration-none">
+            <span><a href="/<%=product[0].product_name %>" class="text-decoration-none">
                 <h6 class="text-warning l28">SHOP NOW ></h6>
               </a> </span>
           </div>
@@ -402,10 +260,10 @@
 
       <div class="col-sm-4 col-12 py-3 lol l26">
         <div class="card text-bg-dark">
-          <img src="image/k.jpg" class="card-img" alt="...">
+          <img src="/static/images/category/pro_category/<%=product[1].sub_product_image %>" class="card-img" alt="...">
           <div class="card-img-overlay">
-            <h5 class="card-title l27">RGB KEYBOARD</h5>
-            <span><a href="accessories.html" class="text-decoration-none">
+            <h5 class="card-title l27"> GAMING MOUSE</h5>
+            <span><a href="/<%=product[1].product_name %>" class="text-decoration-none">
                 <h6 class="text-warning l28">SHOP NOW ></h6>
               </a> </span>
           </div>
@@ -414,10 +272,10 @@
 
       <div class="col-sm-4 col-12 py-3 lol lala12">
         <div class="card text-bg-dark">
-          <img src="image/mu.jpg" class="card-img" alt="...">
+          <img src="/static/images/category/pro_category/<%=product[2].sub_product_image %>" class="card-img" alt="...">
           <div class="card-img-overlay">
-            <h5 class="card-title l27">GAMING MOUSE</h5>
-            <span><a href="accessories mouse.html" class="text-decoration-none">
+            <h5 class="card-title l27">GAMING LAPTOP</h5>
+            <span><a href="/<%=product[2].product_name %>" class="text-decoration-none">
                 <h6 class="text-warning l28">SHOP NOW ></h6>
               </a> </span>
           </div>
@@ -439,21 +297,21 @@
       </div>
 
       <div class="col-lg-2 col-sm-3 my-auto lol lala12"><a href="awards.html" class="text-decoration-none text-light">
-          <img src="image/pro.png" alt="" class="img-fluid w-50">
+          <img src="/static/images/icon/pro.png" alt="" class="img-fluid w-50">
           <h6 class="mt-3">LARGEST SELECTION OF
             PRODUCTS</h6>
         </a>
       </div>
 
       <div class="col-lg-2  col-sm-3 my-auto lol l26"><a href="service.html" class="text-decoration-none text-light">
-          <img src="image/sep.png" alt="" class="img-fluid w-50">
+          <img src="/static/images/icon/sep.png" alt="" class="img-fluid w-50">
           <h6 class="mt-3">SHIPS FREE NEXT
             BUSINESS DAY*</h6>
         </a>
       </div>
 
       <div class="col-lg-2  col-sm-3 my-auto lol l27"><a href="service.html" class="text-decoration-none text-light">
-          <img src="image/re.png" alt="" class="img-fluid w-50">
+          <img src="/static/images/icon/re.png" alt="" class="img-fluid w-50">
           <h6 class="mt-3">60-DAYS
             RISK FREE
             RETURNS</h6>
@@ -461,7 +319,7 @@
       </div>
 
       <div class="col-lg-2  col-sm-3 my-auto  lol l28"><a href="service.html" class="text-decoration-none text-light">
-          <img src="image/sepo.png" alt="" class="img-fluid w-50">
+          <img src="/static/images/icon/sepo.png" alt="" class="img-fluid w-50">
           <h6 class="mt-3">LIVE CHAT
             WITH PRODUCT
             SPECIALISTS</h6>
@@ -479,7 +337,7 @@
   <div class="container-fluid px-0 rounded-3 text-center ">
     <a href="pc.html" class="text-decoration-none text-light">
       <div class="card col-12 text-bg-dark ">
-        <img src="image/bse.jpg" alt="" class="img-fluid">
+        <img src="/static/images/category/banner/bse.jpg" alt="" class="img-fluid">
         <div class="card-img-overlay m-3 m-sm-0 ">
           <h3 class="fcolor fw-bold l25">YOUR DREAM SETUP START HERE</h3>
           <h6 class="fw-light l26">CREATE THE ULTIMATE SETUP WITH BEST GEAR BUILT</h6>
@@ -495,7 +353,7 @@
     <div class="col-lg-3 col-sm-4  rounded text-center m-3 lala14">
       <div class="card bg-black lol ">
         <div class="card-body "><a href="awards.html" class="text-decoration-none text-light">
-            <img src="image/aw.png" alt="">
+            <img src="/static/images/icon/aw.png" alt="">
             <div class="card-head h4 fw-bold fcolor">Awards</div>
             <p class="card-text pb-4">Discover Zoro’s Award Excellence. </p>
           </a>
@@ -505,7 +363,7 @@
     <div class="col-lg-3 col-sm-4  rounded text-center m-3 l26">
       <div class="card  bg-black lol ">
         <div class="card-body"><a href="service.html" class="text-decoration-none text-light">
-            <img src="image/service.png" alt="">
+            <img src="/static/images/icon/service.png" alt="">
             <div class="card-head h4 fw-bold  fcolor">SERVICE / SUPPORT</div>
             <p class="card-text fw-light">Find the FAQ, Customer Service and More. </p>
           </a>
@@ -515,7 +373,7 @@
     <div class="col-lg-3 col-sm-4  rounded text-center m-3 lala13">
       <div class="card  bg-black lol ">
         <div class="card-body"><a href="https://www.youtube.com" class="text-decoration-none text-light">
-            <img src="image/video.png" alt="">
+            <img src="/static/images/icon/video.png" alt="">
             <div class="card-head h4 fw-bold  fcolor">TECH VIDEOS</div>
             <p class="card-text pb-4">Visit Zoro’s YouTube Channel. </p>
           </a>
@@ -533,121 +391,6 @@
 
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
-
-
-  <script>
-    let items = document.querySelectorAll('.ala .alla')
-  
-      items.forEach((el) => {
-        const minPerSlide = 4
-        let next = el.nextElementSibling
-        for (var i = 1; i < minPerSlide; i++) {
-          if (!next) {
-            // wrap carousel by using first child
-            next = items[0]
-          }
-          let cloneChild = next.cloneNode(true)
-          el.appendChild(cloneChild.children[0])
-          next = next.nextElementSibling
-        }
-      })
-      
-  
-  
-  $(document).ready(function(){
-    $(".tabs").addClass("animate__animated animate__bounceIn")
-    $(".lala5").addClass("animate__animated animate__bounceInLeft")
-    $(".lala55").addClass("animate__animated animate__bounceInRight")
- 
-  
-  
-  $(window).scroll(function(){
-    var wscall=$(document).scrollTop()
-    console.log(wscall)
- 
-  
-   if((wscall>100)&&(wscall<550)){
-      $(".l277").addClass("animate__animated animate__bounceInLeft")
-      $(".lala14").addClass("animate__animated animate__bounceInLeft")
-      $(".l25").addClass("animate__animated animate__bounceInLeft")
-      $(".lala12").addClass("animate__animated animate__bounceInRight")
-      $(".l26").addClass("animate__animated animate__bounceInRight")
-      $(".l27").addClass("animate__animated  animate__bounceInRight ")
-      $(".tabss").addClass("animate__animated animate__bounceInLeft ")
-      }
-      else if((wscall>550)&&(wscall<860)){
-      $(".l25").addClass("animate__animated animate__bounceInLeft")
-      $(".l26").addClass("animate__animated animate__bounceInRight")}
-
-      else if((wscall>860)&&(wscall<1350)){
-      $(".l25").addClass("animate__animated animate__bounceInRight")
-      $(".lala12").addClass("animate__animated animate__bounceInLeft")
-      $(".l26").addClass("animate__animated animate__bounceInRight")
-      $(".l27").addClass("animate__animated animate__bounceInRight")
-      $(".l28").addClass("animate__animated animate__bounceInRight")
-  }
-
-  else if((wscall>1700)&&(wscall<1950)){
-      $(".l25").addClass("animate__animated animate__bounceInLeft")
-      $(".l26").addClass("animate__animated animate__bounceInRight")
-    $(".l25").addClass("animate__animated animate__bounceInLeft")
-
-  }
-  else if((wscall>1950)&&(wscall<2300)){
-    $(".l26").addClass("animate__animated animate__bounceInLeft")
-  $(".l266").addClass("animate__animated animate__bounceInRight")
-  $(".l27").addClass("animate__animated animate__bounceInRight")
-  $(".l28").addClass("animate__animated animate__bounceInLeft")
-  $(".l29").addClass("animate__animated animate__bounceInLeft")
-  
-  }
-  else if((wscall>2300)&&(wscall<2600)){
-    $(".l25").addClass("animate__animated animate__fadeInLeft")
-      $(".l26").addClass("animate__animated animate__fadeInLeft")
-      $(".lala12").addClass("animate__animated animate__fadeInRight")
-      $(".l27").addClass("animate__animated animate__bounceInLeft")
-      $(".l28").addClass("animate__animated animate__bounceInRight")
-  
-  }
-  else if((wscall>2620)&&(wscall<2950)){
-    $(".l25").addClass("animate__animated animate__bounceInLeft")
-      $(".lala12").addClass("animate__animated animate__bounceInRight")
-      $(".l26").addClass("animate__animated animate__fadeInRight ")
-      $(".l27").addClass("animate__animated animate__fadeInRight ")
-      $(".l28").addClass("animate__animated animate__fadeInRight")
-  }
-  else if((wscall>3000)&&(wscall<3300)){
-      $(".l25").addClass("animate__animated animate__bounceInLeft")
-      $(".l26").addClass("animate__animated animate__bounceInRight")
-      $(".l27").addClass("animate__animated animate__bounceInRight ")
- 
-  
-  }
-  else if((wscall>3600)&&(wscall<3850)){
-    $(".lala13").addClass("animate__animated animate__bounceInRight")
-    $(".l26").addClass("animate__animated animate__bounceIn")
-    $(".lala14").addClass("animate__animated animate__bounceInLeft")
-
-  }
-  else if((wscall>3880)&&(wscall<4100)){
-    $(".l25").addClass("animate__animated animate__bounceInLeft")
-      $(".lala14").addClass("animate__animated animate__bounceInLeft")
-      $(".l27").addClass("animate__animated animate__flipInX ")
-      $(".lala15").addClass("animate__animated animate__bounceInRight ")
-      $(".lala12").addClass("animate__animated animate__bounceInRight ")
-  }
-
-  else if((wscall>4100)&&(wscall<4200)){
-  $(".lala19").addClass("animate__animated animate__flip ")
-  
-  }
-  
-  
-  }) })
-  
-    </script>
 <%- include('common/footer.ejs')  %>
 
 </body>
