@@ -364,8 +364,11 @@ router.post('/controller', contro_upload.fields([{ name: 'product_image' }]), as
 // fwhaihfowajfojwaofjwaofj
 
 router.get('/product_banner', async (req, res) => {
-   await res.render('admin/product_banner')
-})
+   query = `select * from category`
+    connection.query(query, (err, category) => {
+      if (err) throw err;
+    res.render('admin/product_banner',{category:category})
+})})
 
 const storage_dash = multer.diskStorage({
    destination: function (req, file, cb) {
@@ -381,7 +384,7 @@ router.post('/product_bann', bnnr_upload.single('product_banner'), async (req, r
    console.log(req.body);
    const product_banner = req.file.filename;
    const { product_title, product_category, product_link } = req.body
-   let query = `insert into dashboard_pro_pill(product_banner,product_title,product_category,product_link) values('${product_banner}','${product_title}','${product_category}','${product_link}')`
+   let query = `insert into product_banner(product_banner,product_title,product_category,product_link) values('${product_banner}','${product_title}','${product_category}','${product_link}')`
    connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -394,19 +397,29 @@ router.post('/product_bann', bnnr_upload.single('product_banner'), async (req, r
 
 
 
-router.get('/pcc', async (req, res) => {
+router.get('/PC', async (req, res) => {
    if (req.session.user) {
       query = `select * from pc`
       connection.query(query, (err, results) => {
          if (err) throw err;
+            res.render('pc', { pc: results })
+         })
+      }
+   else {
+      res.redirect('/login')
+   }
+})
+
+
+router.get('/CONTROLLER', async (req, res) => {
+   if (req.session.user) {
          query1 = `select * from 	
       CONTROLLER`
          connection.query(query1, (err, results1) => {
             if (err) throw err;
-            res.render('pc', { pc: results, controller: results1 })
+            res.render('pc', {  controller: results1 })
          })
-      })
-   }
+      }
    else {
       res.redirect('/login')
    }
