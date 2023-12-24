@@ -4,18 +4,12 @@
 
 <div id="carouselExampleSlidesOnly" class="carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="2000">
-        <img src="pc/bg/bg-5.webp.png" class="d-block w-100" alt="...">
+      <%for( let i=0; i< banner.length; i++ ) { %>
+      <div class="carousel-item <%= i === 0 ?  'active' : ' ' %>" data-bs-interval="2000">
+        <img src="/static/images/category/productbanner/<%=banner[i].product_banner %>" class="d-block w-100" alt="...">
       </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="pc/bg/bg-3.webp.png" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="pc/bg/bg-4.webp.png" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="pc/bg/bg-2.webp.png" class="d-block w-100" alt="...">
-      </div>
+      <%}%>
+     
     </div>
   </div>
 
@@ -27,134 +21,30 @@
     <div class="row mx-auto my-auto justify-content-center 2">
       <div id="recipeCarousel" class="carousel slide ala " data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active alla" data-bs-interval="2000">
+          <%for( let i=0; i< pc.length; i++ ) { %>
+          <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla" data-bs-interval="2000">
             <div class="col-md-3  lol">
               <a href="product.html" class="text-decoration-none text-light">
                 <div class="card bg-transparent border border-0">
                   <div class="card-img">
-                    <img src="pc/p1-PhotoRoom.png-PhotoRoom.png" class="img-fluid">
+                    <% var imgg=pc[i].product_image.split(',') %>
+                        
+                            <img src="/static/images/category/product/<%=imgg[0].trim() %>"
+                                alt="" class="img-fluid ">
+                           
                   </div>
                   <div class="card-body text-light">
-                    <h5>EQURA II</h5>
+                    <h5><%=pc[i].product_name %></h5>
                     <img src="product/revv.png" alt="">
-                    <P class="fw-bold"> ₹44,999 <del class="text-body">₹55,999</del></p>
+                    <P class="fw-bold"> ₹<%=pc[i].product_price %> <del class="text-body">₹<%=pc[i].orignal_price %></del></p>
                   </div>
                 </div>
               </a>
             </div>
           </div>
-          <div class="carousel-item alla" data-bs-interval="2000">
-            <div class="col-md-3 lol">
-              <a href="product.html" class="text-decoration-none text-light">
-                <div class="card bg-transparent border border-0">
-                  <div class="card-img">
-                    <img src="pc/12-PhotoRoom.png-PhotoRoom.png" class="img-fluid">
-                  </div>
-                  <div class="card-body text-light">
-                    <h5>EQURA I</h5>
-                    <img src="product/rev4.png" alt="">
-                    <P class="fw-bold"> ₹59,999 <del class="text-body">₹65,999</del></p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="carousel-item alla" data-bs-interval="2000">
-            <div class="col-md-3 lol">
-              <a href="product.html" class="text-decoration-none text-light">
-                <div class="card bg-transparent border border-0">
-                  <div class="card-img">
-                    <img src="pc/25-PhotoRoom.png-PhotoRoom.png" class="img-fluid">
-                  </div>
-                  <div class="card-body text-light">
-                    <h5>EQURA III</h5>
-                    <img src="product/rev2.png" alt="">
-                    <P class="fw-bold"> ₹48,999 <del class="text-body">₹55,999</del></p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="carousel-item alla" data-bs-interval="2000">
-            <div class="col-md-3 lol">
-              <a href="product.html" class="text-decoration-none text-light">
-                <div class="card bg-transparent border border-0">
-                  <div class="card-img">
-                    <img src="pc/27-PhotoRoom.png-PhotoRoom.png" class="img-fluid">
-                  </div>
-                  <div class="card-body text-light">
-                    <h5>SONIC 300</h5>
-                    <img src="product/rev4.png" alt="">
-                    <P class="fw-bold"> ₹74,999 <del class="text-body">₹85,999</del></p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="carousel-item alla" data-bs-interval="2000">
-            <div class="col-md-3 lol">
-              <a href="product.html" class="text-decoration-none text-light">
-                <div class="card bg-transparent border border-0">
-                  <div class="card-img">
-                    <img src="pc/31-PhotoRoom.png-PhotoRoom.png" class="img-fluid">
-                  </div>
-                  <div class="card-body text-light">
-                    <h5>BROCODE XYZ</h5>
-                    <img src="product/rev3.png" alt="">
-                    <P class="fw-bold"> ₹65,999 <del class="text-body">₹75,999</del></p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="carousel-item alla" data-bs-interval="2000">
-            <div class="col-md-3 lol">
-              <a href="product.html" class="text-decoration-none text-light">
-                <div class="card bg-transparent border border-0">
-                  <div class="card-img">
-                    <img src="pc/33-PhotoRoom.png-PhotoRoom.png" class="img-fluid">
-                  </div>
-                  <div class="card-body text-light">
-                    <h5>430 GOLD</h3>
-                      <img src="product/rev4.png" alt="">
-                      <P class="fw-bold"> ₹62,999 <del class="text-body">₹65,999</del></p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="carousel-item alla" data-bs-interval="2000">
-            <div class="col-md-3 lol">
-              <a href="product.html" class="text-decoration-none text-light">
-                <div class="card bg-transparent border border-0">
-                  <div class="card-img">
-                    <img src="pc/41-PhotoRoom.png-PhotoRoom.png" class="img-fluid">
-                  </div>
-                  <div class="card-body text-light">
-                    <h5>LALAZONE</h3>
-                      <img src="product/revv.png" alt="">
-                      <P class="fw-bold"> ₹69,999 <del class="text-body">₹75,999</del></p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="carousel-item alla" data-bs-interval="2000">
-            <div class="col-md-3 lol">
-              <a href="product.html" class="text-decoration-none text-light">
-                <div class="card bg-transparent border border-0">
-                  <div class="card-img">
-                    <img src="pc/24-PhotoRoom.png-PhotoRoom.png" class="img-fluid">
-                  </div>
-                  <div class="card-body text-light">
-                    <h5>TOWER 350</h3>
-                      <img src="product/rev3.png" alt="">
-                      <P class="fw-bold"> ₹32,999 <del class="text-body">₹35,999</del></p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
+          <%}%>
+
+
         </div>
         <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -1027,3 +917,18 @@
 
 
         
+<script>let items = document.querySelectorAll('.ala .alla')
+
+  items.forEach((el) => {
+    const minPerSlide = 4
+    let next = el.nextElementSibling
+    for (var i = 1; i < minPerSlide; i++) {
+      if (!next) {
+        // wrap carousel by using first child
+        next = items[0]
+      }
+      let cloneChild = next.cloneNode(true)
+      el.appendChild(cloneChild.children[0])
+      next = next.nextElementSibling
+    }
+  })</script>
