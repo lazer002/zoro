@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2023 at 06:28 PM
+-- Generation Time: Dec 24, 2023 at 04:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -40,10 +40,10 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id`, `main_banner`, `banner_title`, `banner_dis`, `banner_link`) VALUES
-(1, '1700933917699_videoplayback.3gpp', 'baner1', 'naer dis', 'link'),
-(2, '1700936083056_videoplayback.3gpp', 'fwafwafwaf', 'fwafwafawf', 'fwafwafwafwa'),
-(3, '1702053025345_12-2.jpg', 'n', 'dd', 'l'),
-(4, '1702053064446_6-2.jpg', 'fw', 'fwaf', 'fwfa');
+(5, '1703086878372_2.mp4', 'BX600 NEWGEN', 'hyper-fast input with just 1.0mm actuation distance and smooth linear travel for top-tier\n            SOUND QUALITY', '/pc'),
+(6, '1703087026618_11.mp4', 'GX460 Gaming Keyboard', 'Exclusive OPX optical-mechanical keyswitches for top-tier gaming performance', '/keyboard'),
+(7, '1703087122827_33.mp4', 'RGB OMNIX OPX', 'with just 1.0mm actuation distance and smooth linear travel for top-tier gaming performance.', '/mouse'),
+(8, '1703087184071_3_1.mp4', 'Super X Ultra', 'Exclusive ZORO OPX optical-mechanical keyswitches performance', '/pc');
 
 -- --------------------------------------------------------
 
@@ -65,15 +65,14 @@ CREATE TABLE `carausal_banner` (
 --
 
 INSERT INTO `carausal_banner` (`id`, `carausal_image`, `carausal_title`, `carausal_category`, `carausal_dis`, `carausal_link`) VALUES
-(1, '25890ed07b6465e5b25b849e8740a121', 'aaaaa', 'first_carausal', 'aaaaaaaaaaaaaaaaaaaa', 'a'),
-(2, '83c3ebe93ed2473e5d0234b10d27f5e6', 'g', 'second_carausal', 'g', 'g'),
-(3, 'a84b60f7c95dabb32d9e86e8bcd7f4f9', 'fwaf', 'second_carausal', 'fwaf', 'fwafwaf'),
-(4, 'fabdc84bc22518e5fa1ad1b2eb1ad442', 'fwaf', 'second_carausal', 'fwaf', 'fwafwaf'),
-(5, 'cb06c884a711f633fe49ab7071ba44ff', 'fwaf', 'second_carausal', 'fwaf', 'fwafwaf'),
-(6, 'd359bfbbd985bb5629d44b81f2691783', 'fwaf', 'second_carausal', 'fwaf', 'fwafwaf'),
-(7, '1a5d8d0815fb5ae6340ead706f9f9b9a', 'fwaf', 'second_carausal', 'fwaf', 'fwafwaf'),
-(8, 'ee31f4718effe29c6584cb2c0c112bc5', 'fwaf', 'second_carausal', 'fwaf', 'fwafwaf'),
-(9, 'abf74c81ebe43584a5764aa5cdd8de2e', 'faw', 'first_carausal', 'fwa', 'fwa');
+(1, 'cra (1).jpg', 'NEW RS SUPER', 'first_carausal', 'PORTABLE. POWERFUL. PERFECTION', '/MOUSE'),
+(2, 'cra (2).jpg', 'NEW ZORO LZZZR 16', 'first_carausal', 'Powerful CPU cooling with a customizable LCD screen..', '/KEYBOARD'),
+(3, 'cra (3).jpg', 'NEW ZORO NOVA LIGHT', 'first_carausal', 'Ultra light. Hyper fast.', '/KEYBOARD'),
+(4, 'cra (4).jpg', 'SONIC LIGHT', 'first_carausal', 'Ultra light. Hyper fast WITH AMAZING MACHANIC KEYS ', '/KEYBOARD'),
+(5, 'cra (5).jpg', 'PORTABLE. POWERFUL. PERFECTION', 'second_carausal', 'Powerful CPU cooling with a customizable LCD screen..', '/LAPTOP'),
+(6, 'cra (6).jpg', 'Ultra light. Hyper fast.', 'second_carausal', 'Ultra light. Hyper fast Gaming Pc.', '/PC'),
+(7, 'cra (7).jpg', ' NEW CUSTOM CONTROLLER', 'second_carausal', ' NEW CUSTOM CONTROLLER WITH AMAZING MACHANIC KEYS ', '/CONTROLLER'),
+(8, 'cra (8).jpg', 'SONIC LIGHT Pro', 'second_carausal', 'AMAZING MACHANIC KEYS  AMAZING RESPONSE', '/KEYBOARD');
 
 -- --------------------------------------------------------
 
@@ -83,24 +82,24 @@ INSERT INTO `carausal_banner` (`id`, `carausal_image`, `carausal_title`, `caraus
 
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
-  `product_category` varchar(222) NOT NULL,
-  `product_id` varchar(222) NOT NULL,
-  `product_image` varchar(222) NOT NULL,
-  `product_name` varchar(222) NOT NULL,
-  `product_dis` varchar(222) NOT NULL,
-  `product_price` varchar(222) NOT NULL,
-  `orignal_price` varchar(222) NOT NULL
+  `product_category` varchar(255) DEFAULT NULL,
+  `product_quantity` varchar(255) DEFAULT NULL,
+  `product_id` varchar(255) DEFAULT NULL,
+  `cart_image` varchar(255) DEFAULT NULL,
+  `cart_pname` varchar(255) DEFAULT NULL,
+  `cart_pprice` varchar(255) DEFAULT NULL,
+  `user_email` varchar(222) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`id`, `product_category`, `product_id`, `product_image`, `product_name`, `product_dis`, `product_price`, `orignal_price`) VALUES
-(1, 'PC', 'product_650', '1702813957925_p1 (1).png,1702813957936_p1 (2).png,1702813957939_p1 (3).png,1702813957943_p1 (4).png,1702813957947_p1 (5).png', 'pc 1', '5', '55', '66'),
-(2, 'PC', 'product_832', '1702814054128_pc (7).png,1702814054132_pc (8).png,1702814054151_pc (9).png,1702814054158_pc (10).png,1702814054164_pc (11).png,1702814054169_pc (12).png,1702814054177_pc (13).png', 'pc7', '7', '564', '646'),
-(3, 'PC', 'product_315', '1702814054130_pc (7).png,1702814054152_pc (8).png,1702814054160_pc (9).png,1702814054165_pc (10).png,1702814054168_pc (11).png,1702814054176_pc (12).png,1702814054180_pc (13).png', 'pc7', '7', '564', '646'),
-(4, 'PC', 'product_593', '1702814072571_pc (7).png,1702814072581_pc (8).png,1702814072584_pc (9).png,1702814072585_pc (10).png,1702814072586_pc (11).png,1702814072588_pc (12).png,1702814072591_pc (13).png', 'fwafwa', 'ffwafaw', 'fwaf', 'fwaf');
+INSERT INTO `cart` (`id`, `product_category`, `product_quantity`, `product_id`, `cart_image`, `cart_pname`, `cart_pprice`, `user_email`) VALUES
+(1, 'PC', '13', 'product_650', '1702813957925_p1 (1).png', 'pc 1', '₹55\n        ', 'a'),
+(2, 'PC', '', 'product_650', '1702813957925_p1 (1).png', 'pc 1', '₹55\n        ', 'b'),
+(3, 'PC', '', 'product_832', '1702814054128_pc (7).png', 'pc7', '₹564\n        ', 'b'),
+(4, 'PC', '5', 'product_832', '1702814054128_pc (7).png', 'pc7', '₹564\n        ', 'a');
 
 -- --------------------------------------------------------
 
@@ -154,20 +153,6 @@ INSERT INTO `controller` (`id`, `product_category`, `product_id`, `product_image
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dashboard_pro_pill`
---
-
-CREATE TABLE `dashboard_pro_pill` (
-  `id` int(11) NOT NULL,
-  `product_banner` varchar(222) NOT NULL,
-  `product_title` varchar(222) NOT NULL,
-  `product_category` varchar(222) NOT NULL,
-  `product_link` varchar(222) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `headphone`
 --
 
@@ -187,8 +172,7 @@ CREATE TABLE `headphone` (
 --
 
 INSERT INTO `headphone` (`id`, `product_category`, `product_id`, `product_image`, `product_name`, `product_dis`, `product_price`, `orignal_price`) VALUES
-(1, 'LAPTOP', 'product_635', '1702051351990_1.jpg,1702051351994_2.jpg,1702051352001_6.22.jfif,1702051352002_6-2.jpg,1702051352005_12-1.jpg,1702051352038_12-2.jpg', 'hhhh', 'hhh', 'hhh', 'hhhh'),
-(2, 'CONTROLLER', 'product_829', '1702820636150_8.webp,1702820636152_10.webp,1702820636152_11.webp,1702820636153_12.webp,1702820636153_13.webp,1702820636154_14.webp,1702820636154_15.webp', 'fwaf', 'fawf', 'fwaf', 'fwafwaf');
+(3, 'HEADPHONE', 'product_279', '1703414050487_hh11.png,1703414050488_hh12.png,1703414050489_hh13.png,1703414050490_hh14.png,1703414050493_hh15.png', 'Headphone', 'headpone deis', '500', '600');
 
 -- --------------------------------------------------------
 
@@ -206,6 +190,13 @@ CREATE TABLE `keyboard` (
   `product_price` varchar(222) NOT NULL,
   `orignal_price` varchar(222) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `keyboard`
+--
+
+INSERT INTO `keyboard` (`id`, `product_category`, `product_id`, `product_image`, `product_name`, `product_dis`, `product_price`, `orignal_price`) VALUES
+(1, 'KEYBOARD', 'product_927', '1703414085799_7.webp,1703414085800_8.webp,1703414085801_10.webp,1703414085802_11.webp,1703414085802_12.webp', 'keyboard', 'keboard dis', '600', '500');
 
 -- --------------------------------------------------------
 
@@ -229,7 +220,7 @@ CREATE TABLE `laptop` (
 --
 
 INSERT INTO `laptop` (`id`, `product_category`, `product_id`, `product_image`, `product_name`, `product_dis`, `product_price`, `orignal_price`) VALUES
-(1, 'PC', 'product_378', '1702812196380_p1-PhotoRoom.png-PhotoRoom.png,1702812196392_p2-PhotoRoom.png-PhotoRoom.png,1702812196417_p3-PhotoRoom.png-PhotoRoom.png,1702812196432_p4-PhotoRoom.png-PhotoRoom.png,1702812196451_p5-PhotoRoom.png-PhotoRoom.p', 'pc namne', 'dis', '1300', '15000');
+(2, 'LAPTOP', 'product_655', '1703414122631_8-removebg-preview (1).png,1703414122631_8-removebg-preview.png,1703414122633_9-removebg-preview.png,1703414122637_10-removebg-preview.png,1703414122638_18.webp.png', 'laptop', 'laptop dis', '600', '500');
 
 -- --------------------------------------------------------
 
@@ -253,8 +244,7 @@ CREATE TABLE `mouse` (
 --
 
 INSERT INTO `mouse` (`id`, `product_category`, `product_id`, `product_image`, `product_name`, `product_dis`, `product_price`, `orignal_price`) VALUES
-(1, 'PC', 'product_481', '1702812196385_p1-PhotoRoom.png-PhotoRoom.png,1702812196413_p2-PhotoRoom.png-PhotoRoom.png,1702812196425_p3-PhotoRoom.png-PhotoRoom.png,1702812196438_p4-PhotoRoom.png-PhotoRoom.png,1702812196465_p5-PhotoRoom.png-PhotoRoom.p', 'pc namne', 'dis', '1300', '15000'),
-(2, 'PC', 'product_899', '1702814054129_pc (7).png,1702814054151_pc (8).png,1702814054159_pc (9).png,1702814054164_pc (10).png,1702814054168_pc (11).png,1702814054175_pc (12).png,1702814054179_pc (13).png', 'pc7', '7', '564', '646');
+(3, 'MOUSE', 'product_408', '1703414156331_mm3.png,1703414156331_mm4.webp.png,1703414156356_mm5.webp.png,1703414156357_mm6.webp.png,1703414156367_mm7.webp.png', 'mouse', 'mouse dis', '600', '500');
 
 -- --------------------------------------------------------
 
@@ -286,11 +276,57 @@ INSERT INTO `pc` (`id`, `product_category`, `product_id`, `product_image`, `prod
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_banner`
+--
+
+CREATE TABLE `product_banner` (
+  `id` int(11) NOT NULL,
+  `product_category` varchar(222) NOT NULL,
+  `product_banner` varchar(222) NOT NULL,
+  `product_title` varchar(222) NOT NULL,
+  `product_link` varchar(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_banner`
+--
+
+INSERT INTO `product_banner` (`id`, `product_category`, `product_banner`, `product_title`, `product_link`) VALUES
+(1, 'PC', '1703354831726_bg-2.webp.png', 'PC 01', 'pc'),
+(2, 'PC', '1703354869745_bg-4.webp.png', 'PC 03', 'pc'),
+(3, 'PC', '1703354853994_bg-3.webp.png', 'PC 02', 'pc'),
+(4, 'PC', '1703354881036_bg-5.webp.png', 'PC 04', 'pc'),
+(5, 'LAPTOP', '1703354950504_bg-6.jpg', 'LAPTOP 06', 'LAPTOP'),
+(6, 'LAPTOP', '1703354959374_bg-5.webp.png', 'LAPTOP 05', 'LAPTOP'),
+(7, 'LAPTOP', '1703354963602_bg-4.webp.png', 'LAPTOP 01', 'LAPTOP'),
+(8, 'LAPTOP', '1703354967446_bg-3.webp.png', 'LAPTOP 04', 'LAPTOP'),
+(9, 'LAPTOP', '1703354971336_bg-2.webp.png', 'LAPTOP 02', 'LAPTOP'),
+(10, 'LAPTOP', '1703354982079_bg1.jpg.png', 'LAPTOP 03', 'LAPTOP'),
+(11, 'CONTROLLER', '1703355152793_4.jpg', 'CONTROLLER 01', 'CONTROLLER'),
+(12, 'CONTROLLER', '1703355163317_3.jpg', 'CONTROLLER 02', 'CONTROLLER'),
+(13, 'CONTROLLER', '1703355170500_2.jpg', 'CONTROLLER 03', 'CONTROLLER'),
+(14, 'CONTROLLER', '1703355184488_1.jpg', 'CONTROLLER 04', 'CONTROLLER'),
+(15, 'CONTROLLER', '1703355192905_111.png', 'CONTROLLER 05', 'CONTROLLER'),
+(16, 'KEYBOARD', '1703355357704_BG-2.jpg', 'KEYBOARD 01', 'KEYBOARD'),
+(17, 'KEYBOARD', '1703355365475_bg-3.webp.png.jpg', 'KEYBOARD 02', 'KEYBOARD'),
+(18, 'KEYBOARD', '1703355373158_BG-4.jpg', 'KEYBOARD 03', 'KEYBOARD'),
+(19, 'KEYBOARD', '1703355381396_BG-11.jpg', 'KEYBOARD 04', 'KEYBOARD'),
+(20, 'HEADPHONE', '1703355406514_hbg4.jpg', 'HEADPHONE 01', 'HEADPHONE '),
+(21, 'HEADPHONE', '1703355413659_hbg3.jpg', 'HEADPHONE 02', 'HEADPHONE '),
+(22, 'HEADPHONE', '1703355420302_hbg1.jpg', 'HEADPHONE 03', 'HEADPHONE '),
+(23, 'HEADPHONE', '1703355427297_hbg2.jpg', 'HEADPHONE 04', 'HEADPHONE '),
+(24, 'MOUSE', '1703355472674_MBG1.jpg', 'MOUSE 04', 'MOUSE '),
+(25, 'MOUSE', '1703355482241_mbg3.jpg', 'MOUSE 03', 'MOUSE '),
+(26, 'MOUSE', '1703355491510_mbg2.jpg', 'MOUSE 02', 'MOUSE '),
+(27, 'MOUSE', '1703355499264_mbg4.jpg', 'MOUSE 01', 'MOUSE ');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `signup`
 --
 
 CREATE TABLE `signup` (
-  `id` int(11) NOT NULL,
   `user_email` varchar(222) NOT NULL,
   `user_pass` varchar(222) NOT NULL,
   `user_role` varchar(222) NOT NULL DEFAULT 'user'
@@ -300,10 +336,10 @@ CREATE TABLE `signup` (
 -- Dumping data for table `signup`
 --
 
-INSERT INTO `signup` (`id`, `user_email`, `user_pass`, `user_role`) VALUES
-(1, 'lazer@gmail.com', 'lazer002', 'user'),
-(2, 'lazer_admin@gmail.com', 'lazer_admin', 'admin'),
-(3, 'a', 'a', 'user');
+INSERT INTO `signup` (`user_email`, `user_pass`, `user_role`) VALUES
+('a', 'a', 'user'),
+('lazer@gmail.com', 'lazer002', 'user'),
+('lazer_admin@gmail.com', 'lazer_admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -325,7 +361,8 @@ ALTER TABLE `carausal_banner`
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_category` (`product_category`);
 
 --
 -- Indexes for table `category`
@@ -339,12 +376,6 @@ ALTER TABLE `category`
 ALTER TABLE `controller`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_category` (`product_category`);
-
---
--- Indexes for table `dashboard_pro_pill`
---
-ALTER TABLE `dashboard_pro_pill`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `headphone`
@@ -382,10 +413,17 @@ ALTER TABLE `pc`
   ADD KEY `product_category` (`product_category`);
 
 --
+-- Indexes for table `product_banner`
+--
+ALTER TABLE `product_banner`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_category` (`product_category`);
+
+--
 -- Indexes for table `signup`
 --
 ALTER TABLE `signup`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`user_email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -395,13 +433,13 @@ ALTER TABLE `signup`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `carausal_banner`
 --
 ALTER TABLE `carausal_banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -416,34 +454,28 @@ ALTER TABLE `controller`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `dashboard_pro_pill`
---
-ALTER TABLE `dashboard_pro_pill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `headphone`
 --
 ALTER TABLE `headphone`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `keyboard`
 --
 ALTER TABLE `keyboard`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `laptop`
 --
 ALTER TABLE `laptop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mouse`
 --
 ALTER TABLE `mouse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pc`
@@ -452,20 +484,32 @@ ALTER TABLE `pc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `signup`
+-- AUTO_INCREMENT for table `product_banner`
 --
-ALTER TABLE `signup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `product_banner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_category`) REFERENCES `category` (`product_category`);
+
+--
 -- Constraints for table `pc`
 --
 ALTER TABLE `pc`
   ADD CONSTRAINT `pc_ibfk_1` FOREIGN KEY (`product_category`) REFERENCES `category` (`product_category`);
+
+--
+-- Constraints for table `product_banner`
+--
+ALTER TABLE `product_banner`
+  ADD CONSTRAINT `product_banner_ibfk_1` FOREIGN KEY (`product_category`) REFERENCES `category` (`product_category`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

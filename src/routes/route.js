@@ -70,7 +70,7 @@ router.get('/admin', async (req, res) => {
 
       await res.render('admin/dashboard')
    } else {
-      res.redirect('/signup')
+      res.redirect('/login')
    }
 })
 
@@ -193,11 +193,59 @@ router.post('/carausal_banner', dash_banner.single('carausal_image'), async (req
 // PC BANNER
 router.get('/product', async (req, res) => {
    query = `select * from category`
-   await connection.query(query, (err, results) => {
+    connection.query(query, (err, results) => {
       if (err) throw err;
-      res.render('admin/product', { category: results })
-   })
+
+      
+      query1 = `select * from category inner join pc  on category.product_category = pc.product_category`
+       connection.query(query1, (err, pc) => {
+         if (err) throw err;
+
+         query2 = `select * from category inner join mouse  on category.product_category = mouse.product_category`
+         connection.query(query2, (err, mouse) => {
+           if (err) throw err;
+
+           query3 = `select * from category inner join laptop  on category.product_category = laptop.product_category`
+           connection.query(query3, (err, laptop) => {
+             if (err) throw err;
+
+             query4 = `select * from category inner join keyboard  on category.product_category = keyboard.product_category`
+             connection.query(query4, (err, keyboard) => {
+               if (err) throw err;
+
+               query5 = `select * from category inner join headphone  on category.product_category = headphone.product_category`
+               connection.query(query5, (err, headphone) => {
+                 if (err) throw err;
+
+                 query6 = `select * from category inner join controller  on category.product_category = controller.product_category`
+                 connection.query(query6, (err, controller) => {
+                   if (err) throw err;
+                   var pro = []
+                   pro.push({controller:controller,headphone:headphone,keyboard:keyboard,laptop:laptop,mouse:mouse,pc:pc})
+                 console.log(pro[0].pc); 
+      res.render('admin/product', { category: results,pro:pro })
+   })})})})})})})
 })
+
+
+
+// // PC BANNER
+// router.get('/product', async (req, res) => {
+//    query = `select * from category`
+//     connection.query(query, (err, results) => {
+//       if (err) throw err;
+//       else{
+//         for (let i = 0; i < results.length; i++) {
+//          let a = results[i].product_category
+  
+//      let query1 = `select * from ${a} inner join category on ${a}.product_category = category.product_category`
+   
+//      connection.query(query1, (err, product) => {
+//          if (err) throw err;
+
+//          res.render('admin/product', { category: results,product:product })
+//       })}}
+//    })})
 
 const storage2 = multer.diskStorage({
    destination: function (req, file, cb) {
@@ -402,8 +450,12 @@ router.get('/PC', async (req, res) => {
       query = `select * from pc`
       connection.query(query, (err, results) => {
          if (err) throw err;
-            res.render('pc', { pc: results })
-         })
+         query1 = `select product_banner,product_title,product_link from product_banner inner join category  on product_banner.product_category = category.product_category where product_banner.product_category ='PC'`
+         connection.query(query1, (err, banner) => {      
+            if (err) throw err;
+            console.log(results);
+            res.render('pc', { pc: results,banner:banner })
+         })})
       }
    else {
       res.redirect('/login')
