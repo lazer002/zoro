@@ -555,4 +555,22 @@ router.get('/cart_page', async (req, res) => {
 
 
 
+router.get('/cartonpage', async (req, res) => {
+   if (req.session.user) {
+
+      let product = `select * from cart where user_email = '${req.session.user[0].user_email}'`
+      connection.query(product, (err, results) => {
+         if (err) throw err;
+         console.log(results[0].product_quantity,'results');
+         res.send({ product: results })
+
+      })
+   }
+   else {
+      res.redirect('/login')
+   }
+})
+
+
+
 module.exports = router;
