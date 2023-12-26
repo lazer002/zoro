@@ -79,6 +79,13 @@
       <button type="button" class="btn-close py-0 pb-3 pe-3 lol" data-bs-dismiss="offcanvas" aria-label="Close"><img
           src="product/close.png" alt=""></button>
     </div>
+    <div class="number">
+      <span class="minus">-</span>
+      <input type="text" value="1"/>
+      <span class="plus">+</span>
+    </div>
+  
+  
     <div class="offcanvas-body text-light ">
       <div id="cartbody">
         <div class="py-3 border-bottom border-success">
@@ -146,39 +153,61 @@
 
 
 
-
-
   <script src="/static/cdn/bootstrap.bundle.min.js"></script>
   <script src="/static/cdn/jquery-3.6.0.min.js"></script>
   <script src="/static/cdn/popper.min.js"></script>
   <script src="/static/cdn/fontawesome.all.min.js"></script>
 
-
+<script>	$(document).ready(function() {
+  $('.minus').click(function () {
+    var $input = $(this).parent().find('input');
+    var count = parseInt($input.val()) - 1;
+    count = count < 1 ? 1 : count;
+    $input.val(count);
+    $input.change();
+    return false;
+  });
+  $('.plus').click(function () {
+    var $input = $(this).parent().find('input');
+    $input.val(parseInt($input.val()) + 1);
+    $input.change();
+    return false;
+  });
+});</script>
   
   <script>
     $(document).ready(function () {
       $(document).on('click', '.carts', function () {
-        alert('aaa')
+    
       $.ajax({
         type: 'GET',
         url: '/cartonpage',
       
         success: function (response) {
           document.getElementById('cartbody').innerHTML = ' ';
-          console.log(response.product,'aaaaaaaaaaaaaaaa');
+         
           for (let i = 0; i < response.product.length; i++) {    
             $('#cartbody').append(`
               <div class="py-3 border-bottom border-success">
-                <span>
+                <div class="row">
+               
                   <img src="/static/images/category/product/${response.product[i].cart_image}" alt="" class="w-25">
-                  <span class="ps-2"> controller</span>
-                </span> <br>
-                <p class="ps-5 ms-5 text-warning"> ${response.product[i].cart_pname} - ${response.product[i].cart_pprice}
-                  <input type="number" id="quantity${i}" name="quantity" min="1" max="10" class="bg-black text-light w-25 ms-5 out">
-                  <button class="btn lol p-0 ms-4">
+              
+                <div class="col-2">
+                  <span class="ps-2">${response.product[i].cart_pname}</span>
+                </div> 
+                <div class="col-2">
+                 ${response.product[i].cart_pprice}
+                </div>
+                  <div class="col-3">
+
+                </div>
+                  <div class="col-2 ">
+                  <button class=" btn">
                     <img src="/static/images/icon/delete.png" alt="">
                   </button>
-                </p>
+                </div> 
+                </div> 
               </div>
             `);
           }
