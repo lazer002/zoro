@@ -42,17 +42,36 @@ router.get('/signup', async (req, res) => {
 
 
 router.get('/', async (req, res) => {
-   await res.render('index')
+   query1 = `select * from 	
+   banner`
+   connection.query(query1, (err, banner) => {
+      if (err) throw err;
+      query2 = 'select * from category ORDER BY product_category DESC'
+      connection.query(query2, (err, category) => {
+         if (err) throw err;
+         query3 = `select * from 	
+         carausal_banner where carausal_category = 'first_carausal'`
+         connection.query(query3, (err, carausal) => {
+            if (err) throw err;
+            query4 = `select * from 	
+            carausal_banner where carausal_category = 'second_carausal'`
+            connection.query(query4, (err, carausal2) => {
+               if (err) throw err;
+               res.render('index', { banner: banner, product: category, carausal: carausal, carausal2: carausal2 })
+            })
+         })
+      })
+   })
 })
 
 router.get('/admin', async (req, res) => {
-   if(req.session.user){
+   if (req.session.user) {
 
-  
-   await res.render('admin/dashboard')
-}else{
-   res.redirect('/signup')
-}
+
+      await res.render('admin/dashboard')
+   } else {
+      res.redirect('/login')
+   }
 })
 
 // DASHBOARD BANNER
@@ -140,7 +159,18 @@ router.get('/carausal_banner', async (req, res) => {
    })
 })
 
-const dash_banner = multer({ dest: '/public/images/category/carousel' })
+
+
+const storag = multer.diskStorage({
+   destination: function (req, file, cb) {
+      cb(null, 'public/images/category/carousel')
+   },
+   filename: function (req, file, cb) {
+      cb(null, Date.now() + "_" + file.originalname)
+   }
+})
+const dash_banner = multer({ storage: storag });
+
 router.post('/carausal_banner', dash_banner.single('carausal_image'), async (req, res) => {
 
    const carausal_image = req.file.filename;
@@ -163,11 +193,59 @@ router.post('/carausal_banner', dash_banner.single('carausal_image'), async (req
 // PC BANNER
 router.get('/product', async (req, res) => {
    query = `select * from category`
-   await connection.query(query, (err, results) => {
+    connection.query(query, (err, results) => {
       if (err) throw err;
-      res.render('admin/product', { category: results })
-   })
+
+      
+      query1 = `select * from category inner join pc  on category.product_category = pc.product_category`
+       connection.query(query1, (err, pc) => {
+         if (err) throw err;
+
+         query2 = `select * from category inner join mouse  on category.product_category = mouse.product_category`
+         connection.query(query2, (err, mouse) => {
+           if (err) throw err;
+
+           query3 = `select * from category inner join laptop  on category.product_category = laptop.product_category`
+           connection.query(query3, (err, laptop) => {
+             if (err) throw err;
+
+             query4 = `select * from category inner join keyboard  on category.product_category = keyboard.product_category`
+             connection.query(query4, (err, keyboard) => {
+               if (err) throw err;
+
+               query5 = `select * from category inner join headphone  on category.product_category = headphone.product_category`
+               connection.query(query5, (err, headphone) => {
+                 if (err) throw err;
+
+                 query6 = `select * from category inner join controller  on category.product_category = controller.product_category`
+                 connection.query(query6, (err, controller) => {
+                   if (err) throw err;
+                   var pro = []
+                   pro.push({controller:controller,headphone:headphone,keyboard:keyboard,laptop:laptop,mouse:mouse,pc:pc})
+                 console.log(pro[0].pc); 
+      res.render('admin/product', { category: results,pro:pro })
+   })})})})})})})
 })
+
+
+
+// // PC BANNER
+// router.get('/product', async (req, res) => {
+//    query = `select * from category`
+//     connection.query(query, (err, results) => {
+//       if (err) throw err;
+//       else{
+//         for (let i = 0; i < results.length; i++) {
+//          let a = results[i].product_category
+  
+//      let query1 = `select * from ${a} inner join category on ${a}.product_category = category.product_category`
+   
+//      connection.query(query1, (err, product) => {
+//          if (err) throw err;
+
+//          res.render('admin/product', { category: results,product:product })
+//       })}}
+//    })})
 
 const storage2 = multer.diskStorage({
    destination: function (req, file, cb) {
@@ -334,8 +412,11 @@ router.post('/controller', contro_upload.fields([{ name: 'product_image' }]), as
 // fwhaihfowajfojwaofjwaofj
 
 router.get('/product_banner', async (req, res) => {
-   await res.render('admin/product_banner')
-})
+   query = `select * from category`
+    connection.query(query, (err, category) => {
+      if (err) throw err;
+    res.render('admin/product_banner',{category:category})
+})})
 
 const storage_dash = multer.diskStorage({
    destination: function (req, file, cb) {
@@ -351,7 +432,7 @@ router.post('/product_bann', bnnr_upload.single('product_banner'), async (req, r
    console.log(req.body);
    const product_banner = req.file.filename;
    const { product_title, product_category, product_link } = req.body
-   let query = `insert into dashboard_pro_pill(product_banner,product_title,product_category,product_link) values('${product_banner}','${product_title}','${product_category}','${product_link}')`
+   let query = `insert into product_banner(product_banner,product_title,product_category,product_link) values('${product_banner}','${product_title}','${product_category}','${product_link}')`
    connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -364,41 +445,59 @@ router.post('/product_bann', bnnr_upload.single('product_banner'), async (req, r
 
 
 
-router.get('/pcc', async (req, res) => {
-   if(req.session.user){
-   query = `select * from pc`
-    connection.query(query, (err, results) => {
-      if (err) throw err;
-      query1 = `select * from 	
-      CONTROLLER`
-       connection.query(query1, (err, results1) => {
+router.get('/PC', async (req, res) => {
+   if (req.session.user) {
+      query = `select * from pc`
+      connection.query(query, (err, results) => {
          if (err) throw err;
-      res.render('pc', { pc: results,controller:results1 })
-   })
-})}
-else{
-   res.redirect('/login')
-}
+         query1 = `select product_banner,product_title,product_link from product_banner inner join category  on product_banner.product_category = category.product_category where product_banner.product_category ='PC'`
+         connection.query(query1, (err, banner) => {      
+            if (err) throw err;
+            console.log(results);
+            res.render('pc', { pc: results,banner:banner })
+         })})
+      }
+   else {
+      res.redirect('/login')
+   }
+})
+
+
+router.get('/CONTROLLER', async (req, res) => {
+   if (req.session.user) {
+         query1 = `select * from 	
+      CONTROLLER`
+         connection.query(query1, (err, results1) => {
+            if (err) throw err;
+            res.render('pc', {  controller: results1 })
+         })
+      }
+   else {
+      res.redirect('/login')
+   }
 })
 
 
 
 
 router.get('/product/:product_category/:product_id', async (req, res) => {
-   if(req.session.user){
-const {product_id,product_category}=req.params
-let category = `select * from ${product_category} where product_id = '${product_id}'`
-connection.query(category, (err, results) => {
-   if (err) throw err;
-   let product = `select * from cart where product_id = '${product_id}' and user_email = '${req.session.user[0].user_email}'`
-   connection.query(product, (err, results1) => {
-    if (err) throw err;
-      res.render('product_param',{product:results,results1:results1})
-  
-})})}
-else{
-   res.redirect('/login')
-}})
+   if (req.session.user) {
+      const { product_id, product_category } = req.params
+      let category = `select * from ${product_category} where product_id = '${product_id}'`
+      connection.query(category, (err, results) => {
+         if (err) throw err;
+         let product = `select * from cart where product_id = '${product_id}' and user_email = '${req.session.user[0].user_email}'`
+         connection.query(product, (err, results1) => {
+            if (err) throw err;
+            res.render('product_param', { product: results, results1: results1 })
+
+         })
+      })
+   }
+   else {
+      res.redirect('/login')
+   }
+})
 
 
 
@@ -407,29 +506,32 @@ else{
 
 const cart_upload = multer({ dest: '/public/images/category/cart' })
 
-router.post('/cart',cart_upload.single('cart_img'), async (req, res) => {
+router.post('/cart', cart_upload.single('cart_img'), async (req, res) => {
    console.log(req.body);
 
- const {product_category,product_quantity,cart_img,product_id,cart_pname,cart_pprice}=req.body
- let user= req.session.user[0].user_email;
-  let product = `select * from cart where product_id = '${product_id}' and user_email = '${user}'`
-  connection.query(product, (err, results) => {
-   if (err) throw err;
-   else{
-      if(results.length>0){
-         let quantity = `UPDATE cart SET product_quantity = '${product_quantity}'  where product_id = '${product_id}' and user_email = '${user}'`
-         connection.query(quantity, (err, results) => {
-            if (err) throw err;
-         else{}})         
-      }else{
-         let query = 'INSERT INTO cart (product_category, product_quantity, product_id,cart_image,cart_pname,cart_pprice,user_email) VALUES (?, ?, ?, ?, ?, ?,?)';
-         connection.query(query, [product_category, product_quantity, product_id, cart_img, cart_pname, cart_pprice,user], (err, results) => {
-            if (err) throw err;
-         else{}})   
+   const { product_category, product_quantity, cart_img, product_id, cart_pname, cart_pprice } = req.body
+   let user = req.session.user[0].user_email;
+   let product = `select * from cart where product_id = '${product_id}' and user_email = '${user}'`
+   connection.query(product, (err, results) => {
+      if (err) throw err;
+      else {
+         if (results.length > 0) {
+            let quantity = `UPDATE cart SET product_quantity = '${product_quantity}'  where product_id = '${product_id}' and user_email = '${user}'`
+            connection.query(quantity, (err, results) => {
+               if (err) throw err;
+               else { }
+            })
+         } else {
+            let query = 'INSERT INTO cart (product_category, product_quantity, product_id,cart_image,cart_pname,cart_pprice,user_email) VALUES (?, ?, ?, ?, ?, ?,?)';
+            connection.query(query, [product_category, product_quantity, product_id, cart_img, cart_pname, cart_pprice, user], (err, results) => {
+               if (err) throw err;
+               else { }
+            })
 
-      } 
-   }
-})})
+         }
+      }
+   })
+})
 
 
 
@@ -437,17 +539,37 @@ router.post('/cart',cart_upload.single('cart_img'), async (req, res) => {
 
 
 router.get('/cart_page', async (req, res) => {
-   if(req.session.user){
+   if (req.session.user) {
 
-   let product = `select * from cart where user_email = '${req.session.user[0].user_email}'`
-   connection.query(product, (err, results) => {
-    if (err) throw err;
-      res.render('cart_page',{product:results})
-  
-})}
-else{
-   res.redirect('/login')
-}})
+      let product = `select * from cart where user_email = '${req.session.user[0].user_email}'`
+      connection.query(product, (err, results) => {
+         if (err) throw err;
+         res.render('cart_page', { product: results })
+
+      })
+   }
+   else {
+      res.redirect('/login')
+   }
+})
+
+
+
+router.get('/cartonpage', async (req, res) => {
+   if (req.session.user) {
+
+      let product = `select * from cart where user_email = '${req.session.user[0].user_email}'`
+      connection.query(product, (err, results) => {
+         if (err) throw err;
+         console.log(results[0].product_quantity,'results');
+         res.send({ product: results })
+
+      })
+   }
+   else {
+      res.redirect('/login')
+   }
+})
 
 
 

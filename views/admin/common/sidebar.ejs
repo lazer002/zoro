@@ -1,0 +1,172 @@
+
+
+<div class="container-fluid p-0">
+   
+        <div class=" sidebar">
+            <div class="container-fluid">
+                <div class="row ">
+                    <div class=" p-0 py-2">
+                        <a href="" class="">
+                            <div class="dash-tabs">
+                                <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
+                                <div class="dash-text ">Dashboard</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class=" p-0 py-2">
+                        <a href="">
+                            <div class="dash-tabs">
+                                <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
+                                <div class="dash-text ">Dashboard</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class=" p-0 py-2">
+                        <a href="">
+                            <div class="dash-tabs">
+                                <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
+                                <div class="dash-text ">Dashboard</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class=" p-0 py-2">
+                        <a href="">
+                            <div class="dash-tabs">
+                                <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
+                                <div class="dash-text ">Dashboard</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class=" p-0 py-2">
+                        <a href="">
+                            <div class="dash-tabs">
+                                <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
+                                <div class="dash-text ">Dashboard</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class=" p-0 py-2">
+                        <a href="">
+                            <div class="dash-tabs">
+                                <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
+                                <div class="dash-text ">Dashboard</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class=" p-0 py-2">
+                        <a href="">
+                            <div class="dash-tabs">
+                                <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
+                                <div class="dash-text ">Dashboard</div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+</div>
+
+
+<style>
+    * {
+        color: #6c7293;
+    }
+
+    .search {
+        width: 100vh !important;
+        outline-color: none !;
+        margin: 2px 10px;
+    }
+
+    .icon_bg {
+        border-radius: 8px;
+        padding: 10px;
+        height: 48px;
+        background-color: rgba(0, 128, 0, 0.144);
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    .sidebar {
+        height: 100vh;
+        z-index: 2;
+        width: 270px;
+        background-color: #191c24;
+        transition: 1s;
+
+    }
+
+    .brdr_l {
+        border-left: 2px solid white;
+    }
+
+    .off_sidebar {
+        width: 66px !important;
+
+    }
+
+    .dash-tabs {
+        display: flex;
+        background-color: #0f1015;
+        border-radius: 0px 50px 50px 0px;
+        padding: 8px 12px;
+        border-left: 5px solid #007eff;
+
+
+    }
+
+    .dash-text {
+        display: block;
+        padding: 5px;
+        transform-origin: left;
+        transition: 3s;
+        opacity: 1;
+        font-size: 0.9375rem;
+    }
+
+    .dash_text2 {
+        display: none;
+        transition: 3s;
+        opacity: 0;
+
+
+    }
+
+    .dash-icon {
+        background-color: rgba(108, 114, 147, 0.2);
+        padding: 8px 12px;
+        border-radius: 100%;
+        margin-right: 5px;
+    }
+</style>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#Example').on('click', function () {
+            let off = $('.sidebar')
+            off.toggleClass('off_sidebar')
+            // let btttt = $('.btttt')
+            // btttt.html('jfwafwijfia')
+            setTimeout(function () {
+                let dash_text2 = $('.dash-text')
+                dash_text2.toggleClass('dash_text2')
+            }, 300);
+        })
+    })
+
+</script>

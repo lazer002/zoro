@@ -4,11 +4,21 @@
 </head>
 <body>
 
+PER PAGE BANNER <br>
+
+
 <%- include('header.ejs') %>
 
 <input type="file" name="" id="product_banner">
 <input type="text" name="" id="product_title">
-<input type="text" name="" id="product_category">
+
+<select name="" id="product_category">
+    <%for( let i=0; i< category.length; i++ ) { %>
+        <option value="<%=category[i].product_category %>">
+            <%=category[i].product_category %>
+        </option>
+        <% } %>
+</select>
 <input type="text" name="" id="product_link">
 
 <button type="submit" id="sbbtn" class="btn">click</button>
