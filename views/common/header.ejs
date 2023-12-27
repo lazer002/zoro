@@ -79,11 +79,7 @@
       <button type="button" class="btn-close py-0 pb-3 pe-3 lol" data-bs-dismiss="offcanvas" aria-label="Close"><img
           src="product/close.png" alt=""></button>
     </div>
-    <div class="number">
-      <span class="minus">-</span>
-      <input type="text" value="1"/>
-      <span class="plus">+</span>
-    </div>
+  
   
   
     <div class="offcanvas-body text-light ">
@@ -111,27 +107,11 @@
   <script src="/static/cdn/popper.min.js"></script>
   <script src="/static/cdn/fontawesome.all.min.js"></script>
 
-<script>	$(document).ready(function() {
-  $('.minus').click(function () {
-    var $input = $(this).parent().find('input');
-    var count = parseInt($input.val()) - 1;
-    count = count < 1 ? 1 : count;
-    $input.val(count);
-    $input.change();
-    return false;
-  });
-  $('.plus').click(function () {
-    var $input = $(this).parent().find('input');
-    $input.val(parseInt($input.val()) + 1);
-    $input.change();
-    return false;
-  });
-});</script>
+
   
   <script>
     $(document).ready(function () {
-      $(document).on('click', '.carts', function () {
-    
+
       $.ajax({
         type: 'GET',
         url: '/cartonpage',
@@ -153,7 +133,8 @@
                  ${response.product[i].cart_pprice}
                 </div>
                   <div class="col-3">
-
+                    <input type="number" value="${response.product[i].product_quantity}"
+            class="bg-black text-light w-100 out">
                 </div>
                   <div class="col-2 ">
                   <button class=" btn">
@@ -166,11 +147,27 @@
           }
         }
       });
-    })})
+    })
     
     
     
       </script>
+<script>
+  $(document).ready(function () {
+    var _quantity = $('#product_quantity').val()
+   $.ajax({
+          type: 'POST',
+          url: '/quantity_change',
+          data: data,
+          success: function (response) {
+
+window.location.reload()
+
+          }})})
+</script>
+
+
+
     
 </body>
 
