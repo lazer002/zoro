@@ -20,12 +20,14 @@
       </div>
 
       <!-- product description -->
+      <%for( let i=0; i< product.length; i++ ) { %>
       <div class="col-md-7 text-light pt-5 ">
         <h2 class="fw-bold fcolor lol l25" id="cart_pname">
-          <%= product[0].product_name %>
+          <%= product[i].product_name %>
+          <%= console.log( product[i].product_id,'kkkkkkkkkkkkkkkkk') %>
         </h2>
-        <input type="hidden" id="product_id" value="<%= product[0].product_id %>">
-        <input type="hidden" id="product_category" value="<%= product[0].product_category %>">
+        <input type="hidden" id="product_id" value="<%= product[i].product_id %>">
+        <input type="hidden" id="product_category" value="<%= product[i].product_category %>">
 
         <%if(results1.length>0) {%>
         <input type="hidden" id="product_quantity" value="<%= results1[0].product_quantity   %>">
@@ -33,7 +35,7 @@
         <input type="hidden" id="product_quantity" value="">
 <%}%>
         <i class=" l27 text-warning">BY CORSAIR</i>
-        <h2 class="fw-bold l26" id="cart_pprice">₹<%= product[0].product_price %>
+        <h2 class="fw-bold l26" id="cart_pprice">₹<%= product[i].product_price %>
         </h2>
         <p class="text-danger l26">(27% off )</p>
         <p class="fw-bold l27">Save ₹1,708 <del> MSRP ₹6,299 </del>(Inc of all taxes)</p>
@@ -48,6 +50,7 @@
             View More ></a></div>
 
       </div>
+      <%}%>
 
     </div>
   </div>
@@ -78,9 +81,9 @@
         quantity+=1;
         var cart_pname = document.getElementById('cart_pname').innerText;
         var cart_pprice = document.getElementById('cart_pprice').innerHTML;
-        var product_id = document.getElementById('product_id').value;
-        // var product_id = $('#product_id').val()
-        console.log(product_id)
+        // var product_id = document.getElementById('product_id').value;
+        var product_id = $('#product_id').val()
+        console.log(product_id,'lllllllllllllll')
         var product_category = $('#product_category').val()
         var _quantity = $('#product_quantity').val()
         product_quantity = Number(_quantity) + quantity

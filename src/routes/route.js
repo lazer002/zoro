@@ -516,6 +516,7 @@ router.post('/cart', cart_upload.single('cart_img'), async (req, res) => {
       if (err) throw err;
       else {
          if (results.length > 0) {
+            console.log('ggg');
             let quantity = `UPDATE cart SET product_quantity = '${product_quantity}'  where product_id = '${product_id}' and user_email = '${user}'`
             connection.query(quantity, (err, results) => {
                if (err) throw err;
