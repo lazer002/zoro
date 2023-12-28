@@ -101,7 +101,6 @@
 
 
 
-
   <script src="/static/cdn/bootstrap.bundle.min.js"></script>
   <script src="/static/cdn/jquery-3.6.0.min.js"></script>
   <script src="/static/cdn/popper.min.js"></script>
@@ -118,7 +117,7 @@
       
         success: function (response) {
           document.getElementById('cartbody').innerHTML = ' ';
-         
+       
           for (let i = 0; i < response.product.length; i++) {    
             $('#cartbody').append(`
               <div class="py-3 border-bottom border-success">
@@ -134,7 +133,9 @@
                 </div>
                   <div class="col-3">
                     <input type="number" value="${response.product[i].product_quantity}"
-            class="bg-black text-light w-100 out">
+            class="bg-black text-light w-100 out" id="product_quantity">
+<input type="hidden" name="" id="product_id" value="${response.product[i].product_id}">
+
                 </div>
                   <div class="col-2 ">
                   <button class=" btn">
@@ -154,16 +155,25 @@
       </script>
 <script>
   $(document).ready(function () {
-    var _quantity = $('#product_quantity').val()
+  $(document).on('keyup','#product_quantity',function () {
+var a = $(this).closest('div').find('#product_quantity')
+var b = a.val()
+var c = $(this).closest('div').find('#product_id')
+var d = c.val()
+
+
+console.log(b,d,'b')
+
    $.ajax({
           type: 'POST',
           url: '/quantity_change',
-          data: data,
+          data: {
+            product_quantity:b,product_id:d
+          },
           success: function (response) {
 
-window.location.reload()
 
-          }})})
+          }})})})
 </script>
 
 

@@ -258,7 +258,7 @@ const storage2 = multer.diskStorage({
 
 const product_upload = multer({ storage: storage2 })
 router.post('/pc', product_upload.fields([{ name: 'product_image' }]), async (req, res) => {
-   console.log(req.body);
+  
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
    console.log(product_image)
@@ -453,7 +453,7 @@ router.get('/PC', async (req, res) => {
          query1 = `select product_banner,product_title,product_link from product_banner inner join category  on product_banner.product_category = category.product_category where product_banner.product_category ='PC'`
          connection.query(query1, (err, banner) => {      
             if (err) throw err;
-            console.log(results);
+            
             res.render('pc', { pc: results,banner:banner })
          })})
       }
@@ -531,7 +531,7 @@ router.post('/cart', cart_upload.single('cart_img'), async (req, res) => {
          }
       }
    })
-})
+res.send({})})
 
 
 
@@ -561,7 +561,7 @@ router.get('/cartonpage', async (req, res) => {
       let product = `select * from cart where user_email = '${req.session.user[0].user_email}'`
       connection.query(product, (err, results) => {
          if (err) throw err;
-         console.log(results[0].product_quantity,'results');
+        
          res.send({ product: results })
 
       })
@@ -570,7 +570,22 @@ router.get('/cartonpage', async (req, res) => {
       res.redirect('/login')
    }
 })
+router.post('/quantity_change', async (req, res) => {
+   if (req.session.user) {
+      console.log(req.body,'results');
+const {product_quantity,product_id}=req.body
+      let product = `update cart set product_quantity = '${product_quantity}' where user_email = '${req.session.user[0].user_email}' and product_id = '${product_id}' `
+      connection.query(product, (err, results) => {
+         if (err) throw err;
+         
+         res.send({ product: results })
 
+      })
+   }
+   else {
+      res.redirect('/login')
+   }
+})
 
 
 module.exports = router;
