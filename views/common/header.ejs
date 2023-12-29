@@ -116,6 +116,7 @@
         url: '/cartonpage',
       
         success: function (response) {
+          console.log(response.product,'hhh');
           document.getElementById('cartbody').innerHTML = ' ';
        
           for (let i = 0; i < response.product.length; i++) {    
