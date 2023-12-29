@@ -485,6 +485,7 @@ router.get('/product/:product_category/:product_id', async (req, res) => {
       const { product_id, product_category } = req.params
       let category = `select * from ${product_category} where product_id = '${product_id}'`
       connection.query(category, (err, results) => {
+       
          if (err) throw err;
          let product = `select * from cart where product_id = '${product_id}' and user_email = '${req.session.user[0].user_email}'`
          connection.query(product, (err, results1) => {
@@ -507,7 +508,7 @@ router.get('/product/:product_category/:product_id', async (req, res) => {
 const cart_upload = multer({ dest: '/public/images/category/cart' })
 
 router.post('/cart', cart_upload.single('cart_img'), async (req, res) => {
-   console.log(req.body);
+
 
    const { product_category, product_quantity, cart_img, product_id, cart_pname, cart_pprice } = req.body
    let user = req.session.user[0].user_email;
@@ -516,7 +517,7 @@ router.post('/cart', cart_upload.single('cart_img'), async (req, res) => {
       if (err) throw err;
       else {
          if (results.length > 0) {
-            console.log('ggg');
+          
             let quantity = `UPDATE cart SET product_quantity = '${product_quantity}'  where product_id = '${product_id}' and user_email = '${user}'`
             connection.query(quantity, (err, results) => {
                if (err) throw err;
@@ -573,7 +574,7 @@ router.get('/cartonpage', async (req, res) => {
 })
 router.post('/quantity_change', async (req, res) => {
    if (req.session.user) {
-      console.log(req.body,'results');
+    
 const {product_quantity,product_id}=req.body
       let product = `update cart set product_quantity = '${product_quantity}' where user_email = '${req.session.user[0].user_email}' and product_id = '${product_id}' `
       connection.query(product, (err, results) => {
