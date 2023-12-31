@@ -28,11 +28,9 @@
         <input type="hidden"  class="product_id ram" data-idp="<%= product[i].product_id %>">
         <input type="hidden" id="product_category" value="<%= product[i].product_category %>">
 
-        <%if(results1.length>0) {%>
-        <input type="hidden" id="product_quantity" class="ram" value="<%= results1[i].product_quantity   %>">
-       <%} else {%>
-        <input type="hidden" id="product_quantity" value="" class="ram">
-<%}%>
+        <% console.log(quan,'hhhhhhhhh  ')  %>
+        <input type="hidden" class="product_quantity" value="<%= quan %>" >
+
         <i class=" l27 text-warning">BY CORSAIR</i>
         <h2 class="fw-bold l26" id="cart_pprice">₹<%= product[i].product_price %>
         </h2>
@@ -70,53 +68,57 @@
 
 
   <script>
-//     $(document).ready(function () {
-//      var quantity= 0;
-//       $(document).on('click','#cartbtn', function () {
-
-//         var cartproduct = $('#cart_img').attr('src');
-//         var bb = cartproduct.split('/')
-//         var cart_img = bb[5]
-//         quantity+=1;
-//         var cart_pname = document.getElementById('cart_pname').innerText;
-//         var cart_pprice = document.getElementById('cart_pprice').innerHTML;
-//       const product_id = $('.product_id').data('idp');
-    
-//         var product_category = $('#product_category').val()
-//         var _quantity = $('#product_quantity').val()
-//         product_quantity = Number(_quantity) + quantity
-
-//         data = { product_category: product_category, product_quantity: product_quantity, product_id: product_id, cart_img: cart_img, cart_pname: cart_pname, cart_pprice: cart_pprice };
-// console.log(data);
-//         $.ajax({
-//           type: 'POST',
-//           url: '/cart',
-//           data: data,
-//           success: function (response) {
-//       window.location.reload()
-
-//           }
-//         }
-//         )
-//       })
-//     })
-
-
-
-
-
-
-$(document).ready(function () {
-   
+    $(document).ready(function () {
+     var quantity= 0;
       $(document).on('click','#cartbtn', function () {
-let x = document.querySelectorAll('.ram')
-const nik = $(x).val()
-console.log(nik);
-for(let i=0;i<x.length;i++){
 
-}
+        var cartproduct = $('#cart_img').attr('src');
+        var bb = cartproduct.split('/')
+        var cart_img = bb[5]
+        quantity+=1;
+        var cart_pname = document.getElementById('cart_pname').innerText;
+        var cart_pprice = document.getElementById('cart_pprice').innerHTML;
+      const product_id = $('.product_id').data('idp');
+    
+        var product_category = $('#product_category').val()
+        var _quantity = $('.product_quantity').val()
+        alert(_quantity)
+        product_quantity = Number(_quantity) + quantity
+console.log(product_quantity);
+        data = { product_category: product_category, product_quantity: product_quantity, product_id: product_id, cart_img: cart_img, cart_pname: cart_pname, cart_pprice: cart_pprice };
+console.log(data);
+        $.ajax({
+          type: 'POST',
+          url: '/cart',
+          data: data,
+          success: function (response) {
+            console.log(response);
+            setTimeout(
+            function(){ 
+            window.location.reload()} ,1000)
+
+          }
+        }
+        )
       })
     })
+
+
+
+
+
+
+// $(document).ready(function () {
+   
+//       $(document).on('click','#cartbtn', function () {
+// let x = document.querySelectorAll('.ram')
+// const nik = $(x).val()
+// console.log(nik);
+// for(let i=0;i<x.length;i++){
+
+// }
+//       })
+//     })
 
 
 
