@@ -28,8 +28,11 @@
         <input type="hidden"  class="product_id ram" data-idp="<%= product[i].product_id %>">
         <input type="hidden" id="product_category" value="<%= product[i].product_category %>">
 
-        <% console.log(quan,'hhhhhhhhh  ')  %>
-        <input type="hidden" class="product_quantity" value="<%= quan %>" >
+        <% if( results1==''){ %>
+        <input type="hidden" class="product_quantity" value="" >
+        <%} else{%>
+          <input type="hidden" class="product_quantity" value="<%=results1[0].product_quantity%>" >
+      <%}%>
 
         <i class=" l27 text-warning">BY CORSAIR</i>
         <h2 class="fw-bold l26" id="cart_pprice">₹<%= product[i].product_price %>

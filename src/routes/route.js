@@ -483,6 +483,26 @@ router.get('/LAPTOP', async (req, res) => {
          res.render('LAPTOP', { LAPTOP: results,banner:banner })
 })})})
 
+router.get('/accessories', async (req, res) => {
+   query = `select * from keyboard`
+   connection.query(query, (err, keyboard) => {
+      if (err) throw err;
+      query = `select * from mouse`
+      connection.query(query, (err, mouse) => {
+         if (err) throw err;
+         query = `select * from headphone`
+         connection.query(query, (err, headphone) => {
+            if (err) throw err;
+      query1 = `select product_banner,product_title,product_link from product_banner inner join category  on product_banner.product_category = category.product_category where product_banner.product_category ='keyboard'`
+      connection.query(query1, (err, banner) => {      
+         if (err) throw err;
+         
+         res.render('accessories', { keyboard: keyboard,mouse:mouse,headphone:headphone,banner:banner })
+})})})})})
+
+router.get('/service', async (req, res) => {
+   await res.render('service')
+})
 
 
 
@@ -498,10 +518,8 @@ router.get('/product/:product_category/:product_id', async (req, res) => {
          let product = `select * from cart where product_id = '${product_id}' and user_email = '${req.session.user[0].user_email}'`
          connection.query(product, (err, results1) => {
             if (err) throw err;
-            console.log(product,'product');
-          let quan = Number( results1[0].product_quantity || 0)
-
-            res.render('product_param', { product: results, quan: quan })
+          
+            res.render('product_param', { product: results,results1:results1 })
 
          })
       })
