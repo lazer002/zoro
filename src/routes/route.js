@@ -504,7 +504,9 @@ router.get('/service', async (req, res) => {
    await res.render('service')
 })
 
-
+router.get('/community', async (req, res) => {
+   await res.render('community')
+})
 
 
 router.get('/product/:product_category/:product_id', async (req, res) => {
