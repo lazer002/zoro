@@ -22,16 +22,39 @@ body {
 
 
 .bar {
-    background-image: url(service/bg.jpg);
+    background-image: url('/static/images/service/bg.jpg');
     background-size: cover;
     height: 500px;
 }
 
-.b li {
+#supportAccordion .accordion-item {
+    margin: 4px 20px;
+    border-radius: 10px;
     background-color: rgb(0, 0, 0);
     color: white;
+    border: .5px solid rgb(17, 241, 17);
 }
 
+#supportAccordion .accordion-button{ 
+    background-color:#121212 !important;
+    height: 40px;
+    border-bottom: .5px solid rgb(17, 241, 17);
+    border-radius: 8px !important;}
+
+    #secondacc .accordion-item {
+        margin: 4px 20px;
+        border-radius: 10px;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        border: .5px solid rgb(17, 241, 17);
+    }
+    
+    #secondacc .accordion-button{ 
+        background-color:#121212 !important;
+        height: 40px;
+        border-bottom: .5px solid rgb(17, 241, 17);
+        border-radius: 8px !important;}
+   
 .fcolor {
     color: rgb(0, 196, 0);
 }
