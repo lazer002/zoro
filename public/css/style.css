@@ -142,7 +142,7 @@ body {
 }
 
 .insta:hover {
-    background-image: url(community/fawf.png);
+    background-image: url('/static/images/community/fawf.png');
     box-shadow: 10px 10px 100px 5px #cd017a;
     background-size: cover;
 }

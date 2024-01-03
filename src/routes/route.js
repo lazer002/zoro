@@ -505,8 +505,12 @@ router.get('/service', async (req, res) => {
 })
 
 router.get('/community', async (req, res) => {
-   await res.render('community')
-})
+   query1 = `select * from 	
+   banner where banner_dis = ' '`
+   connection.query(query1, (err, banner) => {
+      if (err) throw err;
+    res.render('community',{banner:banner})
+})})
 
 
 router.get('/product/:product_category/:product_id', async (req, res) => {
