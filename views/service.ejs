@@ -1,0 +1,421 @@
+<%- include('common/header.ejs') %>     
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+
+
+  <!-- #########################################  search bar ############################################## -->
+
+  <div class="container-fluid bar py-5 text-light">
+    <div class="col-12 py-5">
+      <div class="text-center mt-5">
+        <h1 class="fw-bold fcolor  l27">Welcome to Zoro Support</h1>
+        <h4 class="l277">We’re here to help</h4>
+       <input type="search" id="search" placeholder="Search Support e.g Blade Pro"
+              class="p-2 text-light bg-transparent w-100 out  rounded-1">
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- #########################################  tabs ############################################## -->
+
+  <div class="container-fluid text-light">
+    <div class="row justify-content-center text-center py-5">
+      <div class="col-xl-2 col-md-3 p-3 m-3 lol l27"><a href="" class="text-decoration-none text-light"><img
+            src="/static/images/service/pcpc.png" alt="" class="img-fluid">
+          <h4 class="mt-2">PC</h4>
+        </a>
+      </div>
+      <div class="col-xl-2 col-md-3 p-3 m-3 lol l26"><a href="" class="text-decoration-none text-light"><img
+            src="/static/images/service/controler.png" alt="" class="img-fluid">
+          <h4 class="mt-2">CONTROLLER</h4>
+        </a>
+      </div>
+      <div class="col-xl-2 col-md-3 p-3 m-3 lol l25"><a href="" class="text-decoration-none text-light"><img
+            src="/static/images/service/pc.svg.png" alt="" class="img-fluid">
+          <h4 class="mt-2">LAPTOP</h4>
+        </a>
+      </div>
+      <div class="col-xl-2 col-md-3 p-3 m-3 lol  lala14 "><a href="" class="text-decoration-none text-light"><img
+            src="/static/images/service/mu.png" alt="" class="img-fluid">
+          <h4 class="mt-2">REPLACEMENT</h4>
+        </a>
+      </div>
+      <div class="col-xl-2 col-md-3 p-3 m-3 lol l277"><a href="" class="text-decoration-none text-light"><img
+            src="/static/images/service/ser.png" alt="" class="img-fluid">
+          <h4 class="mt-2">SERVICING</h4>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- #########################################  SUPPORT ############################################## -->
+  <div class="container-fluid text-light my-3 rounded-5 b">
+    <div class="col-12 bg-dark rounded-3 p-4">
+           <p class="display-6 fcolor px-4">Popular Support Topics</p>
+          <div class="accordion" id="supportAccordion">
+            <!-- Accordion Item 1 -->
+            <div class="accordion-item ">
+              <h2 class="accordion-header" id="headingOne">
+                <div class="accordion-button"  data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  I want to change the address for delivery of my order. Is it possible now?
+                </div>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#supportAccordion">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-2 m-1 border-success lul l25">The delivery address for your order can be changed depending on its status. Please check Orders > Order Details for the below:
+                    Approved/Processing: If this is your order status,then you can change the address through your Zoro app.
+                    Shipped: Only text change in your address will be possible. Pincode cannot be changed at this stage.
+                    Delivered: As the item would have already been delivered,the address change will not be possible.</p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Accordion Item 2 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  How can I modify/add an alternate number for the order delivery?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#supportAccordion">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-3 m-1 border-success lul l26">You can modify the existing delivery contact number or add an alternate one with these simple steps:
+                    - Go to Orders
+                    - Select the desired 'Order'
+                    - Scroll down and go to shipping details tab and tap 'Edit' (Pen) option next to the phone number</p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Accordion Item 3 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Can I get my orders delivered at a specific time?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#supportAccordion">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-3 m-1 border-success lul l27">Orders for a few items from certain categories like large appliances,furniture and exercise & fitness categories can be delivered at specific time slots by the sellers' partnered courier service providers: You can choose your preferred time slot from the list of available ones while placing your order. For other items,the seller's partnered courier service providers currently do not support delivery at a specific time due to their varying delivery schedules.</p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Accordion Item 4 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Can I get my order delivered faster?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#supportAccordion">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-3 m-1 border-success lul l28">No,the delivery date you see after the order confirmation is provided is based on factors like your address,the seller's address and the time needed by couriers to process and ship your order. Due to these factors,they do not have the option to change the delivery date and have it reach you earlier. However,you can track your order and its movement easily from our app or website.</p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Accordion Item 5 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  Can I reinstate a cancelled order?
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#supportAccordion">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-3 m-1 border-success lul l29">No,a cancelled order can not be reinstated.</p>
+                </div>
+              </div>
+            </div>      
+          </div>
+    </div>
+  </div>
+
+
+
+
+  
+
+
+
+  <div class="container-fluid text-light my-3 rounded-5 b">
+    <div class="col-12 bg-dark rounded-3 p-4">
+           <p class="display-6 fcolor px-4">Popular Troubleshoot</p>
+          <div class="accordion" id="secondacc">
+            <!-- Accordion Item 1 -->
+            <div class="accordion-item ">
+              <h2 class="accordion-header" id="headingOne1">
+                <div class="accordion-button"  data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                  Detect zoro devices in Synapse 3
+                </div>
+              </h2>
+              <div id="collapseOne1" class="accordion-collapse collapse show" aria-labelledby="headingOne1" data-bs-parent="#secondacc">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-2 m-1 border-success lul l25">We can use the buttons below that best describe the issue you are experiencing with the headset to guide you through the some common issues and solutions for our headsets.
+
+                    Spare Parts: Use this option if you are missing a part, would like to request a replacement part or have broken a replaceable(Detachable mic, earpads, dongle etc) of the headset itself.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Accordion Item 2 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                  Troubleshoot and resolve headset mic issues
+                </button>
+              </h2>
+              <div id="collapseTwo1" class="accordion-collapse collapse" aria-labelledby="headingTwo1" data-bs-parent="#secondacc">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-3 m-1 border-success lul l26">
+                    
+                    Audio Issues: Use this option if you are experiencing issues with playback with you audio(Listening) going to the headset.
+                    
+                    Microphone Issues: Use this option if you are experiencing problems when using the microphone on the headset.</p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Accordion Item 3 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                  Customize Hyperscroll Wheel on a Navasa V2 Pro
+                </button>
+              </h2>
+              <div id="collapseThree1" class="accordion-collapse collapse" aria-labelledby="headingThree1" data-bs-parent="#secondacc">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-3 m-1 border-success lul l27">Corsair ambient lighting products, unfortunately, do not have compatibility with smart home assistants like Google Home. These products utilize proprietary protocols and require the Corsair iCUE software for control, which makes them incompatible with smart home assistant platforms.
+
+                    To control Corsair ambient lighting, users should rely on the Corsair iCUE software and utilize the product's hardware controls.</p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Accordion Item 4 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour1" aria-expanded="false" aria-controls="collapseFour1">
+                  Connect a Zoro keyboard/mouse to a PC via
+                  bluetooth
+                </button>
+              </h2>
+              <div id="collapseFour1" class="accordion-collapse collapse" aria-labelledby="headingFour1" data-bs-parent="#secondacc">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-3 m-1 border-success lul l28">Prevent Sonic Blades from overheating</p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Accordion Item 5 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFive1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive1" aria-expanded="false" aria-controls="collapseFive1">
+                  Device is not detected by Zoro Synapse
+                </button>
+              </h2>
+              <div id="collapseFive1" class="accordion-collapse collapse" aria-labelledby="headingFive1" data-bs-parent="#secondacc">
+                <div class="accordion-body">
+                  <p class="list-group-item rounded-3 m-1 border-success lul l29">Device is not detected by Zoro Synapse</p>
+                </div>
+              </div>
+            </div>      
+          </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- term condition -->
+  <div class="container-fluid text-light pt-5 px-5 mx-0">
+    <p class="display-4 fcolor f2 fw-bold l25">TERM AND CONDITIONS</p>
+    <h4 class="fcolor  border-bottom pt-4 l25">SHIPPING TERMS</h4>
+
+    <ul class="l25">
+      <li>We display shipping speeds and charges based on the items in your cart and the delivery address.</li>
+      <li>For certain products sold on Zoro.in, the customer will have an option of Guaranteed Morning, Same-Day,
+        One/Two-Day Delivery. The Guaranteed Delivery options are available on Prime Eligible items in select cities. To
+        learn more, go to Terms and Conditions for Guaranteed Delivery and Guaranteed Shipping Speeds and Delivery
+        Charges.</li>
+      <li>Zoro provides you a variety of delivery options to fulfill customer needs. Here is a list of Zoro delivery
+        options and charges applicable.</li>
+      <H5 class="fcolor py-3">Note</H5>
+      <li>Shipping speeds cannot be expedited.</li>
+      <li>Once an order is placed, you cannot change the shipping address.</li>
+      <p class=" pt-5">These charges apply only on Prime eligible and Fulfilled by Zoro items.</p>
+      <div class="table-responsive">
+        <table class="table border text-light">
+          <thead>
+            <tr>
+              <th scope="col-3">Shipping Speed</th>
+              <th scope="col-3">Charge Per Item***: Prime Members</th>
+              <th scope="col-3">Charge Per Item***: Prime Lite Members</th>
+              <th scope="col-3">Charge Per Item***: Non-Prime Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Same-Day Delivery* </th>
+              <td>Free </td>
+              <td>₹175 </td>
+              <td>₹175</td>
+            </tr>
+            <tr>
+              <th scope="row">Two-Day Delivery</th>
+              <td>Free </td>
+              <td> Free </td>
+              <td>₹120</td>
+            </tr>
+            <tr>
+              <th scope="row">Standard Delivery** </th>
+              <td>Free </td>
+              <td> Free</td>
+              <td> ₹40</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <li>You can only choose Morning delivery and Same-Day delivery for residential addresses.</li>
+      <li>*We deliver by 11 am for Morning delivery and by 10 pm for Same-Day delivery.</li>
+      <li>*Standard Delivery charges are free for non-Prime members for orders that cost ₹499 or more.</li>
+      <li>*We deliver orders placed with Standard Delivery in two or more days after they ship. You see the estimated
+        delivery date before you place the order.</li>
+      <li>The applicable delivery charge will be levied even for multiple quantities of the same product. The ship fee
+        per item structure is limited to standard and fast track speeds for Prime and non-Prime customers mentioned in
+        the above table.</li>
+      <li><strong>Disclaimer:</strong> There is no prime offering for international customers. International customers
+        will be charged shipping fees when purchasing a product from Zoro India. The shipping charges are calculated
+        basis the weight of the product being ordered and is mentioned on the detail page of the product.</li>
+
+
+
+      <div class="card bg-dark mt-3 text-center">
+        <div class="card-body">
+          <h5 class="card-title l25">Was this information helpful?</h5>
+          <a href="#" class="btn btn-outline-success bg-black lol l26">YES</a>
+          <a href="#" class="btn btn-outline-success bg-black lol l27">NO</a>
+        </div>
+      </div>
+    </ul>
+
+
+
+    <!-- return tab -->
+
+    <h4 class="fcolor pt-3 l25">RISK FREE RETURNS</h4>
+    <ul class=" border-top mb-5 pb-5 l26">
+      <p class="py-2">Zoro provides you easy option of return and refund if you are not satisfied with your order.
+        Below are some useful links to get more information on the common issues around return. Please note, items can
+        only be returned during the return period (details of the return period can be found on the product page).</p>
+      <p>Items are returnable if you've received them in a condition that is -</p>
+      <li>Physically damaged</li>
+      <li>Has missing parts or accessories</li>
+      <li>Defective</li>
+      <li>Different from its description on the product detail page on Zoro.in</li>
+      <strong>What are the return guidelines?</strong>
+      <li>Your address and the item that you wish to return must be eligible for return.</li>
+      <li>If the return is not eligible for Pickup, a Self-Return option will be given. For more details, please see our
+        Return Pick up and Self Ship Guidelines.</li>
+      <li>Once the return is received, you will, in accordance with Zoro.in Refund Policy, be issued a refund to your
+        original payment method.</li>
+      <li>For Pay on Delivery orders, refunds will be processed either to your bank account (via National Electronic
+        Funds Transfer (NEFT)) or Zoro account (as Zoro Pay balance).</li>
+      <div class="card bg-dark mt-3 text-center">
+        <div class="card-body">
+          <h5 class="card-title l25">Was this information helpful?</h5>
+          <a href="#" class="btn btn-outline-success bg-black lol l26">YES</a>
+          <a href="#" class="btn btn-outline-success bg-black lol l27">NO</a>
+        </div>
+      </div>
+    </ul>
+  </div>
+
+
+  <!-- #########################################  SUPPORT ############################################## -->
+
+
+  <div class="container-fluid bg-dark con">
+    <div class="row p-4">
+      <div class="col-6 text-center border-end  l25">
+        <img src="service/service.png" alt="">
+        <h2 class="fcolor">CHAT SUPPORT</h2>
+        <h6 class="text-light l26">Have a question? Ask the Zoro Community for help!</h6>
+        <button class="btn btn-outline-success p-2 fcolor lol l27">CHAT SUPPORT</button>
+      </div>
+
+      <div class="col-6 text-center l25">
+        <img src="service/service.png" alt="">
+        <h2 class="fcolor ">CONTACT SUPPORT</h2>
+        <h6 class="text-light l277">Have a question? Ask the Zoro Support TeaM for help!</h6>
+        <button class="btn btn-outline-success p-2 fcolor lol l277">CONTACT SUPPORT</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- #########################################  tabs ############################################## -->
+
+  <div class="container my-5 text-center pt-5">
+    <p class="display-6 fcolor l25">What Our Customers Are Saying</p>
+
+    <div id="carouselExampleInterval" class="carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner ">
+        <div class="carousel-item active l26" data-bs-interval="3000">
+          <span class="d-block w-100 text-light l27">
+            <h4>Dominic Cerisano</h4>
+            <img src="pc/revv.png" alt="" >
+            <p class="l28">Very impressed with ASUS build quality (even has a backplate).
+              I chose two RTX2060s over the higher end cards because they have almost as many tensor cores (for AI)..
+            </p>
+          </span>
+        </div>
+        <div class="carousel-item  l26" data-bs-interval="3000">
+          <span class="d-block w-100 text-light l27">
+            <h4>Es hermosa,</h4>
+            <img src="pc/revv.png" alt="">
+            <p class="l28">Maneja temperaturas muy bajas! Lo máximo a lo que llega es a 55 grados con el 100%</p>
+          </span>
+        </div>
+        <div class="carousel-item  l26" data-bs-interval="3000">
+          <span class="d-block w-100 text-light l27">
+            <h4>lala shop</h4>
+            <img src="pc/revv.png" alt="">
+            <p class="l28">Decent performance on SSD when paired with AMD graphic card.</p>
+          </span>
+        </div>
+        <div class="carousel-item  l26" data-bs-interval="3000">
+          <span class="d-block w-100 text-light l27">
+            <h4>GOANNA</h4>
+            <img src="pc/revv.png" alt="">
+            <p>Perfect fit for my requirement for a new rig I created. 2 sticks of this with my i7 and RTX
+              3050.EVERYTHING is flying smoothly..</p>
+          </span>
+        </div>
+        <div class="carousel-item  l26" data-bs-interval="3000">
+          <span class="d-block w-100 text-light l27">
+            <h4> ixnacio</h4>
+            <img src="pc/revv.png" alt="">
+            <p class="l28">It works perfectly on several motherboards, there are no compatibility problems, the temperatures are
+              very good and the quality of the finish is excellent.</p>
+          </span>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+<%- include('common/footer.ejs') %>     
+

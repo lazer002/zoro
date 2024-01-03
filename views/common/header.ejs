@@ -23,7 +23,7 @@
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand mx-auto lol  active tabs" href="index.html"><img src="/static/images/brand/logo.gif" alt=""
+      <a class="navbar-brand mx-auto lol  active tabs" href="/"><img src="/static/images/brand/logo.gif" alt=""
           class="img-fluid">ⱫØⱤØ</a>
 
       <div class="collapse navbar-collapse mx-lg-5 mx-sm-0" id="navbarText">
@@ -33,19 +33,19 @@
             <a class="nav-link" aria-current="page" href="/PC">PC</a>
           </li>
           <li class="nav-item mx-4 lol tabs">
-            <a class="nav-link" href="console.html">CONTROLLER</a>
+            <a class="nav-link" href="/CONTROLLER">CONTROLLER</a>
           </li>
           <li class="nav-item mx-4 lol tabs">
-            <a class="nav-link" href="Laptop.html">LAPTOP</a>
+            <a class="nav-link" href="/LAPTOP">LAPTOP</a>
           </li>
           <li class="nav-item mx-4 lol tabs">
-            <a class="nav-link" href="accessories.html">ACCESSORIES</a>
+            <a class="nav-link" href="/accessories">ACCESSORIES</a>
           </li>
           <li class="nav-item mx-4 lol tabs">
-            <a class="nav-link" href="service.html">SERVICE</a>
+            <a class="nav-link" href="/service">SERVICE</a>
           </li>
           <li class="nav-item mx-4 lol tabs">
-            <a class="nav-link" href="community.html">COMMUNITY</a>
+            <a class="nav-link" href="/community">COMMUNITY</a>
           </li>
           <div class="collapse " id="collapseExample">
             <div class="card card-body bg-black ">
@@ -79,11 +79,7 @@
       <button type="button" class="btn-close py-0 pb-3 pe-3 lol" data-bs-dismiss="offcanvas" aria-label="Close"><img
           src="product/close.png" alt=""></button>
     </div>
-    <div class="number">
-      <span class="minus">-</span>
-      <input type="text" value="1"/>
-      <span class="plus">+</span>
-    </div>
+  
   
   
     <div class="offcanvas-body text-light ">
@@ -105,40 +101,24 @@
 
 
 
-
   <script src="/static/cdn/bootstrap.bundle.min.js"></script>
   <script src="/static/cdn/jquery-3.6.0.min.js"></script>
   <script src="/static/cdn/popper.min.js"></script>
   <script src="/static/cdn/fontawesome.all.min.js"></script>
 
-<script>	$(document).ready(function() {
-  $('.minus').click(function () {
-    var $input = $(this).parent().find('input');
-    var count = parseInt($input.val()) - 1;
-    count = count < 1 ? 1 : count;
-    $input.val(count);
-    $input.change();
-    return false;
-  });
-  $('.plus').click(function () {
-    var $input = $(this).parent().find('input');
-    $input.val(parseInt($input.val()) + 1);
-    $input.change();
-    return false;
-  });
-});</script>
+
   
   <script>
     $(document).ready(function () {
-      $(document).on('click', '.carts', function () {
-    
+
       $.ajax({
         type: 'GET',
         url: '/cartonpage',
       
         success: function (response) {
+       
           document.getElementById('cartbody').innerHTML = ' ';
-         
+       
           for (let i = 0; i < response.product.length; i++) {    
             $('#cartbody').append(`
               <div class="py-3 border-bottom border-success">
@@ -153,6 +133,9 @@
                  ${response.product[i].cart_pprice}
                 </div>
                   <div class="col-3">
+                    <input type="number" value="${response.product[i].product_quantity}"
+            class="bg-black text-light w-100 out" id="product_quantity">
+<input type="hidden" name="" id="product_id" value="${response.product[i].product_id}">
 
                 </div>
                   <div class="col-2 ">
@@ -166,11 +149,49 @@
           }
         }
       });
-    })})
+    })
     
     
     
       </script>
+<script>
+  $(document).ready(function () {
+  $(document).on('keyup','#product_quantity',function () {
+var a = $(this).closest('div').find('#product_quantity')
+var b = a.val()
+var c = $(this).closest('div').find('#product_id')
+var d = c.val()
+
+if(b!=='' && b!==0 ){
+  $.ajax({
+          type: 'POST',
+          url: '/quantity_change',
+          data: {
+            product_quantity:b,product_id:d
+          },
+          success: function (response) {
+         
+
+
+          }})
+}else{
+
+alert('quantity cant be null')
+
+
+
+}
+
+
+
+          
+          
+          
+          })})
+</script>
+
+
+
     
 </body>
 
