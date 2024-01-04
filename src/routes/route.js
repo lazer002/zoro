@@ -66,8 +66,6 @@ router.get('/', async (req, res) => {
 
 router.get('/admin', async (req, res) => {
    if (req.session.user) {
-
-
       await res.render('admin/dashboard')
    } else {
       res.redirect('/login')
