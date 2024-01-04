@@ -34,14 +34,20 @@
     <div class="carousel-inner ">
       <%for( let i=0; i < banner.length; i++ ) { %>
       <div class="carousel-item <%= i === 0 ? 'active' : '' %> " data-bs-interval="4000">
-        <video autoplay loop preload>
+        <video autoplay loop muted  preload>
           <source src="/static/images/category/banner/<%= banner[i].main_banner %>">
         </video>
-        <div class="carousel-caption d-none d-md-block mb-3 headcarousal">
+        <div class="carousel-caption d-none d-md-block mb-3 headcarousal ">
           <h1 class="fw-bold fcolor lala5"><%= banner[i].banner_title %></h1>
           <h6 class="my-2 lala55"><%= banner[i].banner_dis %></h6>
-          <a href="<%= banner[i].banner_link %>" class="text-decoration-none text-light">
-          <button class="btn btn-outline-warning my-4 lol lala5">SHOP NOW </button></a>
+         
+          <% if (banner[i].banner_link.trim() !== '') { %>
+            <a href="<%= banner[i].banner_link %>" class="text-decoration-none text-light">
+              <button class="btn btn-outline-warning my-4 lol lala5">SHOP NOW</button>
+            </a>
+          <% } %>
+          
+          
         </div>
       </div>
       <% } %>
