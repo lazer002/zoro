@@ -74,8 +74,11 @@ router.get('/admin', async (req, res) => {
 
 // DASHBOARD BANNER
 router.get('/dashboard_banner', async (req, res) => {
-   await res.render('admin/banner')
-})
+   query = `select * from banner`
+    connection.query(query, (err, banner) => {
+      if (err) throw err;
+    res.render('admin/banner',{banner:banner})
+})})
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
