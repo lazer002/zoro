@@ -1,27 +1,144 @@
 
-<head>
-  
-</head>
-<body>
 
-PER PAGE BANNER <br>
 
 
 <%- include('header.ejs') %>
 
-<input type="file" name="" id="product_banner">
-<input type="text" name="" id="product_title">
 
-<select name="" id="product_category">
-    <%for( let i=0; i< category.length; i++ ) { %>
-        <option value="<%=category[i].product_category %>">
-            <%=category[i].product_category %>
-        </option>
-        <% } %>
-</select>
-<input type="text" name="" id="product_link">
 
-<button type="submit" id="sbbtn" class="btn">click</button>
+<div class="container-fluid p-0">
+    <div class="d-flex">
+        <%- include('common/sidebar.ejs') %>
+        <div class="w-100  p-3">
+        <div class=" rounded-3 border p-3">
+        
+                <div class="d-flex justify-content-between border-bottom pb-3">
+                    <div class="">
+                        <h3>Category</h3>
+                        <div>Manage Product Category in Store</div>
+                    </div>
+
+                    <div><button class="btn border" data-bs-toggle="modal" data-bs-target="#addproduct">+ Add
+                            Product</button></div>
+                </div>
+                
+            <div class="py-3">
+                <div id="search"><input type="text" placeholder="Search..." class="form-control w-25"></div>
+            </div>
+            <div class="container-fluid p-0">
+                <div class="table-responsive border rounded-3">
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Category Name</th>
+                                <th>Category Image</th>
+                                <th>Category Discription</th>
+                                <th>Category Secondary Image </th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%for(i=0;i< banner.length;i++)    {  %>
+    
+                            <tr class="text-center">
+                                <td><%= i +1%></td>
+                                <td><%=banner[i].product_title %></td>
+                                <td> <img src="/static/images/category/productbanner/<%=banner[i].product_banner %> " alt="" class="img-fluid w-25">  </td>
+                                <td><%=banner[i].product_category %></td>
+                                <td><%=banner[i].product_link %></td>
+                                <td>
+                                    <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                    <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                    <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                </td>
+                            </tr>
+  <% } %>
+
+                      
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+  <div class="modal fade" id="addproduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Category</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="my-2">
+                        <div>Product Banner</div>
+                        <input type="file" name="" id="product_banner" class="form-control">
+
+                    </div>
+                    <div class="my-2">
+                        <div>Banner Title</div>
+                        <input type="text" name="" id="product_title" class="form-control">
+                    </div>
+                    <div class="my-2">
+                        <div>Banner Category</div>
+                        <select name="" id="product_category" class="form-control">
+                            <%for( let i=0; i< category.length; i++ ) { %>
+                                <option value="<%=category[i].product_category %>">
+                                    <%=category[i].product_category %>
+                                </option>
+                                <% } %>
+                        </select>
+
+                    </div>
+                    <div class="my-2">
+                        <div>Product Link</div>
+                        <input type="text" name="" id="product_link" class="form-control">
+                       
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                <button type="submit" id="sbbtn" class="btn btn-primary">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
