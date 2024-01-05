@@ -161,11 +161,14 @@ router.get('/user', async (req, res) => {
 
 router.get('/carausal_banner', async (req, res) => {
    query = `select * from category`
-   await connection.query(query, (err, results) => {
+    connection.query(query, (err, results) => {
       if (err) throw err;
-      res.render('admin/carausal_banner', { category: results })
+      query = `select * from carausal_banner`
+       connection.query(query, (err, c_banner) => {
+         if (err) throw err;
+      res.render('admin/carausal_banner', { category: results,c_banner:c_banner })
    })
-})
+})})
 
 
 
