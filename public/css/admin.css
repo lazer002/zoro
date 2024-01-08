@@ -1,0 +1,34 @@
+.w200{width: 200px;}
+td{vertical-align: middle !important;}
+.text {
+    color: rgb(0, 196, 0);
+}
+.list-unstyled{position: relative;
+padding: 10px 20px;
+background-color: #0f1015;
+border-radius: 0px 0px 12px 12px !important;
+bottom: 20px;
+z-index: -10;}
+
+.profile{ 
+   
+  
+height: 54px;
+transition: 2s;
+padding: 7px 2px;
+border-radius: 10px ;
+/* border-left: 5px solid #198754; */
+background-color:#0f1015 ;}
+.h_150{height: 150px;
+transition: 2s;
+transform-origin: bottom ;
+animation:alternate;}
+.pro{
+    padding: 13px;
+    margin-bottom: 2px;
+    margin-left: 8px;
+    border-radius: 50%;
+    height: 41px;
+    background-color: rgba(0, 128, 0, 0.356)
+}
+.fa{color: rgb(252, 7, 7) !important;}

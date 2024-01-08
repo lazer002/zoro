@@ -7,16 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/cdn/bootstrap.min.css">
     <link rel="stylesheet" href="/static/cdn/fontawsome.min.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
 </head>
 <body>
     
+<style>
+        input:focus {
+    outline: none !important;
+}
 
+    nav{background-color: #191c24}
+    .dash-icon{
+    padding: 13px;
+    margin-bottom: 2px;
+    /* margin-left: 11px; */
+    border-radius: 50%;
+    height: 41px;
+    background-color: rgba(0, 128, 0, 0.356)
+}
+.navbar{position: sticky;
+left: 0px;
+top: 0px;}
+</style>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
     
             <button class="btn " id="Example" data-bs-toggle="">
-                <i class="fa fa-solid fa-bars-staggered "></i>
+                <i class="fa fa-solid fa-bars-staggered text"></i>
             </button>
     
     
@@ -33,12 +51,9 @@
     
                     </li>
                     <li class="nav-item d-flex">
-                        <div class="brdr_l px-3"> <a class="nav-link" href="#"> <i
-                                    class="fa fa-solid fa-gauge text-light"></i></a></div>
-                        <div class="brdr_l px-3"> <a class="nav-link" href="#"> <i
-                                    class="fa fa-solid fa-gauge text-light"></i></a></div>
-                        <div class="brdr_l px-3"> <a class="nav-link" href="#"> <i
-                                    class="fa fa-solid fa-gauge text-light"></i></a></div>
+                        <div class=" px-3 "> <a class="nav-link " href="#"><i class="fa-solid fa-bell text"></i></a></div>
+                        <div class=" px-3"> <a class="nav-link" href="#"> <i class="fa-solid fa-list-check text"></i></a></div>
+                        <div class=" px-3"> <a class="nav-link" href="#"> <i class="fa-solid fa-envelope text"></i></a></div>
                     </li>
     
                     <div class="btn-group">
@@ -48,17 +63,14 @@
                                 height="30">
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end ">
-                            <li><a class="dropdown-item" href="#"> <span class="dash-icon "><i
-                                            class="fa fa-solid fa-gauge text-light"></i></span>Profile</a></li>
     
-                            <li><a class="dropdown-item pt-3" href="#"> <span class="dash-icon "><i
-                                            class="fa fa-solid fa-gauge text-light"></i></span>Setting</a></li>
+                            <li><a class="dropdown-item pt-3" href="#" class="dash-icon  "> <span class="dash-icon "><i class="fa-solid fa-user"></i></span>Profile</a></li>
+                            <li><a class="dropdown-item pt-3" href="#" class="dash-icon  "> <span class="dash-icon "><i class="fa-solid fa-gear"></i></span>Setting</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
     
-                            <li><a class="dropdown-item" href="#"> <span class="dash-icon "><i
-                                            class="fa fa-solid fa-gauge text-light"></i></span>Log out </a></li>
+                            <li><a class="dropdown-item" href="#" class="dash-icon  "> <span class="dash-icon "><i class="fa-solid fa-right-from-bracket"></i></span>Log out </a></li>
     
                         </ul>
                     </div>
