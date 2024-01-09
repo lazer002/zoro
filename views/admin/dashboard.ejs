@@ -5,12 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/cdn/bootstrap.min.css">
 
-    <link rel="stylesheet" href="/static/cdn/fontawsome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+
 </head>
 
 <body>
@@ -18,65 +14,11 @@
 
 
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+  
 
-            <button class="btn " id="Example" data-bs-toggle="">
-                <i class="fa fa-solid fa-bars-staggered "></i>
-            </button>
-
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="" role="search">
-                        <input class="form-control search " type="search" placeholder="Search" aria-label="Search">
-
-                    </li>
-                    <li class="nav-item d-flex">
-                        <div class="brdr_l px-3"> <a class="nav-link" href="#"> <i
-                                    class="fa fa-solid fa-gauge text-light"></i></a></div>
-                        <div class="brdr_l px-3"> <a class="nav-link" href="#"> <i
-                                    class="fa fa-solid fa-gauge text-light"></i></a></div>
-                        <div class="brdr_l px-3"> <a class="nav-link" href="#"> <i
-                                    class="fa fa-solid fa-gauge text-light"></i></a></div>
-                    </li>
-
-                    <div class="btn-group">
-                        <button class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <img src="/static/images/brand/admin.jpg" alt="" class="rounded-circle " width="30"
-                                height="30">
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end ">
-                            <li><a class="dropdown-item" href="#"> <span class="dash-icon "><i
-                                            class="fa fa-solid fa-gauge text-light"></i></span>Profile</a></li>
-
-                            <li><a class="dropdown-item pt-3" href="#"> <span class="dash-icon "><i
-                                            class="fa fa-solid fa-gauge text-light"></i></span>Setting</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li><a class="dropdown-item" href="#"> <span class="dash-icon "><i
-                                            class="fa fa-solid fa-gauge text-light"></i></span>Log out </a></li>
-
-                        </ul>
-                    </div>
-
-                </ul>
-
-            </div>
-        </div>
-    </nav>
-
-
+    <%- include('common/header.ejs') %>
     <div class="container-fluid p-0">
+        
         <div class="d-flex">
             <%- include('common/sidebar.ejs') %>
                 <div class="w-100 m-4 ">
@@ -142,40 +84,7 @@
 
                         </div>
                         <style>
-                            .card .circle {
-                                position: relative;
-                                height: 150px;
-                                width: 150px;
-                                border-radius: 50%;
-                                cursor: default;
-                            }
-
-                            .card .circle .box,
-                            .card .circle .box span {
-                                position: absolute;
-                                top: 50%;
-                                left: 50%;
-                            }
-
-
-                            .card .circle .box span,
-                            .card .text {
-                                background: -webkit-linear-gradient(left, #15e003, #02be0c);
-                                -webkit-background-clip: text;
-                                -webkit-text-fill-color: transparent;
-                            }
-
-                            .circle .box span {
-                                font-size: 38px;
-                                font-family: sans-serif;
-                                font-weight: 600;
-                                transform: translate(-45%, -45%);
-                                transition: all 0.1s;
-                            }
-
-                            .card .circle:hover .box span {
-                                transform: translate(-45%, -45%) scale(1.09);
-                            }
+                           
                         </style>
 
                         <div class="row">
@@ -325,91 +234,12 @@
         </script>
 
 
-        <style>
-            /* .chart {
-  border: 3px solid rgb(0, 209, 63);
-} */
-            * {
-                color: #6c7293;
-            }
-
-            .search {
-                width: 100vh !important;
-                outline-color: none !;
-                margin: 2px 10px;
-            }
-
-            .icon_bg {
-                border-radius: 8px;
-                padding: 10px;
-                height: 48px;
-                background-color: rgba(0, 128, 0, 0.144);
-            }
-
-            a {
-                text-decoration: none !important;
-            }
-
-            .sidebar {
-                height: 100vh;
-                z-index: 2;
-                width: 270px;
-                background-color: #191c24;
-                transition: 1s;
-
-            }
-
-            .brdr_l {
-                border-left: 2px solid white;
-            }
-
-            .off_sidebar {
-                width: 66px !important;
-
-            }
-
-            .dash-tabs {
-                display: flex;
-                background-color: #0f1015;
-                border-radius: 0px 50px 50px 0px;
-                padding: 8px 12px;
-                border-left: 5px solid #007eff;
-
-
-            }
-
-            .dash-text {
-                display: block;
-                padding: 5px;
-                transform-origin: left;
-                transition: 3s;
-                opacity: 1;
-                font-size: 0.9375rem;
-            }
-
-            .dash_text2 {
-                display: none;
-                transition: 3s;
-                opacity: 0;
-
-
-            }
-
-            .dash-icon {
-                background-color: rgba(108, 114, 147, 0.2);
-                padding: 8px 12px;
-                border-radius: 100%;
-                margin-right: 5px;
-            }
-        </style>
+        
 
 
 
 
 
-
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
 
 
@@ -431,9 +261,6 @@
 
 
 
-        <script src="/static/cdn/fontawesome.all.min.js"></script>
-
-        <script src="/static/cdn/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
