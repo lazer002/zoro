@@ -10,34 +10,17 @@ border-radius: 0px 0px 12px 12px !important;
 bottom: 20px;
 z-index: -10;}
 
-.profile{ 
-   
-  
-height: 54px;
-transition: 2s;
-padding: 7px 2px;
-border-radius: 10px ;
-/* border-left: 5px solid #198754; */
-background-color:#0f1015 ;}
-.h_150{height: 180px;
-transition: 2s;
-transform-origin: bottom ;
-animation:alternate;}
-.pro{
-    padding: 13px;
-    margin-bottom: 2px;
-    margin-left: 8px;
-    border-radius: 50%;
-   
-    background-color: rgba(0, 128, 0, 0.356)
-}
+
+
 .fa{color: rgb(252, 7, 7) !important;}
 
 .navbar{position: sticky;
     left: 0px;
     top: 0px;}
 
-
+.profile{width: 100%;
+    color: #02e60d !important;
+    background-color: #191c24;}
  
 .sidebar {
     height: calc(100vh - 60px);
@@ -77,7 +60,7 @@ animation:alternate;}
 
     a {
         text-decoration: none !important;
-        color: white;
+        color: #02e60d !important;
     }
 
     
