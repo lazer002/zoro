@@ -1,0 +1,269 @@
+
+<%- include('common/header.ejs') %>     
+
+<body>
+
+  <!-- header video -->
+
+  <div id="carouselExampleCaptions" class="carousel slide  carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+        aria-label="Slide 4"></button>
+
+    </div>
+    <div class="carousel-inner ">
+      <%for( let i=0; i < banner.length; i++ ) { %>
+      <div class="carousel-item <%= i === 0 ? 'active' : '' %> " data-bs-interval="4000">
+        <video autoplay loop muted  preload>
+          <source src="/static/images/category/banner/<%= banner[i].main_banner %>">
+        </video>
+    
+      </div>
+      <% } %>
+
+    </div>
+
+  </div>
+  <!-- body message -->
+  <div class="container-fluid my-5 p-5 text-center text-light">
+    <div class="display-1 fcolor m-5 py-5 f2 fw-bolder l31">DO YOUR THING</div>
+    <h6 class=" px-5 mb-5 pb-5 l32 ">Whether it’s gaming, streaming, creating, or just chilling, everyone has their thing.
+      And the pursuit of your thing<br> – that’s our thing. All the gear we build, all the tech we innovate,<br> all the
+      details we sweat, is for one purpose: to help you do your thing, better.</h6>
+  </div>
+
+  <!-- carousel -->
+  <div id="carouselExample" class="carousel carousel-fade mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="2000">
+        <img src="/static/images/community/1.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="/static/images/community/bg-1.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="/static/images/community/3.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="/static/images/community/4.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!--  partner-->
+  <div class="container-fluid  text-center text-light pt-5 mt-5">
+    <span class="display-1 fcolor fw-bold f2 l31">PARTNER'S</span>
+  </div>
+  <div class="container d-sm-flex justify-content-center text-light  py-1 pb-5 mb-5">
+    <div class="col-lg-3 col-sm-4  rounded text-center m-3 l26">
+      <div class="card  lol bg-transparent border-0">
+        <div class="card-body "><a href="" class="text-decoration-none text-light">
+            <img src="/static/images/community/lo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-4  rounded text-center m-3 l25">
+      <div class="card lol bg-transparent border-0 pt-2">
+        <div class="card-body "><a href="service.html" class="text-decoration-none text-light">
+            <img src="/static/images/community/fwafa.png" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-4  rounded text-center m-3 lala22">
+      <div class="card lol bg-transparent border-0 pt-2">
+        <div class="card-body "><a href="" class="text-decoration-none text-light">
+            <img src="/static/images/community/fwawf.png" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 card -->
+
+  <div class="container text-center px-5">
+    <div class="row justify-content-center">
+      <div class="col-md-4  lol m-3 l26">
+        <div class="card text-bg-dark">
+          <img src="/static/images/community/ca1.jpg.png" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title fstyl">CHAT ON ZORO INSIDER</h5>
+            <a href="" class="text-decoration-none">
+              <h6 class="text-warning">LEARN MORE ></h6>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 lol m-3 l27">
+        <div class="card text-bg-dark">
+          <img src="/static/images/community/a.png" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title fstyl">LEARN ABOUT OUR SUSTAINABILITY EFFORTS TO SAVE TREES</h5>
+            <a href="" class="text-decoration-none">
+              <h6 class="text-warning">LEARN MORE ></h6>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row py-4 justify-content-center">
+      <div class="col-md-4 lol m-3 l28">
+        <div class="card text-bg-dark">
+          <img src="/static/images/community/R.png" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title fstyl">GLOW UP WITH OUR DESKTOP WALLPAPERS </h5>
+            <a href="" class="text-decoration-none">
+              <h6 class="text-warning">LEARN MORE ></h6>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 lol m-3 l29">
+        <div class="card text-bg-dark">
+          <img src="/static/images/community/d.png" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title fstyl">BE A PART OF OUR DEVELOPER COMMUNITY</h5>
+            <a href="" class="text-decoration-none">
+              <h6 class="text-warning">LEARN MORE ></h6>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- memebers -->
+  <div class="container-fluid  text-center text-light my-5 py-5">
+    <span class="display-2 fcolor fw-bolder f2 l25">TALENTED MEMBER'S</span>
+
+    <div class="container d-sm-flex justify-content-center text-light my-5 py-1">
+      <div class="col-lg-3 col-sm-4  rounded text-center m-3 lala21">
+        <div class="card bg-transparent border-0 lol">
+          <div class="card-body "><a href="accessories.html" class="text-decoration-none text-light">
+              <div id="carouselExampleSlidesOnly mt-5 pt-5" class=" carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="/static/images/community/111.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/static/images/community/33.webp" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/static/images/community/7.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/static/images/community/8.png" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-sm-4  rounded text-center m-3 l25">
+        <div class="card bg-transparent border-0 lol">
+          <div class="card-body "><a href="accessories mouse.html" class="text-decoration-none text-light">
+              <div id="carouselExampleSlidesOnly mt-5 pt-5" class=" carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="/static/images/community/33.webp" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/static/images/community/44.webp" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/static/images/community/9.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/static/images/community/10.png" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-3 col-sm-4  rounded text-center m-3 lala22">
+        <div class="card bg-transparent border-0 lol">
+          <div class="card-body "><a href="" class="text-decoration-none text-light">
+              <div id="carouselExampleSlidesOnly mt-5 pt-5" class=" carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="/static/images/community/5.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/static/images/community/6.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/static/images/community/111.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/static/images/community/22.webp.png" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!--join us  -->
+  <div class="container-fluid  text-center text-light my-5 py-5">
+    <p class="h6 text-warning ps-4 lol  l26">OVER 2 MILLION FANS</p>
+    <span class="display-1 fcolor fw-bold fst-italic f2 l25">JOIN US</span>
+    <h6 class="mt-4 lala21">No matter what type of player you are, ZORO has a community for you. Join game nights on our
+      Discord,
+      <br> find new streamers on our Twitch team, and share your epic PC builds on Reddit.
+    </h6>
+    <div class="row px-2">
+      <div class="col-lg-3 col-sm-6 p-5 lol "><a href=""><img src="/static/images/community/discord.svg" alt=""
+            class="img-fluid discord rounded-3 l26"></a></div>
+      <div class="col-lg-3 col-sm-6 p-5 lol "><a href=""><img src="/static/images/community/instagram.svg" alt=""
+            class="img-fluid insta rounded-3 l26"></a></div>
+      <div class="col-lg-3 col-sm-6 p-5 lol "><a href=""><img src="/static/images/community/meta.svg" alt=""
+            class="img-fluid meta rounded-3 l26"></a></div>
+      <div class="col-lg-3 col-sm-6 p-5 lol "><a href=""><img src="/static/images/community/reddit.svg" alt=""
+            class="img-fluid reddit rounded-3 l26"></a></div>
+      <div class="col-lg-3 col-sm-6 p-5 lol "><a href=""><img src="/static/images/community/twitter.svg" alt=""
+            class="img-fluid twitter rounded-3 l26"></a></div>
+      <div class="col-lg-3 col-sm-6 p-5 lol "><a href=""><img src="/static/images/community/tiktok.svg" alt=""
+            class="img-fluid tiktok rounded-3 l26"></a></div>
+      <div class="col-lg-3 col-sm-6 p-5 lol "><a href=""><img src="/static/images/community/twitch.svg" alt=""
+            class="img-fluid twitch rounded-3 l26"></a></div>
+      <!-- <div class="col-3"><img src="1.gif" alt="" class="img-fluid mt-4 pt-3"></div> -->
+
+    </div>
+  </div>
+
+
+
+
+
+  <%- include('common/footer.ejs') %>     
+
+</body>
+

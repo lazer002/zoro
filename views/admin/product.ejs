@@ -1,21 +1,592 @@
 <%- include('header.ejs') %>
 
+    <style>
+        * {
+            color: rgb(118, 118, 118) !important;
+        }
 
-    <select name="" id="product_category">
-        <%for( let i=0; i< category.length; i++ ) { %>
-            <option value="<%=category[i].product_category %>">
-                <%=category[i].product_category %>
-            </option>
-            <% } %>
-    </select>
-    <input type="hidden" name="" id="product_id">
-    <input type="file" name="product_image" id="product_image" multiple>
-    <input type="text" name="" id="product_name">
-    <input type="text" name="" id="product_dis">
-    <input type="text" name="" id="product_price">
-    <input type="text" name="" id="orignal_price">
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            background-color: transparent !important;
+            border: none !important;
+            border-bottom: 2px solid green !important;
+            border-radius: 0px !important;
+            color: green !important;
+        }
 
-    <button type="submit" id="category_sbbtn" class="btn">click</button>
+        .nav-link {
+            color: rgb(118, 118, 118) !important;
+        }
+
+        .pro_img {
+            width: 44px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: contain;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="d-flex">
+            <div class="">
+
+                <%- include('common/sidebar.ejs') %>
+
+
+            </div>
+            <div class="w-100  p-3">
+                <div class=" rounded-3 border p-3">
+
+                    <div class="d-flex justify-content-between border-bottom pb-3">
+                        <div class="">
+                            <h3>Product</h3>
+                            <div>Manage Product in Store</div>
+                        </div>
+
+                        <div><button class="btn border" data-bs-toggle="modal" data-bs-target="#addproduct">+ Add
+                                Product</button></div>
+                    </div>
+
+                    <div class="py-3 d-flex justify-content-between">
+                        <div>
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <div class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-home" role="tab" aria-controls="pills-home"
+                                        aria-selected="true">PC</div>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <div class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile"
+                                        aria-selected="false">Laptop</div>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <div class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-contact" role="tab" aria-controls="pills-contact"
+                                        aria-selected="false">Controller</div>
+                                </li>
+                                <!-- Add three more tabs -->
+                                <li class="nav-item" role="presentation">
+                                    <div class="nav-link" id="pills-tab4" data-bs-toggle="pill" data-bs-target="#tab4"
+                                        role="tab" aria-controls="tab4" aria-selected="false">Headphone</div>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <div class="nav-link" id="pills-tab5" data-bs-toggle="pill" data-bs-target="#tab5"
+                                        role="tab" aria-controls="tab5" aria-selected="false">Keyboard</div>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <div class="nav-link" id="pills-tab6" data-bs-toggle="pill" data-bs-target="#tab6"
+                                        role="tab" aria-controls="tab6" aria-selected="false">Mouse</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="search"><input type="text" placeholder="Search..." class="form-control "></div>
+                    </div>
+                    <div class="container-fluid p-0">
+
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                aria-labelledby="pills-home-tab">
+                                <div class="table-responsive border rounded-3">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Product Id</th>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
+                                                <th>Product Category </th>
+                                                <th> Product Discription</th>
+                                                <th>Product Max Price </th>
+                                                <th>Product Price</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%for( let i=0; i< pro[0].pc.length; i++ ) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%=i+1%>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].pc[i].product_id %>
+                                                    </td>
+
+                                                    <% var imgg=pro[0].pc[i].product_image.split(',') %>
+
+                                                        <td>
+                                                            <% imgg.forEach(element=> { %>
+                                                                <img src="/static/images/category/product/<%=element %>"
+                                                                    alt="" class="rounded-curcle pro_img">
+                                                                <% }) %>
+
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].pc[i].product_name %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].pc[i].product_category %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].pc[i].product_dis %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].pc[i].product_price %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].pc[i].orignal_price %>
+                                                        </td>
+
+                                                        <td>
+                                                            <span><i
+                                                                    class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                                            <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                                            <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                                        </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                aria-labelledby="pills-profile-tab">
+                                <div class="table-responsive border rounded-3">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Product Id</th>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
+                                                <th>Product Category </th>
+                                                <th> Product Discription</th>
+                                                <th>Product Max Price </th>
+                                                <th>Product Price</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%for( let i=0; i< pro[0].laptop.length; i++ ) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%=i+1%>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].laptop[i].product_id %>
+                                                    </td>
+                                                    <% var imgg=pro[0].laptop[i].product_image.split(',') %>
+
+                                                        <td>
+                                                            <% imgg.forEach(element=> { %>
+                                                                <img src="/static/images/category/product/<%=element %>"
+                                                                    alt="" class="rounded-curcle pro_img">
+                                                                <% }) %>
+
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].laptop[i].product_name %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].laptop[i].product_category %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].laptop[i].product_dis %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].laptop[i].product_price %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].laptop[i].orignal_price %>
+                                                        </td>
+
+                                                        <td>
+                                                            <span><i
+                                                                    class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                                            <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                                            <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                                        </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                                aria-labelledby="pills-contact-tab">
+                                <div class="table-responsive border rounded-3">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Product Id</th>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
+                                                <th>Product Category </th>
+                                                <th> Product Discription</th>
+                                                <th>Product Max Price </th>
+                                                <th>Product Price</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%for( let i=0; i< pro[0].controller.length; i++ ) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%=i+1%>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].controller[i].product_id %>
+                                                    </td>
+                                                    <% var imgg=pro[0].controller[i].product_image.split(',') %>
+
+                                                    <td>
+                                                        <% imgg.forEach(element=> { %>
+                                                            <img src="/static/images/category/product/<%=element %>"
+                                                                alt="" class="rounded-curcle pro_img">
+                                                            <% }) %>
+
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].controller[i].product_name %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].controller[i].product_category %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].controller[i].product_dis %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].controller[i].product_price %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].controller[i].orignal_price %>
+                                                    </td>
+
+                                                    <td>
+                                                        <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                                        <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                                        <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Add three more tab panes -->
+                            <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="pills-tab4">
+                                <div class="table-responsive border rounded-3">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Product Id</th>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
+                                                <th>Product Category </th>
+                                                <th> Product Discription</th>
+                                                <th>Product Max Price </th>
+                                                <th>Product Price</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%for( let i=0; i< pro[0].headphone.length; i++ ) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%=i+1%>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].headphone[i].product_id %>
+                                                    </td>
+                                                    <% var imgg=pro[0].headphone[i].product_image.split(',') %>
+
+                                                    <td>
+                                                        <% imgg.forEach(element=> { %>
+                                                            <img src="/static/images/category/product/<%=element %>"
+                                                                alt="" class="rounded-curcle pro_img">
+                                                            <% }) %>
+
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].headphone[i].product_name %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].headphone[i].product_category %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].headphone[i].product_dis %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].headphone[i].product_price %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].headphone[i].orignal_price %>
+                                                    </td>
+
+                                                    <td>
+                                                        <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                                        <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                                        <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="pills-tab5">
+                                <div class="table-responsive border rounded-3">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Product Id</th>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
+                                                <th>Product Category </th>
+                                                <th> Product Discription</th>
+                                                <th>Product Max Price </th>
+                                                <th>Product Price</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%for( let i=0; i< pro[0].keyboard.length; i++ ) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%=i+1%>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].keyboard[i].product_id %>
+                                                    </td>
+                                                    <% var imgg=pro[0].keyboard[i].product_image.split(',') %>
+
+                                                    <td>
+                                                        <% imgg.forEach(element=> { %>
+                                                            <img src="/static/images/category/product/<%=element %>"
+                                                                alt="" class="rounded-curcle pro_img">
+                                                            <% }) %>
+
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].keyboard[i].product_name %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].keyboard[i].product_category %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].keyboard[i].product_dis %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].keyboard[i].product_price %>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].keyboard[i].orignal_price %>
+                                                    </td>
+
+                                                    <td>
+                                                        <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                                        <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                                        <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab6" role="tabpanel" aria-labelledby="pills-tab6">
+                                <div class="table-responsive border rounded-3">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Product Id</th>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
+                                                <th>Product Category </th>
+                                                <th> Product Discription</th>
+                                                <th>Product Max Price </th>
+                                                <th>Product Price</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%for( let i=0; i< pro[0].mouse.length; i++ ) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%=i+1%>
+                                                    </td>
+                                                    <td>
+                                                        <%=pro[0].mouse[i].product_id %>
+                                                    </td>
+
+
+
+
+                                                    <% var imgg=pro[0].mouse[i].product_image.split(',') %>
+
+                                                        <td>
+                                                            <% imgg.forEach(element=> { %>
+                                                                <img src="/static/images/category/product/<%=element %>"
+                                                                    alt="" class="pro_img">
+                                                                <% }) %>
+
+                                                        </td>
+
+
+
+                                                        <td>
+                                                            <%=pro[0].mouse[i].product_name %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].mouse[i].product_category %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].mouse[i].product_dis %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].mouse[i].product_price %>
+                                                        </td>
+                                                        <td>
+                                                            <%=pro[0].mouse[i].orignal_price %>
+                                                        </td>
+
+                                                        <td>
+                                                            <span><i
+                                                                    class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                                            <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                                            <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                                        </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="modal fade" id="addproduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div>
+                            <div>Carausal Image</div>
+                            <input type="hidden" name="" id="product_id">
+                            <input type="file" name="product_image" id="product_image" class="form-control" multiple>
+                        </div>
+                        <div>
+                            <div>Carausal Title</div>
+                            <input type="text" name="" class="form-control" id="product_name">
+                        </div>
+                        <div>
+                            <div>Carausal Category</div>
+                            <select name="" id="product_category" class="form-control">
+                                <%for( let i=0; i< category.length; i++ ) { %>
+                                    <option value="<%=category[i].product_category %>">
+                                        <%=category[i].product_category %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+                        <div>
+                            <div>Carausal Discription</div>
+                            <input type="text" name="" class="form-control" id="product_dis">
+                        </div>
+                        <div>
+                            <div>Product Link</div>
+                            <input type="text" name="" id="product_price" class="form-control">
+                        </div>
+                        <div>
+                            <div>Product Link</div>
+                            <input type="text" name="" id="orignal_price" class="form-control">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                    <button type="submit" id="category_sbbtn" class="btn bcolor">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <style>
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -64,7 +635,7 @@
                         contentType: false,
                         processData: false,
                         success: function (response) {
-alert('product added')
+                            alert('product added')
                             setTimeout(function () {
                                 window.location.reload();
                             }, 1000);

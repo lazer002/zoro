@@ -6,12 +6,145 @@
 
 <%- include('header.ejs') %>
 
-<input type="file" name="" id="main_banner">
-<input type="text" name="" id="banner_title">
-<input type="text" name="" id="banner_dis">
-<input type="text" name="" id="banner_link">
 
-<button type="submit" id="sbbtn" class="btn">click</button>
+
+
+
+<div class="container-fluid p-0">
+    <div class="d-flex">
+        <%- include('common/sidebar.ejs') %>
+        <div class="w-100  p-3">
+        <div class=" rounded-3 border p-3">
+        
+                <div class="d-flex justify-content-between border-bottom pb-3">
+                    <div class="">
+                        <h3>Category</h3>
+                        <div>Manage Product Category in Store</div>
+                    </div>
+
+                    <div><button class="btn border" data-bs-toggle="modal" data-bs-target="#addproduct">+ Add
+                            Product</button></div>
+                </div>
+                
+            <div class="py-3">
+                <div id="search"><input type="text" placeholder="Search..." class="form-control w-25"></div>
+            </div>
+            <div class="container-fluid p-0">
+                <div class="table-responsive border rounded-3">
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Banner Image</th>
+                                <th>Banner Title</th>
+                                <th>Banner Discription</th>
+                                <th>Product Link </th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%for(i=0;i< banner.length;i++)    {  %>
+    
+                            <tr class="text-center">
+                                <td><%= i +1%></td>
+                                <td><%=banner[i].banner_title %></td>
+                                <td> <img src="/p/images/category/pro_category/<%=banner[i].main_banner %> " alt="" class="img-fluid">  </td>
+                                <td class="w-25"><%=banner[i].banner_dis %></td>
+                                <td><%=banner[i].banner_link %>  </td>
+                                <td>
+                                    <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                    <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                    <span><i class="fa fa-solid fa-trash px-2"></i></span>
+
+                                </td>
+                            </tr>
+  <% } %>
+
+                      
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+  <div class="modal fade" id="addproduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Banner</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="my-2">
+                        <div>Banner Image</div>
+                        <input type="file" name="" id="main_banner" class="form-control">
+                    </div>
+                    <div class="my-2">
+                        <div>Banner Title</div>
+                        <input type="text" name="" id="banner_title" class="form-control">
+                    </div>
+                    <div class="my-2">
+                        <div>Banner Discription</div>
+                        <input type="text" name="" id="banner_dis" class="form-control">
+
+                    </div>
+                    <div class="my-2">
+                        <div>Product Link</div> 
+                        <input type="text" name="" id="banner_link" class="form-control">
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                <button type="submit" id="sbbtn" class="btn btn-primary">Add Banner</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="/static/cdn/bootstrap.min.css">
 
     <link rel="stylesheet" href="/static/cdn/fontawsome.min.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
 </head>
 
 <body>
@@ -76,267 +78,362 @@
 
     <div class="container-fluid p-0">
         <div class="d-flex">
-            <div class=" sidebar">
-                <div class="container-fluid">
-                    <div class="row ">
-                        <div class=" p-0 py-2">
-                            <a href="" class="">
-                                <div class="dash-tabs">
-                                    <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
-                                    <div class="dash-text ">Dashboard</div>
+            <%- include('common/sidebar.ejs') %>
+                <div class="w-100 m-4 ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <div class="card">
+                                    <div class="card-body d-flex ">
+                                        <div>
+                                            <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span>
+                                            </h4>
+                                            <p class="card-text">Potential growth</p>
+                                        </div>
+                                        <div class="ms-auto icon_bg">
+                                            <i class="fa fa-solid fa-gauge text-light fs-3"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class=" p-0 py-2">
-                            <a href="">
-                                <div class="dash-tabs">
-                                    <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
-                                    <div class="dash-text ">Dashboard</div>
+                            </div>
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <div class="card">
+                                    <div class="card-body d-flex ">
+                                        <div>
+                                            <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span>
+                                            </h4>
+                                            <p class="card-text">Potential growth</p>
+                                        </div>
+                                        <div class="ms-auto icon_bg">
+                                            <i class="fa fa-solid fa-gauge text-light fs-3"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class=" p-0 py-2">
-                            <a href="">
-                                <div class="dash-tabs">
-                                    <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
-                                    <div class="dash-text ">Dashboard</div>
+                            </div>
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <div class="card">
+                                    <div class="card-body d-flex ">
+                                        <div>
+                                            <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span>
+                                            </h4>
+                                            <p class="card-text">Potential growth</p>
+                                        </div>
+                                        <div class="ms-auto icon_bg">
+                                            <i class="fa fa-solid fa-gauge text-light fs-3"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class=" p-0 py-2">
-                            <a href="">
-                                <div class="dash-tabs">
-                                    <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
-                                    <div class="dash-text ">Dashboard</div>
+                            </div>
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <div class="card">
+                                    <div class="card-body d-flex ">
+                                        <div>
+                                            <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span>
+                                            </h4>
+                                            <p class="card-text">Potential growth</p>
+                                        </div>
+                                        <div class="ms-auto icon_bg">
+                                            <i class="fa fa-solid fa-gauge text-light fs-3"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class=" p-0 py-2">
-                            <a href="">
-                                <div class="dash-tabs">
-                                    <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
-                                    <div class="dash-text ">Dashboard</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class=" p-0 py-2">
-                            <a href="">
-                                <div class="dash-tabs">
-                                    <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
-                                    <div class="dash-text ">Dashboard</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class=" p-0 py-2">
-                            <a href="">
-                                <div class="dash-tabs">
-                                    <div class="dash-icon "><i class="fa fa-solid fa-gauge text-light"></i></div>
-                                    <div class="dash-text ">Dashboard</div>
-                                </div>
-                            </a>
-                        </div>
+                            </div>
 
+
+                        </div>
+                        <style>
+                            .card .circle {
+                                position: relative;
+                                height: 150px;
+                                width: 150px;
+                                border-radius: 50%;
+                                cursor: default;
+                            }
+
+                            .card .circle .box,
+                            .card .circle .box span {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                            }
+
+
+                            .card .circle .box span,
+                            .card .text {
+                                background: -webkit-linear-gradient(left, #15e003, #02be0c);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                            }
+
+                            .circle .box span {
+                                font-size: 38px;
+                                font-family: sans-serif;
+                                font-weight: 600;
+                                transform: translate(-45%, -45%);
+                                transition: all 0.1s;
+                            }
+
+                            .card .circle:hover .box span {
+                                transform: translate(-45%, -45%) scale(1.09);
+                            }
+                        </style>
+
+                        <div class="row">
+                            <div class="col-8 p-2 ">
+
+                                <div class="chart">
+                                    <canvas id="myChart" width="400" height="200"></canvas>
+                                </div>
+
+
+                            </div>
+                            <div class="col-4 p-2 ">
+                                <div class="card h-100">
+                                    <div class="circle">
+                                        <div class="bar"></div>
+                                        <div class="box"><span></span></div>
+                                    </div>
+                                    <div class="text">HTML & CSS</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4 p-2 ">
+                                    <div class="card js">
+                                        <div class="circle">
+                                            <div class="bar"></div>
+                                            <div class="box"><span></span></div>
+                                        </div>
+                                        <div class="text">JavaScript</div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                                <div class="col-4 p-2 ">
+                                    <div class="card node">
+                                        <div class="circle">
+                                            <div class="bar"></div>
+                                            <div class="box"><span></span></div>
+                                        </div>
+                                        <div class="text">NodeJs</div>
+                                    </div>
+                                </div>
+                                <div class="col-4 p-2 ">
+                                    <div class="card react">
+                                        <div class="circle">
+                                            <div class="bar"></div>
+                                            <div class="box"><span></span></div>
+                                        </div>
+                                        <div class="text">React JS</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
 
 
 
-            </div>
-            <div class="w-100 m-4 border">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-3 mb-3 mb-sm-0">
-                            <div class="card">
-                                <div class="card-body d-flex ">
-                                    <div>
-                                        <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span></h4>
-                                        <p class="card-text">Potential growth</p>
-                                    </div>
-                                    <div class="ms-auto icon_bg">
-                                        <i class="fa fa-solid fa-gauge text-light fs-3"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 mb-3 mb-sm-0">
-                            <div class="card">
-                                <div class="card-body d-flex ">
-                                    <div>
-                                        <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span></h4>
-                                        <p class="card-text">Potential growth</p>
-                                    </div>
-                                    <div class="ms-auto icon_bg">
-                                        <i class="fa fa-solid fa-gauge text-light fs-3"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 mb-3 mb-sm-0">
-                            <div class="card">
-                                <div class="card-body d-flex ">
-                                    <div>
-                                        <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span></h4>
-                                        <p class="card-text">Potential growth</p>
-                                    </div>
-                                    <div class="ms-auto icon_bg">
-                                        <i class="fa fa-solid fa-gauge text-light fs-3"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 mb-3 mb-sm-0">
-                            <div class="card">
-                                <div class="card-body d-flex ">
-                                    <div>
-                                        <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span></h4>
-                                        <p class="card-text">Potential growth</p>
-                                    </div>
-                                    <div class="ms-auto icon_bg">
-                                        <i class="fa fa-solid fa-gauge text-light fs-3"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-
-                    </div>
-                    <div class="row">
-                        <div class="col-4 p-2 border">
-
-
-
-
-                        </div>
-                        <div class="col-8 p-2 border">4</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 p-2 border">
-                        </div>
-                        <div class="col-4 p-2 border">4</div>
-                        <div class="col-4 p-2 border">4</div>
-                    </div>
-
-                </div>
-            </div>
         </div>
 
 
 
 
 
-    </div>
-
-    </div>
-    </div>
 
 
-    <style>
-        * {
-            color: #6c7293;
-        }
-
-        .search {
-            width: 100vh !important;
-            outline-color: none !;
-            margin: 2px 10px;
-        }
-
-        .icon_bg {
-            border-radius: 8px;
-            padding: 10px;
-            height: 48px;
-            background-color: rgba(0, 128, 0, 0.144);
-        }
-
-        a {
-            text-decoration: none !important;
-        }
-
-        .sidebar {
-            height: 100vh;
-            z-index: 2;
-            width: 270px;
-            background-color: #191c24;
-            transition: 1s;
-
-        }
-
-        .brdr_l {
-            border-left: 2px solid white;
-        }
-
-        .off_sidebar {
-            width: 66px !important;
-
-        }
-
-        .dash-tabs {
-            display: flex;
-            background-color: #0f1015;
-            border-radius: 0px 50px 50px 0px;
-            padding: 8px 12px;
-            border-left: 5px solid #007eff;
 
 
-        }
 
-        .dash-text {
-            display: block;
-            padding: 5px;
-            transform-origin: left;
-            transition: 3s;
-            opacity: 1;
-            font-size: 0.9375rem;
-        }
-
-        .dash_text2 {
-            display: none;
-            transition: 3s;
-            opacity: 0;
-
-
-        }
-
-        .dash-icon {
-            background-color: rgba(108, 114, 147, 0.2);
-            padding: 8px 12px;
-            border-radius: 100%;
-            margin-right: 5px;
-        }
-    </style>
+        <script>
+            let options = {
+                startAngle: -1.55,
+                size: 150,
+                value: 0.75,
+                fill: { gradient: ['#15e003', '#02be0c'] }
+            }
+            $(".circle .bar").circleProgress(options).on('circle-animation-progress',
+                function (event, progress, stepValue) {
+                    $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2)) + "%");
+                });
+            $(".js .bar").circleProgress({
+                value: 0.70
+            });
+            $(".node .bar").circleProgress({
+                value: 0.90
+            });
+            $(".react .bar").circleProgress({
+                value: 0.60
+            });
+        </script>
 
 
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script>var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line', // also try bar or other graph types
+
+                // The data for our dataset
+                data: {
+                    labels: ["Jun 2016", "Jul 2016", "Aug 2016", "Sep 2016", "Oct 2016", "Nov 2016", "Dec 2016", "Jan 2017", "Feb 2017", "Mar 2017", "Apr 2017", "May 2017"],
+                    // Information about the dataset
+                    datasets: [{
+                        label: "Rainfall",
+                        backgroundColor: '#0c3602',
+                        borderColor: 'rgb(0, 209, 63)',
+                        data: [26.4, 39.8, 66.8, 66.4, 40.6, 55.2, 77.4, 69.8, 57.8, 76, 110.8, 142.6],
+                    }]
+                },
+
+                // Configuration options
+                options: {
+                    layout: {
+                        padding: 10,
+                    },
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Precipitation in Toronto'
+                    },
+                    scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Precipitation in mm'
+                            }
+                        }],
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Month of the Year'
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+
+
+        <style>
+            /* .chart {
+  border: 3px solid rgb(0, 209, 63);
+} */
+            * {
+                color: #6c7293;
+            }
+
+            .search {
+                width: 100vh !important;
+                outline-color: none !;
+                margin: 2px 10px;
+            }
+
+            .icon_bg {
+                border-radius: 8px;
+                padding: 10px;
+                height: 48px;
+                background-color: rgba(0, 128, 0, 0.144);
+            }
+
+            a {
+                text-decoration: none !important;
+            }
+
+            .sidebar {
+                height: 100vh;
+                z-index: 2;
+                width: 270px;
+                background-color: #191c24;
+                transition: 1s;
+
+            }
+
+            .brdr_l {
+                border-left: 2px solid white;
+            }
+
+            .off_sidebar {
+                width: 66px !important;
+
+            }
+
+            .dash-tabs {
+                display: flex;
+                background-color: #0f1015;
+                border-radius: 0px 50px 50px 0px;
+                padding: 8px 12px;
+                border-left: 5px solid #007eff;
+
+
+            }
+
+            .dash-text {
+                display: block;
+                padding: 5px;
+                transform-origin: left;
+                transition: 3s;
+                opacity: 1;
+                font-size: 0.9375rem;
+            }
+
+            .dash_text2 {
+                display: none;
+                transition: 3s;
+                opacity: 0;
+
+
+            }
+
+            .dash-icon {
+                background-color: rgba(108, 114, 147, 0.2);
+                padding: 8px 12px;
+                border-radius: 100%;
+                margin-right: 5px;
+            }
+        </style>
 
 
 
-    <script>
-        $(document).ready(function () {
-            $('#Example').on('click', function () {
-                let off = $('.sidebar')
-                off.toggleClass('off_sidebar')
-                // let btttt = $('.btttt')
-                // btttt.html('jfwafwijfia')
-                setTimeout(function () {
-                    let dash_text2 = $('.dash-text')
-                    dash_text2.toggleClass('dash_text2')
-                }, 300);
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+
+
+        <script>
+            $(document).ready(function () {
+                $('#Example').on('click', function () {
+                    let off = $('.sidebar')
+                    off.toggleClass('off_sidebar')
+                    // let btttt = $('.btttt')
+                    // btttt.html('jfwafwijfia')
+                    setTimeout(function () {
+                        let dash_text2 = $('.dash-text')
+                        dash_text2.toggleClass('dash_text2')
+                    }, 300);
+                })
             })
-        })
 
-    </script>
-
+        </script>
 
 
-    <script src="/static/cdn/fontawesome.all.min.js"></script>
 
-    <script src="/static/cdn/bootstrap.bundle.min.js"></script>
+        <script src="/static/cdn/fontawesome.all.min.js"></script>
+
+        <script src="/static/cdn/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

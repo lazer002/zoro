@@ -1,0 +1,473 @@
+
+<%- include('common/header.ejs') %>     
+
+
+<div id="carouselExampleSlidesOnly" class="carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <%for( let i=0; i< banner.length; i++ ) { %>
+      <div class="carousel-item <%= i === 0 ?  'active' : ' ' %>" data-bs-interval="2000">
+        <img src="/static/images/category/productbanner/<%=banner[i].product_banner %>" class="d-block w-100" alt="...">
+      </div>
+      <%}%>
+     
+    </div>
+  </div>
+
+
+  <!-- multicarousel -->
+
+  <div class="container text-center my-5">
+    <h1 class="fw-bold fcolor py-4 lulu 1">HOT PRODUCTS</h1>
+    <div class="row mx-auto my-auto justify-content-center 2">
+      <div id="recipeCarousel" class="carousel slide ala " data-bs-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <%for( let i=0; i< LAPTOP.length; i++ ) { %>
+          <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla" data-bs-interval="2000">
+            <div class="col-md-3  lol">
+              <a href="/product/<%= LAPTOP[i].product_category %>/<%= LAPTOP[i].product_id %>" class="text-decoration-none text-light">
+                <div class="card bg-transparent border border-0">
+                  <div class="card-img">
+                    <% var imgg=LAPTOP[i].product_image.split(',') %>
+                        
+                            <img src="/static/images/category/product/<%=imgg[0].trim() %>"
+                                alt="" class="img-fluid ">
+                           
+                  </div>
+                  <div class="card-body text-light">
+                    <h5><%=LAPTOP[i].product_name %></h5>
+                    <img src="product/revv.png" alt="">
+                    <P class="fw-bold"> ₹<%=LAPTOP[i].product_price %> <del class="text-body">₹<%=LAPTOP[i].orignal_price %></del></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <%}%>
+
+
+        </div>
+        <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!--left list   -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 border border-success rounded-2 bg-black me-2 mb-2 l31">
+        <button class="btn  accordion-toggle lol" type="button" data-bs-toggle="collapse" data-bs-target="#acco"
+          aria-controls="acco" aria-expanded="true" aria-label="Toggle-navigation">
+          <h2 class="py-3 fw-bold fcolor ">FILTER <img src="image/down.png" alt=""></h6>
+        </button>
+
+        <div class="collapse accordion-collapse show" id="acco">
+          <div class="card bg-black text-light py-0">
+            <div class="card-header border border-success rounded-2">
+              <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+                <h6 class="fw-bold my-0 fcolor lol">Keywords</h6>
+              </a>
+            </div>
+            <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+              <div class="card-body">
+                <input type="search" class="bg-dark w-100 text-light rounded-2 out">
+              </div>
+            </div>
+          </div>
+          <div class="card bg-black text-light py-0">
+            <div class="card-header border border-success rounded-2">
+              <a class="collapsed btn py-0" data-bs-toggle="collapse" href="#collapseTwo">
+                <h6 class="fw-bold  fcolor lol"> Manufacturers</h6>
+              </a>
+            </div>
+            <div id="collapseTwo" class="collapse show" data-bs-parent="#accordion">
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom  text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">RAZER</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">CORSAIR</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">HYPER X</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom text-left">
+                  <input type="checkbox" class="me-2"><label class="h6">STEELSERIES</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">RYZEN</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">DELL</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom text-left">
+                  <input type="checkbox" class="me-2"><label class="h6">INTEL</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0 pb-4">
+                <div class=" border-2 border-bottom text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">LOGITECH</label>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="card bg-black text-light py-0">
+            <div class="card-header  border border-success rounded-2 py-0">
+              <a class="collapsed btn " data-bs-toggle="collapse" href="#collapseThree">
+                <h6 class="fw-bold  fcolor lol">PRICE</h6>
+
+              </a>
+            </div>
+            <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+              <div class="card-body px-3 py-0 my-4">
+                <div class="py-1 text-left">
+                  <label class=" h6">10K TO 100K</label><br>
+                  <input type="range" class="me-5 w-100">
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="card bg-black text-light py-0">
+            <div class="card-header  border border-success rounded-2 py-0">
+              <a class="collapsed btn" data-bs-toggle="collapse" href="#collapsethree">
+                <h6 class="fw-bold  fcolor lol"> CABINET SIZE</h6>
+
+              </a>
+            </div>
+            <div id="collapsethree" class="collapse show" data-bs-parent="#accordion">
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">FULL TOWER</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">MID-TOWER</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">MINI-TOWER</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0 mb-4">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">CUSTEM SIZE</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="card bg-black text-light py-0">
+            <div class="card-header  border border-success rounded-2 py-0">
+              <a class="collapsed btn" data-bs-toggle="collapse" href="#collapse4">
+                <h6 class="fw-bold  fcolor lol"> MOTHERBOARD</h6>
+
+              </a>
+            </div>
+            <div id="collapse4" class="collapse" data-bs-parent="#accordion">
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">ATX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">E-ATX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">M-ATX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">M-DTX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">M-ITX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0 mb-4">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">MICRO-ATX</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card bg-black text-light py-0">
+            <div class="card-header  border border-success rounded-2 py-0">
+              <a class="collapsed btn" data-bs-toggle="collapse" href="#collapse1">
+                <h6 class="fw-bold  fcolor lol"> STYLING</h6>
+
+              </a>
+            </div>
+            <div id="collapse1" class="collapse show" data-bs-parent="#accordion">
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">ATX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">E-ATX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">M-ATX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">M-DTX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">M-ITX</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0 mb-4">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">MICRO-ATX</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-black text-light py-0 mb-2">
+            <div class="card-header  border border-success rounded-2 py-0">
+              <a class="collapsed btn" data-bs-toggle="collapse" href="#collapse2">
+                <h6 class="fw-bold  fcolor lol"> MEMORY TYPE</h6>
+
+              </a>
+            </div>
+            <div id="collapse2" class="collapse " data-bs-parent="#accordion">
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">64-BIT</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">128-BIT</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">192-BIT</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">256-BIT</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">320-BIT</label>
+                </div>
+              </div>
+
+              <div class="card-body px-3 py-0 mb-4">
+                <div class=" border-2 border-bottom py-1 text-left">
+                  <input type="checkbox" class="me-2"><label class=" h6">364-BIT</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- right side -->
+      <div class="col-lg-8 border border-success rounded-2 bg-black mb-2 l32">
+        <div class="row p-4 text-end">
+          <div class="col-12">
+
+            Sort By
+            <select name="country" id="" class="bg-black fcolor ps-2 out">
+              <option value="location">Name (A-Z)</option>
+              <option value="location">Name (Z-A)</option>
+              <option value="location">Price(High-To-Low)</option>
+              <option value="location">Price(Low-To-High)</option>
+              <option value="location">Rating(High-To-Low)</option>
+              <option value="location">Rating(Low-To-High)</option>
+              <option value="location"></option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <% for (let i = 0; i < LAPTOP.length; i++) { %>
+            <div class="card col-lg-4 col-md-6 bg-transparent border-0">
+                <a href="/product/<%= LAPTOP[i].product_category %>/<%= LAPTOP[i].product_id %>" class="text-decoration-none text-light">
+                <div id="carouselExampleSlidesOnly<%= i %>" class="carousel-fade" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <% var imgg = LAPTOP[i].product_image.split(',') %>
+                    <% imgg.forEach((element, index) => { %>
+                      <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-bs-interval="2000">
+                        <img src="/static/images/category/product/<%= element %>" class="d-block img-fluid" alt="...">
+                      </div>
+                    <% }) %>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p class="card-text"><%= LAPTOP[i].product_name %></p>
+                  <p class="card-text bg-transparent"><img src="LAPTOP/rev4.png" alt=""></p>
+                  <p class="card-text fw-bold fcolor">₹<%= LAPTOP[i].product_price %> </p><del>₹<%= LAPTOP[i].orignal_price %></del>
+                </div>
+              </a>
+              </div>
+          <% } %>
+          
+
+          <ul class="pagination justify-content-center mt-5 ">
+            <li class="page-item"><a class="page-link bcolor text-dark" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link bcolor text-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link bcolor text-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link bcolor text-dark" href="#">3</a></li>
+            <li class="page-item"><a class="page-link bcolor text-dark" href="#">Next</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- bottom carousel -->
+  <div class="container text-center my-5">
+    <h1 class="fw-bold fcolor py-4 l25">RELATED PRODUCTS</h1>
+    <div class="row ">
+      <div id="recipeCarousel3" class="carousel slide ala" data-bs-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+        
+            <%for( let i=0; i< LAPTOP.length; i++ ) { %>
+              <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla" data-bs-interval="2000">
+                <div class="col-md-3  lol">
+                  <a href="/product/<%= LAPTOP[i].product_category %>/<%= LAPTOP[i].product_id %>" class="text-decoration-none text-light">
+                    <div class="card bg-transparent border border-0">
+                      <div class="card-img">
+                        <% var imgg=LAPTOP[i].product_image.split(',') %>
+                            
+                                <img src="/static/images/category/product/<%=imgg[0].trim() %>"
+                                    alt="" class="img-fluid ">
+                               
+                      </div>
+                      <div class="card-body text-light">
+                        <h5><%=LAPTOP[i].product_name %></h5>
+                        <img src="product/revv.png" alt="">
+                        <P class="fw-bold"> ₹<%=LAPTOP[i].product_price %> <del class="text-body">₹<%=LAPTOP[i].orignal_price %></del></p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <%}%>
+         
+
+        </div>
+        <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel3" role="button"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel3" role="button"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+<script>let items = document.querySelectorAll('.ala .alla')
+
+  items.forEach((el) => {
+    const minPerSlide = 4
+    let next = el.nextElementSibling
+    for (var i = 1; i < minPerSlide; i++) {
+      if (!next) {
+        // wrap carousel by using first child
+        next = items[0]
+      }
+      let cloneChild = next.cloneNode(true)
+      el.appendChild(cloneChild.children[0])
+      next = next.nextElementSibling
+    }
+  })</script>
