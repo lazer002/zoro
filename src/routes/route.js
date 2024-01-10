@@ -74,7 +74,7 @@ router.get('/admin', async (req, res) => {
 
 // DASHBOARD BANNER
 router.get('/dashboard_banner', async (req, res) => {
-   query = `select * from banner`
+   query = `select * from banner limit 4`
     connection.query(query, (err, banner) => {
       if (err) throw err;
     res.render('admin/banner',{banner:banner})
@@ -149,16 +149,26 @@ router.post('/category', upload_category.fields([{ name: 'product_image' }, { na
 });
 // CATOGARY
 
+router.get('/user', async (req, res) => {
+   query = `select * from signup`
+   await connection.query(query, (err, user) => {
+      if (err) throw err;
+      res.render('admin/user', { user: user })
+   })
+})
 
 // carausal banner
 
 router.get('/carausal_banner', async (req, res) => {
    query = `select * from category`
-   await connection.query(query, (err, results) => {
+    connection.query(query, (err, results) => {
       if (err) throw err;
-      res.render('admin/dash', { category: results })
+      query = `select * from carausal_banner`
+       connection.query(query, (err, c_banner) => {
+         if (err) throw err;
+      res.render('admin/carausal_banner', { category: results,c_banner:c_banner })
    })
-})
+})})
 
 
 
@@ -179,7 +189,7 @@ router.post('/carausal_banner', dash_banner.single('carausal_image'), async (req
    let query = `insert into carausal_banner(carausal_image,carausal_title,carausal_category,carausal_dis,carausal_link) values('${carausal_image}','${carausal_title}','${carausal_category}','${carausal_dis}','${carausal_link}')`
    await connection.query(query, (err, results) => {
       if (err) throw err;
-      res.redirect('/category')
+      res.redirect('/carausal_banner')
    })
 })
 
@@ -416,8 +426,11 @@ router.get('/product_banner', async (req, res) => {
    query = `select * from category`
     connection.query(query, (err, category) => {
       if (err) throw err;
-    res.render('admin/product_banner',{category:category})
-})})
+      query = `select * from product_banner`
+      connection.query(query, (err, banner) => {
+        if (err) throw err;
+    res.render('admin/product_banner',{category:category,banner:banner})
+})})})
 
 const storage_dash = multer.diskStorage({
    destination: function (req, file, cb) {
