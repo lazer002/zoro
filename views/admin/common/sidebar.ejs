@@ -12,7 +12,7 @@
         <div class=" p-0 py-2">
             <a href="/product">
                 <div class="dash-tabs">
-                    <div class="dash-icon "><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="dash-iconn "><i class="fa-solid fa-cart-shopping"></i></div>
                     <div class="dash-text ">Product</div>
                 </div>
             </a>
@@ -20,7 +20,7 @@
         <div class=" p-0 py-2">
             <a href="/dashboard_banner">
                 <div class="dash-tabs">
-                    <div class="dash-icon "><i class="fa-regular fa-images"></i></div>
+                    <div class="dash-iconn "><i class="fa-regular fa-images"></i></div>
                     <div class="dash-text ">Banner</div>
                 </div>
             </a>
@@ -28,7 +28,7 @@
         <div class=" p-0 py-2">
             <a href="/user">
                 <div class="dash-tabs">
-                    <div class="dash-icon "><i class="fa-solid fa-users"></i></div>
+                    <div class="dash-iconn "><i class="fa-solid fa-users"></i></div>
                     <div class="dash-text ">User</div>
                 </div>
             </a>
@@ -36,7 +36,7 @@
         <div class=" p-0 py-2">
             <a href="/carausal_banner">
                 <div class="dash-tabs">
-                    <div class="dash-icon "><i class="fa-solid fa-photo-film"></i></div>
+                    <div class="dash-iconn "><i class="fa-solid fa-photo-film"></i></div>
                     <div class="dash-text ">Carausal</div>
 
                 </div>
@@ -45,7 +45,7 @@
         <div class=" p-0 py-2">
             <a href="/category">
                 <div class="dash-tabs">
-                    <div class="dash-icon "><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="dash-iconn "><i class="fa-solid fa-layer-group"></i></div>
                     <div class="dash-text ">Category</div>
 
 
@@ -55,7 +55,7 @@
         <div class=" p-0 py-2">
             <a href="/product_banner">
                 <div class="dash-tabs">
-                    <div class="dash-icon "><i class="fa-solid fa-panorama"></i></div>
+                    <div class="dash-iconn "><i class="fa-solid fa-panorama"></i></div>
 
 
                     <div class="dash-text ws">Product Banner</div>
@@ -66,7 +66,7 @@
         <div class=" p-0 py-2">
             <a href="">
                 <div class="dash-tabs">
-                    <div class="dash-icon "><i class="fa-solid fa-headset"></i></div>
+                    <div class="dash-iconn "><i class="fa-solid fa-headset"></i></div>
 
 
                     <div class="dash-text ">Support</div>
@@ -125,17 +125,54 @@
 
 
 <script>
+
+$(window).on('resize', function () {
+    let $sidebar = $('.sidebar');
+
+    if (window.innerWidth <= 800) {
+        if ($sidebar.hasClass('sidebar')) {
+            $sidebar.addClass('off_sidebar');
+        } else {
+            $sidebar.removeClass('off_sidebar');
+            setTimeout(function () {
+                let $dashText = $('.dash-text');
+                $dashText.toggleClass('dash_text2');
+            }, 300);
+        }
+    }else{
+
+        
+    }
+});
+
+
+
+
+
     $(document).ready(function () {
+
         $('#Example').on('click', function () {
             let off = $('.sidebar')
             off.toggleClass('off_sidebar')
+       
+
             // let btttt = $('.btttt')
             // btttt.html('jfwafwijfia')
             setTimeout(function () {
                 let dash_text2 = $('.dash-text')
                 dash_text2.toggleClass('dash_text2')
-            }, 300);
+            }, 300)})
         })
-    })
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
