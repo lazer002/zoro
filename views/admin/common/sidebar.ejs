@@ -1,4 +1,4 @@
-<div class=" sidebar">
+<div class="sidebar">
 
     <div class=" ">
         <div class=" p-0 py-2">
@@ -126,53 +126,99 @@
 
 <script>
 
-$(window).on('resize', function () {
-    let $sidebar = $('.sidebar');
+// $(window).on('resize', function () {
+//     let $sidebar = $('.sidebar');
+//     let $dashText = $('.dash-text');
 
-    if (window.innerWidth <= 800) {
-        if ($sidebar.hasClass('sidebar')) {
-            $sidebar.addClass('off_sidebar');
+//     if (window.innerWidth <= 800) {
+//         if ($sidebar.hasClass('sidebar')) {
+//             $sidebar.addClass('off_sidebar');
+//             $dashText.addClass('dash_text2');
+//         } else {
+//             $sidebar.removeClass('off_sidebar');
+//             setTimeout(function () {
+//                 $dashText.toggleClass('dash_text2');
+//             }, 300);
+//         }
+//     } else {
+//         // Reset changes when the window width is greater than 800
+//         $sidebar.removeClass('off_sidebar');
+//         $dashText.removeClass('dash_text2');
+//     }
+// });
+
+
+
+
+
+
+//     $(document).ready(function () {
+
+//         $('#Example').on('click', function () {
+//             let off = $('.sidebar')
+//             off.toggleClass('off_sidebar')
+//             setTimeout(function () {
+//                 let dash_text2 = $('.dash-text')
+//                 dash_text2.toggleClass('dash_text2')
+//             }, 300)})
+//         })
+
+
+
+
+
+$(document).ready(function () {
+
+
+
+
+    $(window).on('resize', function () {
+        let $sidebar = $('.sidebar');
+        let $dashText = $('.dash-text');
+
+        if (window.innerWidth <= 800) {
+            if ($sidebar.hasClass('sidebar')) {
+                $sidebar.addClass('off_sidebar');
+                $dashText.addClass('dash_text2');
+            } else {
+                $sidebar.removeClass('off_sidebar');
+                setTimeout(function () {
+                    $dashText.toggleClass('dash_text2');
+                }, 300);
+            }
         } else {
             $sidebar.removeClass('off_sidebar');
-            setTimeout(function () {
-                let $dashText = $('.dash-text');
-                $dashText.toggleClass('dash_text2');
-            }, 300);
+            $dashText.removeClass('dash_text2');
         }
-    }else{
+    });
+})
 
+
+
+$(document).ready(function () {
+
+function handleExampleClick() {
+    let off = $('.sidebar');
+    let dash_text2 = $('.dash-text');
+
+
+
+    if (off.hasClass('off_sidebar')) {
         
+        off.removeClass('off_sidebar');
+        dash_text2.removeClass('dash_text2');
+    } else {
+        off.addClass('off_sidebar');
+        setTimeout(function () {
+            dash_text2.addClass('dash_text2');
+        }, 300);
     }
-});
 
+  
+}
 
-
-
-
-    $(document).ready(function () {
-
-        $('#Example').on('click', function () {
-            let off = $('.sidebar')
-            off.toggleClass('off_sidebar')
-       
-
-            // let btttt = $('.btttt')
-            // btttt.html('jfwafwijfia')
-            setTimeout(function () {
-                let dash_text2 = $('.dash-text')
-                dash_text2.toggleClass('dash_text2')
-            }, 300)})
-        })
-
-
-
-
-
-
-
-
-
-
+$('#Example').on('click', handleExampleClick);
+})
 
 
 </script>
