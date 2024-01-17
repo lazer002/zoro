@@ -644,4 +644,62 @@ const {product_quantity,product_id}=req.body
 })
 
 
+
+
+
+
+
+router.post('/edit_product', async (req, res) => {
+
+     
+      const { product_id, product_category } = req.body
+      let category = `select * from ${product_category} where product_id = '${product_id}'`
+      connection.query(category, (err, results) => {
+       
+         if (err) throw err;
+         res.send({ product: results })
+
+      })})
+
+
+
+
+
+      const storage22 = multer.diskStorage({
+         destination: function (req, file, cb) {
+            cb(null, 'public/images/category/product')
+         },
+         filename: function (req, file, cb) {
+            cb(null, Date.now() + "_" + file.originalname)
+         }
+      })
+      
+      const product_upload2 = multer({ storage: storage22 })
+      router.post('/pc', product_upload2.fields([{ name: 'product_image' }]), async (req, res) => {
+        
+         const ppicFiles = req.files['product_image'];
+         const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
+         console.log(product_image)
+         const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
+         let query = `
+         UPDATE ${product_category} 
+         SET 
+           product_image = '${product_image.join(',')}',
+           product_name = '${product_name}',
+           product_dis = '${product_dis}',
+           product_price = '${product_price}',
+           orignal_price = '${orignal_price}'
+         WHERE 
+           product_id = '${product_id}' 
+       `;
+         connection.query(query, (err, results) => {
+            if (err) throw err;
+      
+            res.redirect('/product')
+         })
+      })
+      
+
+
+
 module.exports = router;

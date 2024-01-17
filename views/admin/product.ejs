@@ -115,7 +115,7 @@
 
                                                         <td>
                                                             <span><i
-                                                                    class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                                                    class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
                                                             <span><i class="fa fa-solid fa-eye px-2"></i></span>
                                                             <span><i class="fa fa-solid fa-trash px-2"></i></span>
 
@@ -472,101 +472,6 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="modal fade" id="addproduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div>
-                            <div>Carausal Image</div>
-                            <input type="hidden" name="" id="product_id">
-                            <input type="file" name="product_image" id="product_image" class="form-control" multiple>
-                        </div>
-                        <div>
-                            <div>Carausal Title</div>
-                            <input type="text" name="" class="form-control" id="product_name">
-                        </div>
-                        <div>
-                            <div>Carausal Category</div>
-                            <select name="" id="product_category" class="form-control">
-                                <%for( let i=0; i< category.length; i++ ) { %>
-                                    <option value="<%=category[i].product_category %>">
-                                        <%=category[i].product_category %>
-                                    </option>
-                                    <% } %>
-                            </select>
-                        </div>
-                        <div>
-                            <div>Carausal Discription</div>
-                            <input type="text" name="" class="form-control" id="product_dis">
-                        </div>
-                        <div>
-                            <div>Product Link</div>
-                            <input type="text" name="" id="product_price" class="form-control">
-                        </div>
-                        <div>
-                            <div>Product Link</div>
-                            <input type="text" name="" id="orignal_price" class="form-control">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
-                    <button type="submit" id="category_sbbtn" class="btn bcolor">Add Product</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-    <style>
-
-    </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script>
 
         $(document).on('change', '#product_category', function () {
@@ -891,3 +796,233 @@
         });
 
     </script>
+
+
+
+
+
+    <script>
+ $(document).ready(function () {
+        $(document).on('click', '#edit_but', function () {
+           
+                    var trow = $(this).closest('tr')
+                    var tdata = trow.find('td')
+                 
+                   const product_id = tdata[1].innerText
+                   const product_category = tdata[4].innerText
+             
+                            $.ajax({
+                                type: 'POST',
+                                url: '/edit_product',
+                                data: {
+                                    product_id:product_id,
+                                    product_category:product_category
+                                },
+                                success: function (response) {
+                                 $('#product_id').val(response.product[0].product_id)
+                                 $('#product_name').val(response.product[0].product_name)
+                                 $('#product_category').val(response.product[0].product_category)
+                                 $('#product_dis').val(response.product[0].product_dis)
+                                 $('#product_price').val(response.product[0].product_price)
+                                 $('#orignal_price').val(response.product[0].orignal_price)
+
+                                   $('#editModal').modal('show');
+                                }
+        
+        })})})
+        
+            </script>
+
+<script>
+     $(document).on('click', '#edit_sbbtn', function () {
+
+        
+                    var product_category = $('#product_category').val();
+                    var product_id = $('#product_id').val();
+                    var product_name = $('#product_name').val();
+                    var product_dis = $('#product_dis').val();
+                    var product_price = $('#product_price').val();
+                    var orignal_price = $('#orignal_price').val();
+
+                    var formdata = new FormData();
+                    formdata.append('product_category', product_category);
+                    formdata.append('product_id', product_id);
+                    formdata.append('product_name', product_name);
+                    formdata.append('product_dis', product_dis);
+                    formdata.append('product_price', product_price);
+                    formdata.append('orignal_price', orignal_price);
+
+
+                    var product_image = $('#product_image')[0].files;
+                    for (var i = 0; i < product_image.length; i++) {
+                        formdata.append('product_image', product_image[i]);
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/pc',
+                        data: formdata,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            alert('product added')
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
+                        },
+
+                        error: function (error) {
+
+                        }
+                    });
+                });
+            
+</script>
+
+
+
+
+
+<!-- The Modal -->
+<div class="modal" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Product</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal Body -->
+        <div class="modal-body" id="modeledit">
+      <div class="container-fluid">
+        <div>
+            <div>Carausal Image</div>
+            <input type="text" name="" id="product_id"  class="form-control">
+        </div>
+                        <div>
+                            <div>Carausal fwaf</div>
+                            <input type="file" name="product_image" id="product_image" class="form-control" multiple>
+                        </div>
+                        <div>
+                            <div>Carausal Title</div>
+                            <input type="text" name="" class="form-control" id="product_name">
+                        </div>
+                        <div>
+                            <div>Carausal Category</div>
+                            <select name="" id="product_category" class="form-control">
+                                <%for( let i=0; i< category.length; i++ ) { %>
+                                    <option value="<%=category[i].product_category %>">
+                                        <%=category[i].product_category %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+                        <div>
+                            <div>Carausal Discription</div>
+                            <input type="text" name="" class="form-control" id="product_dis">
+                        </div>
+                        <div>
+                            <div>Product Link</div>
+                            <input type="text" name="" id="product_price" class="form-control">
+                        </div>
+                        <div>
+                            <div>Product Link</div>
+                            <input type="text" name="" id="orignal_price" class="form-control">
+                        </div>
+
+                    </div>
+        </div>
+  
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+            <button type="submit" id="edit_sbbtn" class="btn bcolor">Add Product</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+    <div class="modal fade" id="addproduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div>
+                            <div>Carausal Image</div>
+                            <input type="hidden" name="" id="product_id">
+                            <input type="file" name="product_image" id="product_image" class="form-control" multiple>
+                        </div>
+                        <div>
+                            <div>Carausal Title</div>
+                            <input type="text" name="" class="form-control" id="product_name">
+                        </div>
+                        <div>
+                            <div>Carausal Category</div>
+                            <select name="" id="product_category" class="form-control">
+                                <%for( let i=0; i< category.length; i++ ) { %>
+                                    <option value="<%=category[i].product_category %>">
+                                        <%=category[i].product_category %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+                        <div>
+                            <div>Carausal Discription</div>
+                            <input type="text" name="" class="form-control" id="product_dis">
+                        </div>
+                        <div>
+                            <div>Product Link</div>
+                            <input type="text" name="" id="product_price" class="form-control">
+                        </div>
+                        <div>
+                            <div>Product Link</div>
+                            <input type="text" name="" id="orignal_price" class="form-control">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                    <button type="submit" id="category_sbbtn" class="btn bcolor">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

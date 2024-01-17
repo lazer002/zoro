@@ -37,7 +37,7 @@ animation:alternate;}
     left: 0px;
     top: 0px;}
 
-
+.side-body{z-index: -1 !important;}
  
 .sidebar {
     height: calc(100vh - 60px);
@@ -47,8 +47,7 @@ animation:alternate;}
     transition: 1s;
     position: sticky;
     left: 0px;
-    top: 62
-    px !important;
+    top: 62px !important;
     overflow-y: hidden;
 }
     .ws{white-space: nowrap;}
