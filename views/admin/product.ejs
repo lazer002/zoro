@@ -116,8 +116,8 @@
                                                         <td>
                                                             <span><i
                                                                     class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
-                                                            <span><i class="fa fa-solid fa-eye px-2"></i></span>
-                                                            <span><i class="fa fa-solid fa-trash px-2"></i></span>
+                                                            <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
 
                                                         </td>
                                                 </tr>
@@ -181,9 +181,9 @@
 
                                                         <td>
                                                             <span><i
-                                                                    class="fa fa-solid fa-pen-to-square px-2"></i></span>
-                                                            <span><i class="fa fa-solid fa-eye px-2"></i></span>
-                                                            <span><i class="fa fa-solid fa-trash px-2"></i></span>
+                                                                    class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
 
                                                         </td>
                                                 </tr>
@@ -244,9 +244,9 @@
                                                     </td>
 
                                                     <td>
-                                                        <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
-                                                        <span><i class="fa fa-solid fa-eye px-2"></i></span>
-                                                        <span><i class="fa fa-solid fa-trash px-2"></i></span>
+                                                        <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                        <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                        <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
 
                                                     </td>
                                                 </tr>
@@ -307,9 +307,9 @@
                                                     </td>
 
                                                     <td>
-                                                        <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
-                                                        <span><i class="fa fa-solid fa-eye px-2"></i></span>
-                                                        <span><i class="fa fa-solid fa-trash px-2"></i></span>
+                                                        <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                        <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                        <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
 
                                                     </td>
                                                 </tr>
@@ -370,8 +370,8 @@
 
                                                     <td>
                                                         <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
-                                                        <span><i class="fa fa-solid fa-eye px-2"></i></span>
-                                                        <span><i class="fa fa-solid fa-trash px-2"></i></span>
+                                                        <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                        <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
 
                                                     </td>
                                                 </tr>
@@ -439,9 +439,9 @@
 
                                                         <td>
                                                             <span><i
-                                                                    class="fa fa-solid fa-pen-to-square px-2"></i></span>
-                                                            <span><i class="fa fa-solid fa-eye px-2"></i></span>
-                                                            <span><i class="fa fa-solid fa-trash px-2"></i></span>
+                                                                    class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
 
                                                         </td>
                                                 </tr>
@@ -472,414 +472,6 @@
         </div>
     </div>
 
-    <script>
-
-        $(document).on('change', '#product_category', function () {
-            var value = $('#product_category').val();
-            if (value === 'PC') {
-
-                console.log(value);
-                $('#category_sbbtn').on('click', function () {
-                    function rendom(e) {
-                        randomid = Math.floor(Math.random() * e)
-                        _id = `product_${randomid}`
-                        return _id
-                    }
-                    idd = rendom(1000)
-                    $('#product_id').val(idd);
-
-                    var product_category = $('#product_category').val();
-                    var product_id = $('#product_id').val();
-                    var product_name = $('#product_name').val();
-                    var product_dis = $('#product_dis').val();
-                    var product_price = $('#product_price').val();
-                    var orignal_price = $('#orignal_price').val();
-
-                    var formdata = new FormData();
-                    formdata.append('product_category', product_category);
-                    formdata.append('product_id', product_id);
-                    formdata.append('product_name', product_name);
-                    formdata.append('product_dis', product_dis);
-                    formdata.append('product_price', product_price);
-                    formdata.append('orignal_price', orignal_price);
-
-
-                    var product_image = $('#product_image')[0].files;
-                    for (var i = 0; i < product_image.length; i++) {
-                        formdata.append('product_image', product_image[i]);
-                    }
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/pc',
-                        data: formdata,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            alert('product added')
-                            setTimeout(function () {
-                                window.location.reload();
-                            }, 1000);
-                        },
-
-                        error: function (error) {
-
-                        }
-                    });
-                });
-            }
-            else if (value === 'CONTROLLER') {
-                console.log(value, 'value')
-                $('#category_sbbtn').on('click', function () {
-                    function rendom(e) {
-                        randomid = Math.floor(Math.random() * e)
-                        _id = `product_${randomid}`
-                        return _id
-                    }
-                    idd = rendom(1000)
-                    $('#product_id').val(idd);
-
-                    var product_category = $('#product_category').val();
-                    var product_id = $('#product_id').val();
-                    var product_name = $('#product_name').val();
-                    var product_dis = $('#product_dis').val();
-                    var product_price = $('#product_price').val();
-                    var orignal_price = $('#orignal_price').val();
-
-                    var formdata = new FormData();
-                    formdata.append('product_category', product_category);
-                    formdata.append('product_id', product_id);
-                    formdata.append('product_name', product_name);
-                    formdata.append('product_dis', product_dis);
-                    formdata.append('product_price', product_price);
-                    formdata.append('orignal_price', orignal_price);
-
-                    // Append each file to formdata
-                    var product_image = $('#product_image')[0].files;
-                    for (var i = 0; i < product_image.length; i++) {
-                        formdata.append('product_image', product_image[i]);
-                    }
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/controller',
-                        data: formdata,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            alert('product added')
-                            setTimeout(function () {
-                                window.location.reload();
-                            }, 1000);
-                        },
-
-                        error: function (error) {
-                            // Handle error
-                        }
-                    });
-                });
-            }
-
-
-            else if (value === 'HEADPHONE') {
-                console.log(value, 'value')
-                $('#category_sbbtn').on('click', function () {
-                    function rendom(e) {
-                        randomid = Math.floor(Math.random() * e)
-                        _id = `product_${randomid}`
-                        return _id
-                    }
-                    idd = rendom(1000)
-                    $('#product_id').val(idd);
-
-                    var product_category = $('#product_category').val();
-                    var product_id = $('#product_id').val();
-                    var product_name = $('#product_name').val();
-                    var product_dis = $('#product_dis').val();
-                    var product_price = $('#product_price').val();
-                    var orignal_price = $('#orignal_price').val();
-
-                    var formdata = new FormData();
-                    formdata.append('product_category', product_category);
-                    formdata.append('product_id', product_id);
-                    formdata.append('product_name', product_name);
-                    formdata.append('product_dis', product_dis);
-                    formdata.append('product_price', product_price);
-                    formdata.append('orignal_price', orignal_price);
-
-                    // Append each file to formdata
-                    var product_image = $('#product_image')[0].files;
-                    for (var i = 0; i < product_image.length; i++) {
-                        formdata.append('product_image', product_image[i]);
-                    }
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/HEADPHONE',
-                        data: formdata,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            alert('product added')
-                            setTimeout(function () {
-                                window.location.reload();
-                            }, 1000);
-                        },
-
-                        error: function (error) {
-                            // Handle error
-                        }
-                    });
-                });
-            }
-
-
-
-            else if (value === 'KEYBOARD') {
-                console.log(value, 'value')
-                $('#category_sbbtn').on('click', function () {
-                    function rendom(e) {
-                        randomid = Math.floor(Math.random() * e)
-                        _id = `product_${randomid}`
-                        return _id
-                    }
-                    idd = rendom(1000)
-                    $('#product_id').val(idd);
-
-                    var product_category = $('#product_category').val();
-                    var product_id = $('#product_id').val();
-                    var product_name = $('#product_name').val();
-                    var product_dis = $('#product_dis').val();
-                    var product_price = $('#product_price').val();
-                    var orignal_price = $('#orignal_price').val();
-
-                    var formdata = new FormData();
-                    formdata.append('product_category', product_category);
-                    formdata.append('product_id', product_id);
-                    formdata.append('product_name', product_name);
-                    formdata.append('product_dis', product_dis);
-                    formdata.append('product_price', product_price);
-                    formdata.append('orignal_price', orignal_price);
-
-                    // Append each file to formdata
-                    var product_image = $('#product_image')[0].files;
-                    for (var i = 0; i < product_image.length; i++) {
-                        formdata.append('product_image', product_image[i]);
-                    }
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/KEYBOARD',
-                        data: formdata,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            alert('product added')
-                            setTimeout(function () {
-                                window.location.reload();
-                            }, 1000);
-                        },
-
-                        error: function (error) {
-                            // Handle error
-                        }
-                    });
-                });
-            }
-
-
-
-            else if (value === 'LAPTOP') {
-                console.log(value, 'value')
-                $('#category_sbbtn').on('click', function () {
-                    function rendom(e) {
-                        randomid = Math.floor(Math.random() * e)
-                        _id = `product_${randomid}`
-                        return _id
-                    }
-                    idd = rendom(1000)
-                    $('#product_id').val(idd);
-
-                    var product_category = $('#product_category').val();
-                    var product_id = $('#product_id').val();
-                    var product_name = $('#product_name').val();
-                    var product_dis = $('#product_dis').val();
-                    var product_price = $('#product_price').val();
-                    var orignal_price = $('#orignal_price').val();
-
-                    var formdata = new FormData();
-                    formdata.append('product_category', product_category);
-                    formdata.append('product_id', product_id);
-                    formdata.append('product_name', product_name);
-                    formdata.append('product_dis', product_dis);
-                    formdata.append('product_price', product_price);
-                    formdata.append('orignal_price', orignal_price);
-
-                    // Append each file to formdata
-                    var product_image = $('#product_image')[0].files;
-                    for (var i = 0; i < product_image.length; i++) {
-                        formdata.append('product_image', product_image[i]);
-                    }
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/LAPTOP',
-                        data: formdata,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            alert('product added')
-                            setTimeout(function () {
-                                window.location.reload();
-                            }, 1000);
-                        },
-
-                        error: function (error) {
-                            // Handle error
-                        }
-                    });
-                });
-            }
-
-
-            else if (value === 'MOUSE') {
-                console.log(value, 'value')
-                $('#category_sbbtn').on('click', function () {
-                    function rendom(e) {
-                        randomid = Math.floor(Math.random() * e)
-                        _id = `product_${randomid}`
-                        return _id
-                    }
-                    idd = rendom(1000)
-                    $('#product_id').val(idd);
-
-                    var product_category = $('#product_category').val();
-                    var product_id = $('#product_id').val();
-                    var product_name = $('#product_name').val();
-                    var product_dis = $('#product_dis').val();
-                    var product_price = $('#product_price').val();
-                    var orignal_price = $('#orignal_price').val();
-
-                    var formdata = new FormData();
-                    formdata.append('product_category', product_category);
-                    formdata.append('product_id', product_id);
-                    formdata.append('product_name', product_name);
-                    formdata.append('product_dis', product_dis);
-                    formdata.append('product_price', product_price);
-                    formdata.append('orignal_price', orignal_price);
-
-                    // Append each file to formdata
-                    var product_image = $('#product_image')[0].files;
-                    for (var i = 0; i < product_image.length; i++) {
-                        formdata.append('product_image', product_image[i]);
-                    }
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/MOUSE',
-                        data: formdata,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            alert('product added')
-                            setTimeout(function () {
-                                window.location.reload();
-                            }, 1000);
-                        },
-
-                        error: function (error) {
-                            // Handle error
-                        }
-                    });
-                });
-            }
-        });
-
-    </script>
-
-
-
-
-
-    <script>
- $(document).ready(function () {
-        $(document).on('click', '#edit_but', function () {
-           
-                    var trow = $(this).closest('tr')
-                    var tdata = trow.find('td')
-                 
-                   const product_id = tdata[1].innerText
-                   const product_category = tdata[4].innerText
-             
-                            $.ajax({
-                                type: 'POST',
-                                url: '/edit_product',
-                                data: {
-                                    product_id:product_id,
-                                    product_category:product_category
-                                },
-                                success: function (response) {
-                                 $('#product_id').val(response.product[0].product_id)
-                                 $('#product_name').val(response.product[0].product_name)
-                                 $('#product_category').val(response.product[0].product_category)
-                                 $('#product_dis').val(response.product[0].product_dis)
-                                 $('#product_price').val(response.product[0].product_price)
-                                 $('#orignal_price').val(response.product[0].orignal_price)
-
-                                   $('#editModal').modal('show');
-                                }
-        
-        })})})
-        
-            </script>
-
-<script>
-     $(document).on('click', '#edit_sbbtn', function () {
-
-        
-                    var product_category = $('#product_category').val();
-                    var product_id = $('#product_id').val();
-                    var product_name = $('#product_name').val();
-                    var product_dis = $('#product_dis').val();
-                    var product_price = $('#product_price').val();
-                    var orignal_price = $('#orignal_price').val();
-
-                    var formdata = new FormData();
-                    formdata.append('product_category', product_category);
-                    formdata.append('product_id', product_id);
-                    formdata.append('product_name', product_name);
-                    formdata.append('product_dis', product_dis);
-                    formdata.append('product_price', product_price);
-                    formdata.append('orignal_price', orignal_price);
-
-
-                    var product_image = $('#product_image')[0].files;
-                    for (var i = 0; i < product_image.length; i++) {
-                        formdata.append('product_image', product_image[i]);
-                    }
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/pc',
-                        data: formdata,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            alert('product added')
-                            setTimeout(function () {
-                                window.location.reload();
-                            }, 1000);
-                        },
-
-                        error: function (error) {
-
-                        }
-                    });
-                });
-            
-</script>
-
-
 
 
 
@@ -899,37 +491,33 @@
       <div class="container-fluid">
         <div>
             <div>Carausal Image</div>
-            <input type="text" name="" id="product_id"  class="form-control">
+            <input type="text" name="" id="edit_id"  class="form-control product_id" disabled readonly >
         </div>
                         <div>
                             <div>Carausal fwaf</div>
-                            <input type="file" name="product_image" id="product_image" class="form-control" multiple>
+                            <input type="text" name="product_image" id="" class="form-control product_image" required multiple>
+                            <input type="file" name="product_image" id="product_image_edit" class="d-none form-control" required multiple>
                         </div>
                         <div>
                             <div>Carausal Title</div>
-                            <input type="text" name="" class="form-control" id="product_name">
+                            <input type="text" name="" class="form-control product_name" id="edit_name">
                         </div>
                         <div>
                             <div>Carausal Category</div>
-                            <select name="" id="product_category" class="form-control">
-                                <%for( let i=0; i< category.length; i++ ) { %>
-                                    <option value="<%=category[i].product_category %>">
-                                        <%=category[i].product_category %>
-                                    </option>
-                                    <% } %>
-                            </select>
+                            <input name="" id="edit_category" class="form-control product_category" readonly disabled>
+                       
                         </div>
                         <div>
                             <div>Carausal Discription</div>
-                            <input type="text" name="" class="form-control" id="product_dis">
+                            <input type="text" name="" class="form-control product_dis" id="edit_dis">
                         </div>
                         <div>
                             <div>Product Link</div>
-                            <input type="text" name="" id="product_price" class="form-control">
+                            <input type="text" name="" id="edit_price" class="form-control product_price">
                         </div>
                         <div>
                             <div>Product Link</div>
-                            <input type="text" name="" id="orignal_price" class="form-control">
+                            <input type="text" name="" id="edit_price" class="form-control orignal_price">
                         </div>
 
                     </div>
@@ -966,7 +554,7 @@
                         <div>
                             <div>Carausal Image</div>
                             <input type="hidden" name="" id="product_id">
-                            <input type="file" name="product_image" id="product_image" class="form-control" multiple>
+                            <input type="file" name="product_image" id="product_image" class="form-control" required multiple>
                         </div>
                         <div>
                             <div>Carausal Title</div>
@@ -1009,7 +597,86 @@
 
 
   
+    <div class="modal" id="viewmodel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Product</h4>
+              <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal Body -->
+            <div class="modal-body" >
+          <div class="container-fluid">
 
+
+            <div class="row ">
+                <div class="col-md-5 py-5 1">
+                  <div id="carouselExampleSlidesOnly" class=" carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="show_image">
+                      </div>
+          
+          
+                    </div>
+                  </div>
+                </div>
+          
+                <!-- product description -->
+             
+                
+                <div class="col-md-7 text-light pt-5 ">
+                  <h2 class="fw-bold fcolor lol show_name">
+                   
+                  </h2>
+           
+          
+                  <i class=" l27 text-warning">BY ZORO.PC</i>
+                  <h2 class="fw-bold show_price" >₹
+                  </h2>
+                  <p class="text-danger l26">(27% off )</p>
+                  <p class="fw-bold l27">Save ₹1,708 <del class="orignal_price"> MSRP ₹6,299 </del>(Inc of all taxes)</p>
+                  <!-- <img src="product/revv.png" alt=""  class="l29"> -->
+                  <div class="p-0 show_dis">
+                    <p>Product Model: 150-Matel-F490-BLACK <br><span>Availability: <i class="text-success">In Stock</i> </span>
+                    </p>
+                  </div>
+          
+                  <div class="my-5 l29">Credit Card EMI Plans start from ₹410 <a href=""
+                      class="text-decoration-none text-success">
+                      View More ></a></div>
+          
+                </div>
+            
+          
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            
+          </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+               
+            </div>
+      
+          </div>
+        </div>
+      </div>
+
+ 
 
 
 

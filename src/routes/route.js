@@ -74,7 +74,7 @@ router.get('/admin', async (req, res) => {
 
 // DASHBOARD BANNER
 router.get('/dashboard_banner', async (req, res) => {
-   query = `select * from banner limit 4`
+   query = `select * from banner `
     connection.query(query, (err, banner) => {
       if (err) throw err;
     res.render('admin/banner',{banner:banner})
@@ -93,12 +93,12 @@ const bnr_upload = multer({ storage })
 router.post('/dash_banner', bnr_upload.single('main_banner'), async (req, res) => {
 
    const main_banner = req.file.filename;
-   const { banner_title, banner_dis, banner_link } = req.body
-   let query = `insert into banner(main_banner,banner_title,banner_dis,banner_link) values('${main_banner}','${banner_title}','${banner_dis}','${banner_link}')`
+   const {banner_id ,banner_title, banner_dis, banner_link } = req.body
+   let query = `insert into banner(main_banner,banner_id,banner_title,banner_dis,banner_link) values('${main_banner}','${banner_id}','${banner_title}','${banner_dis}','${banner_link}')`
    connection.query(query, (err, results) => {
       if (err) throw err;
-
-      res.redirect('/dash_banner')
+res.send({msg:'ok'})
+      
    })
 })
 
@@ -233,7 +233,7 @@ router.get('/product', async (req, res) => {
                    if (err) throw err;
                    var pro = []
                    pro.push({controller:controller,headphone:headphone,keyboard:keyboard,laptop:laptop,mouse:mouse,pc:pc})
-                 console.log(pro[0].pc); 
+                
       res.render('admin/product', { category: results,pro:pro })
    })})})})})})})
 })
@@ -272,7 +272,7 @@ router.post('/pc', product_upload.fields([{ name: 'product_image' }]), async (re
   
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
-   console.log(product_image)
+  
    const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
    let query = `insert into pc(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
    connection.query(query, (err, results) => {
@@ -302,7 +302,7 @@ const HEADPHONE_upload = multer({ storage: storage4 })
 router.post('/HEADPHONE', HEADPHONE_upload.fields([{ name: 'product_image' }]), async (req, res) => {
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
-   console.log(product_image)
+
    const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
    let query = `insert into headphone(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
    connection.query(query, (err, results) => {
@@ -329,7 +329,7 @@ const KEYBOARD_upload = multer({ storage: storage5 })
 router.post('/KEYBOARD', KEYBOARD_upload.fields([{ name: 'product_image' }]), async (req, res) => {
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
-   console.log(product_image)
+  
    const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
    let query = `insert into KEYBOARD(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
    connection.query(query, (err, results) => {
@@ -353,7 +353,7 @@ const LAPTOP_upload = multer({ storage: storage6 })
 router.post('/LAPTOP', LAPTOP_upload.fields([{ name: 'product_image' }]), async (req, res) => {
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
-   console.log(product_image)
+  
    const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
    let query = `insert into LAPTOP(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
    connection.query(query, (err, results) => {
@@ -377,7 +377,7 @@ const MOUSE_upload = multer({ storage: storage7 })
 router.post('/MOUSE', MOUSE_upload.fields([{ name: 'product_image' }]), async (req, res) => {
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
-   console.log(product_image)
+  
    const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
    let query = `insert into MOUSE(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
    connection.query(query, (err, results) => {
@@ -405,7 +405,7 @@ const contro_upload = multer({ storage: storage3 })
 router.post('/controller', contro_upload.fields([{ name: 'product_image' }]), async (req, res) => {
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
-   console.log(product_image)
+  
    const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
    let query = `insert into controller(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
    connection.query(query, (err, results) => {
@@ -443,7 +443,7 @@ const storage_dash = multer.diskStorage({
 const bnnr_upload = multer({ storage: storage_dash })
 
 router.post('/product_bann', bnnr_upload.single('product_banner'), async (req, res) => {
-   console.log(req.body);
+  
    const product_banner = req.file.filename;
    const { product_title, product_category, product_link } = req.body
    let query = `insert into product_banner(product_banner,product_title,product_category,product_link) values('${product_banner}','${product_title}','${product_category}','${product_link}')`
@@ -675,11 +675,11 @@ router.post('/edit_product', async (req, res) => {
       })
       
       const product_upload2 = multer({ storage: storage22 })
-      router.post('/pc', product_upload2.fields([{ name: 'product_image' }]), async (req, res) => {
-        
+      router.post('/pc_update', product_upload2.fields([{ name: 'product_image' }]), async (req, res) => {
+   
          const ppicFiles = req.files['product_image'];
          const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
-         console.log(product_image)
+
          const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
          let query = `
          UPDATE ${product_category} 
@@ -700,6 +700,85 @@ router.post('/edit_product', async (req, res) => {
       })
       
 
+
+
+      router.post('/delete_pro', async (req, res) => {
+
+     
+         const { product_id, product_category } = req.body
+         let category = `delete from ${product_category} where product_id = '${product_id}' and product_category = '${product_category}' `
+         connection.query(category, (err, results) => {
+          
+            if (err) throw err;
+            res.send({ product: results })
+   
+         })})
+
+
+         router.post('/show_product', async (req, res) => {
+
+     console.log(req.body)
+            const { product_id, product_category } = req.body
+            let category = `select * from ${product_category} where product_id = '${product_id}'`
+            connection.query(category, (err, results) => {
+             
+               if (err) throw err;
+               res.json({ product: results })
+           
+      
+            })})
+
+
+            router.post('/banner_edit', async (req, res) => {
+           
+               const { product_id } = req.body 
+               query = `select * from banner where banner_id = '${product_id}'`
+           
+               connection.query(query, (err, banner) => {
+                  if (err) throw err;
+                 
+                res.json({banner:banner})
+            })})
+
+
+
+
+            const storage33 = multer.diskStorage({
+               destination: function (req, file, cb) {
+                 cb(null, 'public/images/category/banner');
+               },
+               filename: function (req, file, cb) {
+                 cb(null, Date.now() + "_" + file.originalname);
+               },
+             });
+             
+             const bnr_uploadb = multer({ storage: storage33 }); // Use 'storage' instead of 'storageb'
+             
+             router.post('/banner_update', bnr_uploadb.single('main_banner'), async (req, res) => {
+               console.log(req.body, 'fwafwa');
+               const main_banner = req.file.filename; // Use 'filename' instead of 'originalname'
+               const { banner_id, banner_title, banner_dis, banner_link } = req.body;
+             
+               let query = `update banner set main_banner = '${main_banner}', banner_title = '${banner_title}', banner_dis= '${banner_dis}', banner_link = '${banner_link}' where banner_id = '${banner_id}'`;
+             
+               connection.query(query, (err, results) => {
+                 if (err) throw err;
+             
+                 res.json({msg:'ok'});
+               });
+             });
+             
+             router.post('/delete_banner', async (req, res) => {
+
+     
+               const { banner_id } = req.body
+               let category = `delete from banner where banner_id = '${banner_id}'  `
+               connection.query(category, (err, results) => {
+                
+                  if (err) throw err;
+                  res.send({msg:'ok'})
+         
+               })})
 
 
 module.exports = router;

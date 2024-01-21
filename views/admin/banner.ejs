@@ -47,15 +47,19 @@
                             <%for(i=0;i< banner.length;i++)    {  %>
     
                             <tr class="text-center">
-                                <td><%= i +1%></td>
+                                <td><%= i +1%>
+                               </td>
+                               <input type="hidden" name="" id="banner_id" value="<%=banner[i].banner_id %>">
+                            
                                 <td><%=banner[i].banner_title %></td>
                                 <td class=""> <video src="/static/images/category/banner/<%=banner[i].main_banner %>" class="w200" autoplay muted loop></video>  </td>
                                 <td class="w-25"><%=banner[i].banner_dis %></td>
                                 <td><%=banner[i].banner_link %>  </td>
+                               
                                 <td>
-                                    <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                    <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_banner"></i></span>
                                     <span><i class="fa fa-solid fa-eye px-2"></i></span>
-                                    <span><i class="fa fa-solid fa-trash px-2"></i></span>
+                                    <span><i class="fa fa-solid fa-trash px-2" id="delete_bunner"></i></span>
 
                                 </td>
                             </tr>
@@ -152,16 +156,26 @@
 
         $(document).ready(function () {
             $('#sbbtn').on('click', function () {
+                function rendom(e) {
+                randomid = Math.floor(Math.random() * e)
+                _id = `banner_${randomid}`
+                return _id
+            }
+            idd = rendom(1000)
+            alert(idd)
+            $('#banner_id').val(idd);
                 var main_banner = $('#main_banner')[0].files[0];
+                var banner_id = $('#banner_id').val();
                 var banner_title = $('#banner_title').val();
                 var banner_dis = $('#banner_dis').val();
                 var banner_link = $('#banner_link').val();
                 var formdata = new FormData()
                 formdata.append('main_banner',main_banner)
+                formdata.append('banner_id',banner_id)
                 formdata.append('banner_title',banner_title)
                 formdata.append('banner_dis',banner_dis)
                 formdata.append('banner_link',banner_link)
-
+console.log(formdata);
                 $.ajax({
                     type: 'post',
                     url: '/dash_banner',
@@ -169,7 +183,10 @@
                     contentType:false,
                     processData:false,
                     success: function (response) {
-                        console.log(response, 'ajax data')
+                        alert('banner added')
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
                     }
 
                 })
@@ -185,14 +202,163 @@
 
 
 
+<script>
+    
+$(document).ready(function () {
+$(document).on('click', '#edit_banner', function () {
+    var trow = $(this).closest('tr')
+    var tdata = trow.find('input')
+
+           const product_id = tdata.val()
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/banner_edit',
+                        data: {
+                            product_id:product_id
+                        
+                        },
+                        success: function (response) {
+                       console.log(response,'response');
+                         $('#edit_id').val(response.banner[0].banner_id)
+                         $('#edit_ban').val(response.banner[0].main_banner)
+                         $('#edit_title').val(response.banner[0].banner_title)
+                         $('#edit_dis').val(response.banner[0].banner_dis)
+                         $('#edit_link').val(response.banner[0].banner_link)
+                    
+                           $('#editbanner').modal('show');
+                        }
+
+})})})
+
+
+    $(document).ready(function () {
+$(document).on('click', '#edit_ban',  function(){
+let  editb = $('#banner_image_edit')
+editb.click()
+editb.text(editb.val())
+})
+})
+$(document).ready(function () {
+$(document).on('click','#edit_bnnnn', function () {
+            var banner_id = $('#edit_id').val();
+            var main_banner = $('#banner_image_edit')[0].files[0]; 
+            var banner_title = $('#edit_title').val();
+            var banner_dis = $('#edit_dis').val();
+            var banner_link = $('#edit_link').val();
+            var formdata = new FormData();
+        
+            formdata.append('banner_id', banner_id);
+            formdata.append('main_banner', main_banner)
+            formdata.append('banner_title', banner_title);
+            formdata.append('banner_dis', banner_dis);
+            formdata.append('banner_link', banner_link);
+            $.ajax({
+                type: 'POST',
+                url: '/banner_update',
+                data: formdata,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    alert('product added')
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                },
+
+                error: function (error) {
+
+                }
+            });
+        });
+    })
+
+
+
+
+    $(document).ready(function () {
+            $(document).on('click', '#delete_bunner', function () {
+               
+                        var trow = $(this).closest('tr')
+                        var tdata = trow.find('input')
+                     
+                        const banner_id = tdata.val()
+                        console.log(banner_id)
+                 
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/delete_banner',
+                                    data: {
+                                        banner_id:banner_id
+                                    },
+                                    success: function (response) {
+                                      alert("delete")
+                                      setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                    }
+            
+            })})})
+
+
+
+</script>
 
 
 
 
 
 
+<div class="modal" id="editbanner">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Product</h4>
+          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal Body -->
+        <div class="modal-body" id="editbanner">
+      <div class="container-fluid">
+        <div>
+            <div>Carausal Image</div>
+            <input type="text"  id="edit_id"  class="form-control" disabled readonly >
+        </div>
+                        <div>
+                            <div>Carausal fwaf</div>
+                            <input type="text"  id="edit_ban" class="form-control  aaa" required >
+                            <input type="file" id="banner_image_edit" class="d-none form-control" required >
+                        </div>
+                        <div>
+                            <div>Carausal Title</div>
+                            <input type="text"  class="form-control" id="edit_title">
+                        </div>
+                    
+                        <div>
+                            <div>Carausal Discription</div>
+                            <textarea type="text"  class="form-control " id="edit_dis"></textarea>
+                        </div>
+                        <div>
+                            <div>Product Link</div>
+                            <input type="text"  id="edit_link" class="form-control ">
+                        </div>
+                   
 
-
+                    </div>
+        </div>
+  
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+            <button type="submit" id="edit_bnnnn" class="btn bcolor">Add Product</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
 
 
 
