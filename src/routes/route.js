@@ -185,11 +185,11 @@ const dash_banner = multer({ storage: storag });
 router.post('/carausal_banner', dash_banner.single('carausal_image'), async (req, res) => {
 
    const carausal_image = req.file.filename;
-   const { carausal_title, carausal_category, carausal_dis, carausal_link } = req.body
-   let query = `insert into carausal_banner(carausal_image,carausal_title,carausal_category,carausal_dis,carausal_link) values('${carausal_image}','${carausal_title}','${carausal_category}','${carausal_dis}','${carausal_link}')`
+   const { carausal_title, carausal_category, carausal_dis, carausal_link,carausal_id } = req.body
+   let query = `insert into carausal_banner(carausal_image,carausal_title,carausal_category,carausal_dis,carausal_link,carausal_id) values('${carausal_image}','${carausal_title}','${carausal_category}','${carausal_dis}','${carausal_link}','${carausal_id}')`
    await connection.query(query, (err, results) => {
       if (err) throw err;
-      res.redirect('/carausal_banner')
+      res.send({msg:'ok'})
    })
 })
 
@@ -445,12 +445,12 @@ const bnnr_upload = multer({ storage: storage_dash })
 router.post('/product_bann', bnnr_upload.single('product_banner'), async (req, res) => {
   
    const product_banner = req.file.filename;
-   const { product_title, product_category, product_link } = req.body
-   let query = `insert into product_banner(product_banner,product_title,product_category,product_link) values('${product_banner}','${product_title}','${product_category}','${product_link}')`
+   const { product_title, product_category, product_link,banner_id } = req.body
+   let query = `insert into product_banner(product_banner,product_title,product_category,product_link,banner_id) values('${product_banner}','${product_title}','${product_category}','${product_link}','${banner_id}')`
    connection.query(query, (err, results) => {
       if (err) throw err;
 
-      res.redirect('/product_bann')
+      res.send({msg:'ok'})
    })
 })
 
@@ -781,4 +781,122 @@ router.post('/edit_product', async (req, res) => {
                })})
 
 
+
+
+
+               router.post('/edit_banner', async (req, res) => {
+
+     
+                  const { product_id } = req.body
+                  let category = `select * from product_banner where banner_id = '${product_id}'`
+                  connection.query(category, (err, results) => {
+                   
+                     if (err) throw err;
+                     res.send({ product: results })
+            
+                  })})
+
+
+
+
+                  const storage_a = multer.diskStorage({
+                     destination: function (req, file, cb) {
+                        cb(null, 'public/images/category/productbanner')
+                     },
+                     filename: function (req, file, cb) {
+                        cb(null, Date.now() + "_" + file.originalname)
+                     }
+                  })
+                  const bnnr_a = multer({ storage: storage_a })
+                  
+                  router.post('/update_bnnn', bnnr_a.single('product_banner'), async (req, res) => {
+                    console.log(req.body);
+                     const product_banner = req.file.filename;
+                     const { product_title, product_category, product_link,banner_id } = req.body
+                     let query = `Update product_banner set product_banner ='${product_banner}',product_title= '${product_title}',product_category= '${product_category}',product_link='${product_link}' where banner_id = '${banner_id}'`
+                     connection.query(query, (err, results) => {
+                        if (err) throw err;
+                  
+                        res.send({msg:'ok'})
+                     })
+                  })
+                  
+                  router.post('/delete_pbanner', async (req, res) => {
+
+     
+                     const { banner_id } = req.body
+                     let category = `delete from product_banner where banner_id = '${banner_id}'  `
+                     connection.query(category, (err, results) => {
+                      
+                        if (err) throw err;
+                        res.send({msg:'ok'})
+               
+                     })})
+      
+
+                     router.post('/edit_carausal', async (req, res) => {
+
+    
+                        const { carausal_id } = req.body
+                        let category = `select * from carausal_banner where carausal_id = '${carausal_id}'`
+                        connection.query(category, (err, results) => {
+                         
+                           if (err) throw err;
+                           res.send({ product: results })
+                  
+                        })})
+                        
+
+                        const storagf = multer.diskStorage({
+                           destination: function (req, file, cb) {
+                              cb(null, 'public/images/category/carousel')
+                           },
+                           filename: function (req, file, cb) {
+                              cb(null, Date.now() + "_" + file.originalname)
+                           }
+                        })
+                        const dash_b = multer({ storage: storagf });
+                        
+                        router.post('/update_brrrrrr', dash_b.single('carausal_image'), async (req, res) => {
+                        
+                           const carausal_image = req.file.filename;
+                           const { carausal_title, carausal_category, carausal_dis, carausal_link,carausal_id } = req.body
+                           let query = `update carausal_banner set carausal_image ='${carausal_image}',carausal_title='${carausal_title}',carausal_category='${carausal_category}',carausal_dis='${carausal_dis}',carausal_link='${carausal_link}'where carausal_id='${carausal_id}' `
+                           await connection.query(query, (err, results) => {
+                              if (err) throw err;
+                              res.send({msg:'ok'})
+                           })
+                        })
+                        
+       
+                        router.post('/delete_carausal', async (req, res) => {
+
+     
+                           const { carausal_id } = req.body
+                           let category = `delete from carausal_banner where carausal_id = '${carausal_id}'  `
+                           connection.query(category, (err, results) => {
+                            
+                              if (err) throw err;
+                              res.send({msg:'ok'})
+                     
+                           })})
+
+
+                           
+                        router.post('/delete_cart', async (req, res) => {
+                           if (req.session.user) {
+console.log(req.session.user);
+     
+                           const { product_id } = req.body
+                           let category = `delete from cart where product_id = '${product_id}' and user_email = '${req.session.user[0].user_email}' `
+                           connection.query(category, (err, results) => {
+                            
+                              if (err) throw err;
+                              res.send({msg:'ok'})
+                     
+                           })
+                           }else{
+                              res.redirect('/login')
+                           }
+                        })
 module.exports = router;

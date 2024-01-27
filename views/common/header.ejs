@@ -139,7 +139,7 @@
 
                 </div>
                   <div class="col-2 ">
-                  <button class=" btn">
+                  <button class="dddd">
                     <img src="/static/images/icon/delete.png" alt="">
                   </button>
                 </div> 
@@ -187,7 +187,33 @@ alert('quantity cant be null')
           
           
           
-          })})
+          })
+                    
+          $(document).on('click','.dddd',function () {          
+          
+           
+
+var product_id = $(this).closest('button').parent().parent('div').find('#product_id').val()
+console.log(product_id)
+$.ajax({
+    type: 'POST',
+    url: '/delete_cart',
+    data: {
+      product_id: product_id
+
+    },
+    success: function (response) {
+        alert("delete")
+        setTimeout(function () {
+            window.location.reload();
+        }, 1000);
+    }
+
+
+})
+
+          })
+          })
 </script>
 
 

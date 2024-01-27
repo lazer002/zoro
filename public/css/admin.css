@@ -24,7 +24,7 @@ transition: 2s;
 transform-origin: bottom ;
 animation:alternate;}
 .pro{
-    padding: 13px;
+    padding:10px 13px;
     margin-bottom: 2px;
     margin-left: 8px;
     border-radius: 50%;
@@ -244,3 +244,6 @@ a {
     border-radius: 50%;
     object-fit: contain;
 }
+.dash-icon{padding: 10px 13px;
+background-color: #02be0b31;
+border-radius: 50%;}

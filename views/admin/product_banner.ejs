@@ -44,14 +44,16 @@
     
                             <tr class="text-center">
                                 <td><%= i +1%></td>
+                                <input type="hidden" name="" id="banner_id" value="<%=banner[i].banner_id %>">
+
                                 <td><%=banner[i].product_title %></td>
                                 <td> <img src="/static/images/category/productbanner/<%=banner[i].product_banner %> " alt="" class="w200">  </td>
                                 <td><%=banner[i].product_category %></td>
                                 <td><%=banner[i].product_link %></td>
                                 <td>
-                                    <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                    <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_buttt"></i></span>
                                     <span><i class="fa fa-solid fa-eye px-2"></i></span>
-                                    <span><i class="fa fa-solid fa-trash px-2"></i></span>
+                                    <span><i class="fa fa-solid fa-trash px-2" id="delete_banner"></i></span>
 
                                 </td>
                             </tr>
@@ -124,7 +126,56 @@
 
 
 
+<div class="modal" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Product</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal Body -->
+        <div class="modal-body" id="modeledit">
+      <div class="container-fluid">
+        <div>
+            <div>Banner ID</div>
+            <input type="text" name="" id="edit_id"  class="form-control" disabled readonly >
+        </div>
+                        <div>
+                            <div>Banner Image</div>
+                            <input type="text" name="product_image" id="edit_banner" class="form-control " required >
+                            <input type="file" name="product_image" id="product_image_edit" class="d-none form-control" required >
+                        </div>
+                        <div>
+                            <div>Banner Title</div>
+                            <input type="text" name="" class="form-control " id="edit_title">
+                        </div>
+                        <div>
+                            <div>Banner Category</div>
+                            <input name="" id="edit_category" class="form-control" readonly disabled>
+                       
+                        </div>
+                        <div>
+                            <div>Banner Product Link</div>
+                            <input type="text" name="" class="form-control" id="edit_link">
+                        </div>
+              
 
+                    </div>
+        </div>
+  
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+            <button type="submit" id="edit_bnnnnnn" class="btn bcolor">Add Product</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
 
 
 
@@ -146,12 +197,22 @@
 
         $(document).ready(function () {
             $('#sbbtn').on('click', function () {
+                function rendom(e) {
+                randomid = Math.floor(Math.random() * e)
+                _id = `banner_${randomid}`
+                return _id
+            }
+            idd = rendom(1000)
+            alert(idd)
+            $('#banner_id').val(idd);
                 var product_banner = $('#product_banner')[0].files[0];
-                var product_title = $('#product_title').val();
+                var banner_id = $('#banner_id').val();               
+                 var product_title = $('#product_title').val();
                 var product_category = $('#product_category').val();
                 var product_link = $('#product_link').val();
                 var formdata = new FormData()
                 formdata.append('product_banner',product_banner)
+                formdata.append('banner_id',banner_id)
                 formdata.append('product_title',product_title)
                 formdata.append('product_category',product_category)
                 formdata.append('product_link',product_link)
@@ -164,8 +225,10 @@
                     contentType:false,
                     processData:false,
                     success: function (response) {
-                        console.log(response, 'ajax data')
+                    if(response.msg == 'ok'){
+
                         window.location.reload()
+                    }
                     },error:function(err){
 
                         console.log(err);
@@ -175,6 +238,118 @@
 
 
         })
+
+
+
+
+
+
+
+
+        $(document).ready(function () {
+$(document).on('click', '#edit_buttt', function () {
+   
+            var trow = $(this).closest('tr')
+            var tdata = trow.find('input')
+         
+           const product_id = tdata.val()
+         
+    
+                    $.ajax({
+                        type: 'POST',
+                        url: '/edit_banner',
+                        data: {
+                            product_id:product_id
+                           
+                        },
+                        success: function (response) {
+                          
+                         $('#edit_id').val(response.product[0].banner_id)
+                         $('#edit_category').val(response.product[0].product_category)
+                         $('#edit_banner').val(response.product[0].product_banner)
+                         $('#edit_title').val(response.product[0].product_title)
+                         $('#edit_link').val(response.product[0].product_link)
+                           $('#editModal').modal('show');
+                        }
+
+})})})
+
+
+
+
+
+$(document).ready(function () {
+$(document).on('click', '#edit_banner',  function(){
+let  editb = $('#product_image_edit')
+editb.click()
+editb.text(editb.val())
+})
+})
+
+$(document).on('click', '#edit_bnnnnnn', function () {
+
+
+                var product_banner = $('#product_image_edit')[0].files[0];
+                var banner_id = $('#edit_id').val();               
+                 var product_title = $('#edit_title').val();
+                var product_category = $('#edit_category').val();
+                var product_link = $('#edit_link').val();
+                var formdata = new FormData()
+                formdata.append('product_banner',product_banner)
+                formdata.append('banner_id',banner_id)
+                formdata.append('product_title',product_title)
+                formdata.append('product_category',product_category)
+                formdata.append('product_link',product_link)
+
+            $.ajax({
+                type: 'POST',
+                url: '/update_bnnn',
+                data: formdata,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    alert('product added')
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                },
+
+                error: function (error) {
+
+                }
+            });
+        });
+
+
+
+
+        $(document).ready(function () {
+            $(document).on('click', '#delete_banner', function () {
+               
+                        var trow = $(this).closest('tr')
+                        var tdata = trow.find('input')
+                     
+                       const banner_id = tdata.val()
+                    
+                 
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/delete_pbanner',
+                                    data: {
+                                        banner_id:banner_id
+                                       
+                                    },
+                                    success: function (response) {
+                                      alert("delete")
+                                      setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                    }
+            
+            })})})
+            
+
+
 </script>
 
 
