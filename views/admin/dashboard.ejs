@@ -14,71 +14,78 @@
 
 
 
-  
+
 
     <%- include('common/header.ejs') %>
-    <div class="container-fluid p-0">
-        
-        <div class="d-flex">
-            <div>
+        <div class="container-fluid p-0 ">
 
-                <%- include('common/sidebar.ejs') %>
-            </div>
-                <div class="w-100 m-4 side-body">
-                    <div class="container-fluid">
+            <div class="d-flex">
+                <div>
+
+                    <%- include('common/sidebar.ejs') %>
+                </div>
+                <div class="w-100 p-2 side-body bbb">
+                    <div class="container-fluid ">
                         <div class="row">
-                            <div class="col-sm-3 mb-3 mb-sm-0">
-                                <div class="card">
+                            <div class="col-sm-3 mb-3 mb-sm-0 p-2">
+                                <div class="card card_bg">
                                     <div class="card-body d-flex ">
                                         <div>
-                                            <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span>
+                                            <h4 class="card-title">28,545<span class="text-success h6 ms-2"><i
+                                                        class="fa-solid fa-arrow-up text"></i> 11%</span>
                                             </h4>
-                                            <p class="card-text">Potential growth</p>
+                                            <p class="card-text">Total Orders</p>
                                         </div>
                                         <div class="ms-auto icon_bg">
-                                            <i class="fa fa-solid fa-gauge text-light fs-3"></i>
+                                            <i class="fa-solid fa-cart-shopping text-light fs-3"></i>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3 mb-3 mb-sm-0">
-                                <div class="card">
+                            <div class="col-sm-3 mb-3 mb-sm-0 p-2">
+                                <div class="card card_bg">
                                     <div class="card-body d-flex ">
                                         <div>
-                                            <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span>
+                                            <h4 class="card-title">25,079<span class="text-success h6 ms-2"><i
+                                                        class="fa-solid fa-arrow-up text"></i> 33%</span>
                                             </h4>
-                                            <p class="card-text">Potential growth</p>
+                                            <p class="card-text">Total Sales</p>
                                         </div>
                                         <div class="ms-auto icon_bg">
-                                            <i class="fa fa-solid fa-gauge text-light fs-3"></i>
+                                            <i class="fa-solid fa-bag-shopping text-light fs-3"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3 mb-3 mb-sm-0">
-                                <div class="card">
+                            <div class="col-sm-3 mb-3 mb-sm-0 p-2 ">
+                                <div class="card card_bg">
                                     <div class="card-body d-flex ">
                                         <div>
-                                            <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span>
+                                            <h4 class="card-title">$14,822.34<span class="text-success h6 ms-2"><i
+                                                        class="fa-solid fa-arrow-up text"></i> 11%</span>
                                             </h4>
-                                            <p class="card-text">Potential growth</p>
+                                            <p class="card-text">Total Profit</p>
                                         </div>
                                         <div class="ms-auto icon_bg">
-                                            <i class="fa fa-solid fa-gauge text-light fs-3"></i>
+
+                                            <i class="fa-solid fa-sack-dollar text-light fs-3"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3 mb-3 mb-sm-0">
-                                <div class="card">
+                            <div class="col-sm-3 mb-3 mb-sm-0 p-2">
+                                <div class="card card_bg">
                                     <div class="card-body d-flex ">
                                         <div>
-                                            <h4 class="card-title">$12.34<span class="text-success h6 ms-2">+11%</span>
+                                            <h4 class="card-title">67,542<span class="text-success h6 ms-2"><i
+                                                        class="fa-solid fa-arrow-up text"></i> 47.5%</span>
                                             </h4>
-                                            <p class="card-text">Potential growth</p>
+                                            <p class="card-text">Total Visits </p>
                                         </div>
                                         <div class="ms-auto icon_bg">
-                                            <i class="fa fa-solid fa-gauge text-light fs-3"></i>
+                                            <i class="fa-solid fa-person-circle-plus text-light fs-3"></i>
+
                                         </div>
                                     </div>
                                 </div>
@@ -86,12 +93,10 @@
 
 
                         </div>
-                        <style>
-                           
-                        </style>
-
+                     
+                        <div class="container-fluid bg_01 my-3">
                         <div class="row">
-                            <div class="col-8 p-2 ">
+                            <div class="col-9 p-2 ">
 
                                 <div class="chart">
                                     <canvas id="myChart" width="400" height="200"></canvas>
@@ -99,15 +104,94 @@
 
 
                             </div>
-                            <div class="col-4 p-2 ">
-                                <div class="card h-100">
-                                    <div class="circle">
-                                        <div class="bar"></div>
-                                        <div class="box"><span></span></div>
+
+                            <div class="col-3 p-2 ">
+                                <div>
+                                    <div class="h4"> Recents Visits</div>
+                                    <hr>
+                                </div>
+
+                                   
+
+
+
+                                <div class="acc_h " >
+                                    <%for(i=0;i< user.length;i++)    {  %>
+                                    <div class=" d-flex px-4 card_bgg rounded-3 py-3 my-3">
+                                        <div class="w-25"><img src="/static/images/category/pro_category/<%=user[i].user_profile %> " alt="" class="acc">
+                                        </div>
+
+                                        <div class="w-75 text-center">
+                                            <div><%=user[i].user_email  %></div>
+                                            <div>@Zorogod</div>
+                                        </div>
                                     </div>
-                                    <div class="text">HTML & CSS</div>
+                                    <%}%>
+                                    <!-- <div class=" d-flex px-4 card_bgg rounded-3 py-3 my-3">
+                                        <div class="w-25"><img src="/static/images/brand/admin.jpg" alt="" class="acc">
+                                        </div>
+
+                                        <div class="w-75 text-center">
+                                            <div>Luffy</div>
+                                            <div>@KingPirate</div>
+                                        </div>
+                                    </div>
+                                    <div class=" d-flex px-4 card_bgg rounded-3 py-3 my-3">
+                                        <div class="w-25"><img src="/static/images/brand/logo.gif" alt="" class="acc">
+                                        </div>
+
+                                        <div class="w-75 text-center">
+                                            <div>Micheal </div>
+                                            <div>@JohMicheal</div>
+                                        </div>
+                                    </div>
+                                    <div class=" d-flex px-4 card_bgg rounded-3 py-3 my-3">
+                                        <div class="w-25"><img src="/static/images/brand/admin.jpg" alt="" class="acc">
+                                        </div>
+
+                                        <div class="w-75 text-center">
+                                            <div>Cen</div>
+                                            <div>@Cen785</div>
+                                        </div>
+                                    </div>
+                                    <div class=" d-flex px-4 card_bgg rounded-3 py-3 my-3">
+                                        <div class="w-25"><img src="/static/images/brand/admin.jpg" alt="" class="acc">
+                                        </div>
+
+                                        <div class="w-75 text-center">
+                                            <div>Micheal</div>
+                                            <div>@Johnny002</div>
+                                        </div>
+                                    </div>
+                                    <div class=" d-flex px-4 card_bgg rounded-3 py-3 my-3">
+                                        <div class="w-25"><img src="/static/images/brand/admin.jpg" alt="" class="acc">
+                                        </div>
+
+                                        <div class="w-75 text-center">
+                                            <div>Johnny West</div>
+                                            <div>@Johnny002</div>
+                                        </div>
+                                    </div>
+                                    <div class=" d-flex px-4 card_bgg rounded-3 py-3 my-3">
+                                        <div class="w-25"><img src="/static/images/brand/admin.jpg" alt="" class="acc">
+                                        </div>
+
+                                        <div class="w-75 text-center">
+                                            <div>Johnny West</div>
+                                            <div>@Johnny002</div>
+                                        </div>
+                                    </div> -->
+
+
+
+
+
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid bg_01">
                             <div class="row">
                                 <div class="col-4 p-2 ">
                                     <div class="card js">
@@ -142,6 +226,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                         </div>
                     </div>
@@ -151,7 +236,7 @@
 
 
 
-        </div>
+            </div>
 
 
 
@@ -161,83 +246,79 @@
 
 
 
-
-        <script>
-            let options = {
-                startAngle: -1.55,
-                size: 150,
-                value: 0.75,
-                fill: { gradient: ['#15e003', '#02be0c'] }
-            }
-            $(".circle .bar").circleProgress(options).on('circle-animation-progress',
-                function (event, progress, stepValue) {
-                    $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2)) + "%");
-                });
-            $(".js .bar").circleProgress({
-                value: 0.70
-            });
-            $(".node .bar").circleProgress({
-                value: 0.90
-            });
-            $(".react .bar").circleProgress({
-                value: 0.60
-            });
-        </script>
-
-
-
-
-
-
-        <script>var ctx = document.getElementById('myChart').getContext('2d');
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'line', // also try bar or other graph types
-
-                // The data for our dataset
-                data: {
-                    labels: ["Jun 2016", "Jul 2016", "Aug 2016", "Sep 2016", "Oct 2016", "Nov 2016", "Dec 2016", "Jan 2017", "Feb 2017", "Mar 2017", "Apr 2017", "May 2017"],
-                    // Information about the dataset
-                    datasets: [{
-                        label: "Rainfall",
-                        backgroundColor: '#0c3602',
-                        borderColor: 'rgb(0, 209, 63)',
-                        data: [26.4, 39.8, 66.8, 66.4, 40.6, 55.2, 77.4, 69.8, 57.8, 76, 110.8, 142.6],
-                    }]
-                },
-
-                // Configuration options
-                options: {
-                    layout: {
-                        padding: 10,
-                    },
-                    legend: {
-                        position: 'bottom',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Precipitation in Toronto'
-                    },
-                    scales: {
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Precipitation in mm'
-                            }
-                        }],
-                        xAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Month of the Year'
-                            }
-                        }]
-                    }
+            <script>
+                let options = {
+                    startAngle: -1.55,
+                    size: 150,
+                    value: 0.75,
+                    fill: { gradient: ['#15e003', '#02be0c'] }
                 }
-            });
-        </script>
+                $(".circle .bar").circleProgress(options).on('circle-animation-progress',
+                    function (event, progress, stepValue) {
+                        $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2)) + "%");
+                    });
+                $(".js .bar").circleProgress({
+                    value: 0.70
+                });
+                $(".node .bar").circleProgress({
+                    value: 0.90
+                });
+                $(".react .bar").circleProgress({
+                    value: 0.60
+                });
+            </script>
 
 
-        
+
+
+
+
+            <script>var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line', // also try bar or other graph types
+
+                    // The data for our dataset
+                    data: {
+                        labels: ["Jun 2016", "Jul 2016", "Aug 2016", "Sep 2016", "Oct 2016", "Nov 2016", "Dec 2016", "Jan 2017", "Feb 2017", "Mar 2017", "Apr 2017", "May 2017"],
+                        // Information about the dataset
+                        datasets: [{
+                            label: "Rainfall",
+                            backgroundColor: '#135211',
+                            borderColor: 'rgb(0, 209, 63)',
+                            data: [26.4, 39.8, 66.8, 66.4, 40.6, 55.2, 77.4, 69.8, 57.8, 76, 110.8, 142.6],
+                        }]
+                    },
+
+                    // Configuration options
+                    options: {
+                        layout: {
+                            padding: 10,
+                        },
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Precipitation in Toronto'
+                        },
+                        scales: {
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Precipitation in mm'
+                                }
+                            }],
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Month of the Year'
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
 
 
 
@@ -246,21 +327,24 @@
 
 
 
-        <script>
-            $(document).ready(function () {
-                $('#Example').on('click', function () {
-                    let off = $('.sidebar')
-                    off.toggleClass('off_sidebar')
-                    // let btttt = $('.btttt')
-                    // btttt.html('jfwafwijfia')
-                    setTimeout(function () {
-                        let dash_text2 = $('.dash-text')
-                        dash_text2.toggleClass('dash_text2')
-                    }, 300);
+
+
+
+            <script>
+                $(document).ready(function () {
+                    $('#Example').on('click', function () {
+                        let off = $('.sidebar')
+                        off.toggleClass('off_sidebar')
+                        // let btttt = $('.btttt')
+                        // btttt.html('jfwafwijfia')
+                        setTimeout(function () {
+                            let dash_text2 = $('.dash-text')
+                            dash_text2.toggleClass('dash_text2')
+                        }, 300);
+                    })
                 })
-            })
 
-        </script>
+            </script>
 
 
 

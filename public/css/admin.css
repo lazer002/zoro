@@ -28,8 +28,8 @@ animation:alternate;}
     margin-bottom: 2px;
     margin-left: 8px;
     border-radius: 50%;
-   
-    background-color: rgba(0, 128, 0, 0.356)
+    background: rgb(93,255,0);
+    background: linear-gradient(180deg, rgb(63 144 17 / 88%) 9%, rgba(16,84,6,1) 47%, rgba(2, 138, 13, 0.336) 84%);
 }
 .fa{color: rgb(252, 7, 7) !important;}
 
@@ -245,5 +245,34 @@ a {
     object-fit: contain;
 }
 .dash-icon{padding: 10px 13px;
-background-color: #02be0b31;
+    background: rgb(93,255,0);
+    background: linear-gradient(180deg, rgb(63 144 17 / 88%) 9%, rgba(16,84,6,1) 47%, rgba(2, 138, 13, 0.336) 84%);
 border-radius: 50%;}
+.card_bg{border: none;
+    background: rgb(93,255,0);
+    background: linear-gradient(180deg, rgb(63 144 17 / 88%) 9%, rgba(16,84,6,1) 47%, rgba(2, 138, 13, 0.336) 84%);
+}
+.acc{width: 49px;
+height: 49px;
+border-radius: 50%;}
+
+.acc_h{
+    height: 400px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.card_bgg{background: rgb(0,255,203);
+    background: radial-gradient(circle, rgb(4, 92, 1) 0%, rgba(0,56,9,1) 100%);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+
+    .bg_01{background-color: #0f1015;
+    padding: 25px;
+border-radius: 15px;}
+
+.bbb{
+    background: rgb(0,255,203);
+    background: radial-gradient(circle, rgb(21 239 14 / 10%) 0%, rgb(6 97 21 / 23%) 100%),url('/static/images/brand/bggg.jpg');
+   background-attachment: fixed;
+z-index: -1;}

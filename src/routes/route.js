@@ -66,8 +66,11 @@ router.get('/', async (req, res) => {
 
 router.get('/admin', async (req, res) => {
    if (req.session.user) {
-      await res.render('admin/dashboard')
-   } else {
+      query = `select * from signup`
+      await connection.query(query, (err, user) => {
+         if (err) throw err;
+       res.render('admin/dashboard',{user:user})
+   })} else {
       res.redirect('/login')
    }
 })
