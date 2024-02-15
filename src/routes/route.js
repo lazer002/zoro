@@ -40,6 +40,37 @@ router.get('/signup', async (req, res) => {
 })
 
 
+const storge = multer.diskStorage({
+   destination: function (req, file, cb) {
+      cb(null, 'public/images/category/profile')
+   },
+   filename: function (req, file, cb) {
+      cb(null, Date.now() + "_" + file.originalname)
+   }
+})
+const profile_upload = multer({ storage:storge })
+
+router.post('/new_signup', profile_upload.single('user_profile'), async (req, res) => {
+console.log(req.body);
+   const user_profile = req.file.filename;
+   const {user_email ,user_pass, user_name, user_number ,latitude,Longitude} = req.body
+   let query = `insert into signup(user_profile,user_email ,user_pass, user_name, user_number,latitude,Longitude) values('${user_profile}','${user_email}','${user_pass}','${user_name}','${user_number}','${latitude}','${longitude}')`
+   connection.query(query, (err, results) => {
+      if (err) throw err;
+
+      
+   })
+})
+
+
+
+
+
+
+
+
+
+
 
 router.get('/', async (req, res) => {
    query1 = `select * from 	
