@@ -1,139 +1,138 @@
-<%- include('common/header.ejs') %>
+<head>
+  <link rel="stylesheet" href="/static/cdn/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/cdn/fontawsome.min.css">
+  <link rel="stylesheet" href="/static/css/admin.css">
+
+</head>
+
+<body class="log_page">
 
 
-<style>
-    .profile_holder{height: 130px;
-    width: 130px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid red;
-    }
-    #icon_pro{z-index: 10;}
-    #preview{
-        height: 130px;
-        /* width: 130px; */
-    z-index: 2;
-    border-radius: 50%;
-    }
-</style>
 
-<div class="container-fluid">
+  <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-6 d-flex justify-content-center">
-        
-
-                <div class="signin">
-                    <div class="content">
-                      <h2>Sign In</h2>
-                      <div class="form">
-
-<div class="d-flex justify-content-center">
-
-<div class="profile_holder"> 
-    
-    <img id="preview" >
-   <i class="fa-solid fa-image text fs-3" id="icon_pro"></i>
-</div>
-
-<input type="file" id="user_profile" hidden>
-</div>
+      <div class="col-6 d-flex justify-content-center">
 
 
-                        <div class="inputBox">
-                            <input type="text" name="" id="user_name">
-                          <i>Username</i>
-                        </div>
-                        <div class="inputBox">
-                            <input type="text" name="" id="user_email">
-                          <i>Email</i>
-                        </div>
-                        <div class="inputBox">
-                            <input type="text" name="" id="user_number">
-                          <i>Phone Number</i>
-                        </div>
-                        <div class="inputBox">
-                            <input type="text" name="" id="user_pass">
-                          <i>Password</i>
-                        </div>
-                        <div class="links">
-                          <a href="/login">Already Have a Account ?</a>
-                          <a href="/login">Signin</a>
-                        </div>
-                        <div class="inputBox">
-                            <input type="submit" name="" id="lala"> 
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+        <div class="signin">
+          <div class="content">
+            <h2>Sign In</h2>
+            <div class="form">
+
+              <div class="d-flex justify-content-center">
+
+                <div class="profile_holder">
+
+                  <img id="preview">
+                  <i class="fa-solid fa-image text fs-3" id="icon_pro"></i>
+                </div>
+
+                <input type="file" id="user_profile" hidden>
+              </div>
+
+              <input type="hidden" name="" id="latitude">
+              <input type="hidden" name="" id="longitude">
+              <div class="inputBox">
+                <input type="text" name="" id="user_name">
+                <i>Username</i>
+              </div>
+              <div class="inputBox">
+                <input type="text" name="" id="user_email">
+                <i>Email</i>
+              </div>
+              <div class="inputBox">
+                <input type="text" name="" id="user_number">
+                <i>Phone Number</i>
+              </div>
+              <div class="inputBox">
+                <input type="text" name="" id="user_pass">
+                <i>Password</i>
+              </div>
+              <div class="links">
+                <a href="/login">Already Have a Account ?</a>
+                <a href="/login">Signin</a>
+              </div>
+              <div class="inputBox">
+                <input type="submit" name="" id="lala">
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
+</body>
+
+
+
+<script src="/static/cdn/bootstrap.bundle.min.js"></script>
+<script src="/static/cdn/jquery-3.6.0.min.js"></script>
+<script src="/static/cdn/popper.min.js"></script>
+<script src="/static/cdn/fontawesome.all.min.js"></script>
 
 <script>
-    $(document).ready(function(){
+  $(document).ready(function () {
+    if (navigator.geolocation) {
 
-        $('#lala').on('click',function(){
-            if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function (position) {
 
-  navigator.geolocation.getCurrentPosition(function(position) {
- 
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
 
-    
-  });
-}else{
-    Longitude=''
-    Latitude = '' 
-}
-            var user_profile = $('#user_profile')[0].files[0];
-            console.log(user_profile)
-            var user_name = $('#user_name').val();
-            var user_email = $('#user_email').val();
-            var user_number = $('#user_number').val();
-            var user_pass = $('#user_pass').val();
-          console.log("Latitude:", latitude);
-    console.log("Longitude:", longitude);  
-var formdata = new FormData()
-formdata.append('user_profile',user_profile)
-formdata.append('user_name',user_name)
-formdata.append('user_email',user_email)
-formdata.append('user_number',user_number)
-formdata.append('latitude',latitude)
-formdata.append('longitude',longitude)
-console.log(formdata,'formdata');
-$.ajax({
-    type:'POST',
-    url:'/new_signup',
-    data:formdata,
-    contentType:false,
-    processData:false,
-    success:function(response){
-window.location.reload()
+        $('#latitude').val(latitude);
+        $('#longitude').val(longitude);
+      });
+    } else {
+      Longitude = ' '
+      Latitude = ' '
     }
-})})
-})
+    $('#lala').on('click', function () {
+
+      var user_profile = $('#user_profile')[0].files[0];
+
+      var user_name = $('#user_name').val();
+      var user_email = $('#user_email').val();
+      var user_number = $('#user_number').val();
+      var user_pass = $('#user_pass').val();
+      var latitude = $('#latitude').val();
+      var longitude = $('#longitude').val();
+      var formdata = new FormData()
+      formdata.append('user_profile', user_profile)
+      formdata.append('user_name', user_name)
+      formdata.append('user_email', user_email)
+      formdata.append('user_number', user_number)
+      formdata.append('latitude', latitude)
+      formdata.append('longitude', longitude)
+      console.log(formdata, 'formdata');
+      $.ajax({
+        type: 'POST',
+        url: '/new_signup',
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          window.location.reload()
+        }
+      })
+    })
+  })
 
 
-$('.profile_holder').click(function(){
-var profile=   $('#user_profile')
-profile.click()
-})
+  $('.profile_holder').click(function () {
+    var profile = $('#user_profile')
+    profile.click()
+  })
 
 
-document.getElementById('user_profile').onchange=function(){
-    var src=URL.createObjectURL(this.files[0])
-    document.getElementById('preview').src=src
-    var profile=   $('#icon_pro')
+  document.getElementById('user_profile').onchange = function () {
+    var src = URL.createObjectURL(this.files[0])
+    document.getElementById('preview').src = src
+    var profile = $('#icon_pro')
     profile.hide()
     document.getElementById('preview').style.width = '130px';
 
 
-}
-    
+  }
+
 </script>
-
-

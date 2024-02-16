@@ -7,12 +7,27 @@ const router = express.Router()
 
 
 
-
 router.get('/login', async (req, res) => {
    await res.render('admin/login')
 })
 
+router.use((req, res, next) => {
+   
+   res.locals.user = req.session.user;
+   res.locals.role = req.session.role;
+   next();
+  
+ });
+ 
 
+
+const gateway = function(req, res, next) {
+   if(req.session.user){
+      next();
+   } else {
+      res.redirect('/login');
+   }
+};
 
 router.post('/login', async (req, res) => {
    const { user_email, user_pass } = req.body
@@ -22,7 +37,9 @@ router.post('/login', async (req, res) => {
       else {
          if (results.length > 0) {
             let user_role = results[0].user_role
-            req.session.user = results
+            req.session.user = results[0].user_email
+            req.session.role = results[0].user_role
+            req.session.num = results[0].user_number
             res.send({ user_role: user_role })
 
          }
@@ -53,8 +70,8 @@ const profile_upload = multer({ storage:storge })
 router.post('/new_signup', profile_upload.single('user_profile'), async (req, res) => {
 console.log(req.body);
    const user_profile = req.file.filename;
-   const {user_email ,user_pass, user_name, user_number ,latitude,Longitude} = req.body
-   let query = `insert into signup(user_profile,user_email ,user_pass, user_name, user_number,latitude,Longitude) values('${user_profile}','${user_email}','${user_pass}','${user_name}','${user_number}','${latitude}','${longitude}')`
+   const {user_email ,user_pass, user_name, user_number ,latitude,longitude} = req.body
+   let query = `insert into signup(user_profile,user_email ,user_pass, user_name, user_number,latitude,longitude) values('${user_profile}','${user_email}','${user_pass}','${user_name}','${user_number}','${latitude}','${longitude}')`
    connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -64,7 +81,14 @@ console.log(req.body);
 
 
 
+router.get('/profile',gateway, async (req, res) => {
 
+      query = `select * from signup where user_email = '${req.session.user}' and user_role = '${req.session.role}'`
+
+       connection.query(query, (err, user) => {
+         if (err) throw err;
+res.render('profile',{role:req.session.role,user:user})
+      })})
 
 
 

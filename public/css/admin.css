@@ -395,6 +395,20 @@ input[type="submit"]:active
     opacity: 0.6;
 }
 
-
+.profile_holder{height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(48, 48, 48);
+    }
+    #icon_pro{z-index: 10;}
+    #preview{
+        height: 130px;
+        /* width: 130px; */
+    z-index: 2;
+    border-radius: 50%;
+    }
 
 /* signup login page */
