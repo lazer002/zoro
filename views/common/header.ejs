@@ -65,7 +65,8 @@
 
 
     </div>
-   <div class="px-4"> <a href="/profile"><img src="/static/images/category/profile/1708016863062_zoro.png" alt="" class="rounded-circle" width="45" height="45"></a> </div>
+    <div class="px-4"> <a href="/profile"><img src="/static/images/category/profile/1708016863062_zoro.png" alt=""
+          class="rounded-circle" width="45" height="45"></a> </div>
   </nav>
 
 
@@ -83,15 +84,15 @@
       <button type="button" class="btn-close py-0 pb-3 pe-3 lol" data-bs-dismiss="offcanvas" aria-label="Close"><img
           src="product/close.png" alt=""></button>
     </div>
-  
-  
-  
+
+
+
     <div class="offcanvas-body text-light ">
       <div id="cartbody">
-   
+
       </div>
 
-      
+
     </div>
   </div>
 
@@ -111,19 +112,19 @@
   <script src="/static/cdn/fontawesome.all.min.js"></script>
 
 
-  
+
   <script>
     $(document).ready(function () {
 
       $.ajax({
         type: 'GET',
         url: '/cartonpage',
-      
+
         success: function (response) {
-       
+
           document.getElementById('cartbody').innerHTML = ' ';
-       
-          for (let i = 0; i < response.product.length; i++) {    
+
+          for (let i = 0; i < response.product.length; i++) {
             $('#cartbody').append(`
               <div class="py-3 border-bottom border-success">
                 <div class="row">
@@ -139,7 +140,7 @@
                   <div class="col-3">
                     <input type="number" value="${response.product[i].product_quantity}"
             class="bg-black text-light w-100 out" id="product_quantity">
-<input type="hidden" name="" id="product_id" value="${response.product[i].product_id}">
+              <input type="hidden" name="" id="product_id" value="${response.product[i].product_id}">
 
                 </div>
                   <div class="col-2 ">
@@ -154,75 +155,76 @@
         }
       });
     })
-    
-    
-    
-      </script>
-<script>
-  $(document).ready(function () {
-  $(document).on('keyup','#product_quantity',function () {
-var a = $(this).closest('div').find('#product_quantity')
-var b = a.val()
-var c = $(this).closest('div').find('#product_id')
-var d = c.val()
 
-if(b!=='' && b!==0 ){
-  $.ajax({
+
+
+  </script>
+  <script>
+    $(document).ready(function () {
+      $(document).on('keyup', '#product_quantity', function () {
+        var a = $(this).closest('div').find('#product_quantity')
+        var bb = a.val()
+        var b = Number(bb)
+        var c = $(this).closest('div').find('#product_id')
+        var d = c.val()
+
+        if (b !== '' && b !== 0) {
+        $.ajax({
           type: 'POST',
           url: '/quantity_change',
           data: {
-            product_quantity:b,product_id:d
+            product_quantity: b, product_id: d
           },
           success: function (response) {
-         
+          }
+        })
+      } 
+        else if (b === 0) {
+        $.ajax({
+          type: 'POST',
+          url: '/delete_cart',
+          data: { product_id: d },
+          success: function (response) {
+           window.location.reload()
+          }
+        })
+      }
+
+      else {
+        alert('quantity cant be null')
+      }
+    })
+
+    $(document).on('click', '.dddd', function () {
 
 
-          }})
-}else{
 
-alert('quantity cant be null')
+      var product_id = $(this).closest('button').parent().parent('div').find('#product_id').val()
+      console.log(product_id)
+      $.ajax({
+        type: 'POST',
+        url: '/delete_cart',
+        data: {
+          product_id: product_id
 
-
-
-}
-
-
-
-          
-          
-          
-          })
-                    
-          $(document).on('click','.dddd',function () {          
-          
-           
-
-var product_id = $(this).closest('button').parent().parent('div').find('#product_id').val()
-console.log(product_id)
-$.ajax({
-    type: 'POST',
-    url: '/delete_cart',
-    data: {
-      product_id: product_id
-
-    },
-    success: function (response) {
-        alert("delete")
-        setTimeout(function () {
+        },
+        success: function (response) {
+          alert("delete")
+          setTimeout(function () {
             window.location.reload();
-        }, 1000);
-    }
+          }, 1000);
+        }
 
 
-})
+      })
 
-          })
-          })
-</script>
+    })
+    })
+  </script>
 
 
 
-    
+
 </body>
 
 </html>
