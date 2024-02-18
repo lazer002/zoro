@@ -345,12 +345,14 @@ console.log(data);
           url: '/cart',
           data: data,
           success: function (response) {
-            console.log(response);
+            if(response.msg=='user'){
             setTimeout(
             function(){ 
             window.location.reload()} ,1000)
-
-          }
+          }   else{
+            window.location.href='/login'
+          }  
+            }
         }
         )
       })

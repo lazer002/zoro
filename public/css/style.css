@@ -250,7 +250,7 @@ body {
 .f3 {
     font-family: f3;
 }
-
+.text{color: rgb(0, 228, 0);}
 /* animation tags */
 .profilebody{display: flex;
     height: 100vh;

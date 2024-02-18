@@ -49,7 +49,7 @@
           </li>
           <div class="collapse " id="collapseExample">
             <div class="card card-body bg-black ">
-              <input type="search" name="" class="bcolor lol rounded-2 text-light out">
+              <input type="search" name="" class="bcolor  rounded-2 text-light out">
             </div>
           </div>
           <li class=" mx-4 "><a class="btn py-1" data-bs-toggle="collapse" href="#collapseExample" role="button"
@@ -64,9 +64,25 @@
 
 
 
+
+
+
     </div>
-    <div class="px-4"> <a href="/profile"><img src="/static/images/category/profile/1708016863062_zoro.png" alt=""
-          class="rounded-circle" width="45" height="45"></a> </div>
+    <div class="px-4"> 
+      
+        <%if(name.length>0){%>
+          <a href="/profile">
+        <img src="/static/images/category/profile/<%= name[0].user_profile %>" alt=""
+          class="rounded-circle" width="45" height="45">  </a> 
+          <% }else{%>
+            <a href="/login" class="text-decoration-none text">
+<div class="btn">Sign Up</div>
+            </a>
+            
+
+            <%}%>
+      
+      </div>
   </nav>
 
 
@@ -220,6 +236,25 @@
 
     })
     })
+
+
+
+
+    $(document).on('click', function(event) {
+    var clickedOutsideCollapse = true;
+
+    // Check if the click is outside of any collapse area
+    $('.collapse').each(function() {
+      if ($(this).hasClass('show') && $(event.target).closest('.collapse').is($(this))) {
+        clickedOutsideCollapse = false;
+      }
+    });
+
+    // If the click is outside of any collapse area, close the opened collapse
+    if (clickedOutsideCollapse) {
+      $('.collapse.show').collapse('hide');
+    }
+  });
   </script>
 
 
