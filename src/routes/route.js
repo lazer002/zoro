@@ -89,8 +89,14 @@ router.get('/profile', gateway, async (req, res) => {
       if (err) throw err;
       query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
       connection.query(query5,(err,reslt5)=>{
-      res.render('profile', { role: req.session.role, user: user,name:reslt5 })
-   })})
+
+qry=`select * from cart where user_email = '${req.session.user}'`
+connection.query(qry,(err,pc)=>{
+
+
+
+      res.render('profile', { role: req.session.role, user: user,name:reslt5,pc:pc })
+   })})})
 })
 
 

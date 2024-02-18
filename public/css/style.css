@@ -253,6 +253,13 @@ body {
 .text{color: rgb(0, 228, 0);}
 /* animation tags */
 .profilebody{display: flex;
-    height: 100vh;
+    height: 80vh;
 justify-content: center;
 align-items: center;}
+
+.nav-pills{--bs-nav-pills-link-active-bg: #0bd300 !important;}
+
+.nav-link{color: white !important;}
+.h50{height: 400px !important;
+border-radius: 10px;
+border:1px solid #0bd300;}
