@@ -123,8 +123,13 @@ router.get('/', async (req, res) => {
                if (err) throw err;
                query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
                connection.query(query5,(err,reslt5)=>{
-               res.render('index', { banner: banner, product: category, carausal: carausal, carausal2: carausal2,name:reslt5 })
-            })})
+               coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+connection.query(coun,(err,cou)=>{
+   console.log(cou);
+            res.render('index', { banner: banner, product: category, carausal: carausal, carausal2: carausal2,name:reslt5,cou:cou })
+            })})   
+         })
+            
          })
       })
    })

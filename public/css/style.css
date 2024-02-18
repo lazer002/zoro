@@ -58,7 +58,13 @@ body {
 .fcolor {
     color: rgb(0, 196, 0);
 }
-
+.nuu{background-color: rgb(5, 173, 5);
+padding: 2px 10px;
+border-radius: 50%;
+position: absolute;
+left: -7px;
+top: -15px;
+}
 .bcolor {
     background-color: rgb(0, 196, 0);
 }
