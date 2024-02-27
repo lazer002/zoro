@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2024 at 11:30 AM
+-- Generation Time: Feb 18, 2024 at 03:48 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -102,8 +102,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `product_category`, `product_quantity`, `product_id`, `cart_image`, `cart_pname`, `cart_pprice`, `user_email`) VALUES
-(31, 'PC', '3', 'product_650', '1702813957925_p1 (1).png', 'pc 1', '₹55\n        ', 'a'),
-(32, 'PC', '3', 'product_315', '1702814054130_pc (7).png', 'pc7', '₹564\n        ', 'a');
+(47, 'LAPTOP', '1', 'product_655', '1703414122631_8-removebg-preview (1).png', 'laptop', '₹600\n        ', 'a'),
+(48, 'CONTROLLER', '2', 'product_414', '1702820636155_8.webp', 'fwaf', '₹fwaf\n        ', 'a'),
+(49, 'PC', '1', 'product_650', '1705832603584_1702814054129_pc (7).png', 'a', '₹a\n        ', 'a');
 
 -- --------------------------------------------------------
 
@@ -336,17 +337,23 @@ CREATE TABLE `signup` (
   `user_profile` varchar(222) NOT NULL,
   `user_email` varchar(222) NOT NULL,
   `user_pass` varchar(222) NOT NULL,
-  `user_role` varchar(222) NOT NULL DEFAULT 'user'
+  `user_name` varchar(222) NOT NULL,
+  `user_number` varchar(222) NOT NULL,
+  `user_role` varchar(222) NOT NULL DEFAULT 'user',
+  `latitude` varchar(222) NOT NULL,
+  `longitude` varchar(222) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `signup`
 --
 
-INSERT INTO `signup` (`user_profile`, `user_email`, `user_pass`, `user_role`) VALUES
-('', 'a', 'a', 'user'),
-('', 'lazer@gmail.com', 'lazer002', 'user'),
-('', 'lazer_admin@gmail.com', 'lazer_admin', 'admin');
+INSERT INTO `signup` (`user_profile`, `user_email`, `user_pass`, `user_name`, `user_number`, `user_role`, `latitude`, `longitude`) VALUES
+('1708016902520_zoro.png', 'a', 'a', 'kaku', '1234545', 'user', '', ''),
+('1708094727543_zoro.png', 'lalal', '', 'lala', 'alalal1234545', 'user', '28.6326784', '77.2243456'),
+('1708016902520_zoro.png', 'lazer@gmail.com', 'lazer002', 'pappu', '1234545', 'user', '', ''),
+('1708016902520_zoro.png', 'lazer_admin@gmail.com', 'lazer_admin', 'chotu', '1234545', 'admin', '', ''),
+('1708016902520_zoro.png', 'zoro@g', '123', 'zoro', '123454', 'user', '', '');
 
 --
 -- Indexes for dumped tables
@@ -453,7 +460,7 @@ ALTER TABLE `carausal_banner`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `controller`
