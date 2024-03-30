@@ -7,6 +7,7 @@ app.use("/static",express.static("upload"))
 app.use(bodyparser.urlencoded({extended:true}))
 const router=  require('./src/routes/route.js')
 const session = require('express-session')
+const path = require('path')
 const cookie=require('cookie-parser')
 
 app.use(
@@ -21,6 +22,7 @@ app.use(
     })
  )
  
+
 
 
 

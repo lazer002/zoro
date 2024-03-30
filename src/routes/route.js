@@ -93,10 +93,11 @@ router.get('/profile', gateway, async (req, res) => {
 qry=`select * from cart where user_email = '${req.session.user}'`
 connection.query(qry,(err,pc)=>{
 
+   coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+   connection.query(coun,(err,cou)=>{
 
-
-      res.render('profile', { role: req.session.role, user: user,name:reslt5,pc:pc })
-   })})})
+      res.render('profile', { role: req.session.role, user: user,name:reslt5,pc:pc,cou:cou })
+   })})})})
 })
 
 
@@ -554,8 +555,10 @@ router.get('/PC', async (req, res) => {
          if (err) throw err;
          query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
          connection.query(query5,(err,name)=>{
-         res.render('pc', { pc: results, banner: banner,name:name })
-      })})
+            coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+            connection.query(coun,(err,cou)=>{  
+         res.render('pc', { pc: results, banner: banner,name:name ,cou:cou})
+      })})})
    })
 
 })
@@ -570,8 +573,10 @@ router.get('/CONTROLLER', async (req, res) => {
          if (err) throw err;
          query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
          connection.query(query5,(err,name)=>{
-         res.render('CONTROLLER', { CONTROLLER: results, banner: banner,name:name })
-      })})
+            coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+            connection.query(coun,(err,cou)=>{
+         res.render('CONTROLLER', { CONTROLLER: results, banner: banner,name:name,cou:cou })
+      })})})
    })
 })
 
@@ -585,8 +590,10 @@ router.get('/LAPTOP', async (req, res) => {
          if (err) throw err;
          query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
          connection.query(query5,(err,name)=>{
-         res.render('LAPTOP', { LAPTOP: results, banner: banner,name:name })
-      })})
+            coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+            connection.query(coun,(err,cou)=>{
+         res.render('LAPTOP', { LAPTOP: results, banner: banner,name:name,cou:cou })
+      })})})
    })
 })
 
@@ -605,8 +612,10 @@ router.get('/accessories', async (req, res) => {
                if (err) throw err;
                query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
                connection.query(query5,(err,name)=>{
-               res.render('accessories', { keyboard: keyboard, mouse: mouse, headphone: headphone, banner: banner,name:name })
-            })})
+                  coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+                  connection.query(coun,(err,cou)=>{
+               res.render('accessories', { keyboard: keyboard, mouse: mouse, headphone: headphone, banner: banner,name:name,cou:cou })
+            })})})
          })
       })
    })
@@ -615,8 +624,10 @@ router.get('/accessories', async (req, res) => {
 router.get('/service', async (req, res) => {
    query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
    connection.query(query5,(err,name)=>{
-    res.render('service',{name:name})
-})})
+      coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+      connection.query(coun,(err,cou)=>{
+    res.render('service',{name:name,cou:cou})
+})})})
 
 router.get('/community', async (req, res) => {
    query1 = `select * from 	
@@ -625,8 +636,10 @@ router.get('/community', async (req, res) => {
       if (err) throw err;
       query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
       connection.query(query5,(err,name)=>{
-      res.render('community', { banner: banner ,name:name})
-   })})
+         coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+         connection.query(coun,(err,cou)=>{
+      res.render('community', { banner: banner ,name:name,cou:cou})
+   })})})
 })
 
 
@@ -642,9 +655,11 @@ router.get('/product/:product_category/:product_id', async (req, res) => {
             if (err) throw err;
             query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
             connection.query(query5,(err,name)=>{
-            res.render('product_param', { product: results, results1: results1,name:name })
+               coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+               connection.query(coun,(err,cou)=>{
+            res.render('product_param', { product: results, results1: results1,name:name,cou:cou })
 
-         })})
+         })})})
       })
  
 })
@@ -705,9 +720,11 @@ router.get('/cart_page', async (req, res) => {
          if (err) throw err;
          query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
          connection.query(query5,(err,name)=>{
-         res.render('cart_page', { product: results,name:name })
+            coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+            connection.query(coun,(err,cou)=>{
+         res.render('cart_page', { product: results,name:name,cou:cou })
 
-      })})
+      })})})
    }
    else {
       res.redirect('/login')
@@ -722,10 +739,11 @@ router.get('/cartonpage', gateway, async (req, res) => {
    let product = `select * from cart where user_email = '${req.session.user}'`
    connection.query(product, (err, results) => {
       if (err) throw err;
-    
-      res.send({ product: results })
+      coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+      connection.query(coun,(err,cou)=>{
+      res.send({ product: results,cou:cou })
 
-   })})
+   })})})
 
 
 router.post('/quantity_change', async (req, res) => {
