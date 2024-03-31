@@ -383,7 +383,7 @@ const storage4 = multer.diskStorage({
 })
 
 const HEADPHONE_upload = multer({ storage: storage4 })
-router.post('/HEADPHONE', HEADPHONE_upload.fields([{ name: 'product_image' }]), async (req, res) => {
+router.post('/headphone', HEADPHONE_upload.fields([{ name: 'product_image' }]), async (req, res) => {
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
 
@@ -410,12 +410,12 @@ const storage5 = multer.diskStorage({
 })
 
 const KEYBOARD_upload = multer({ storage: storage5 })
-router.post('/KEYBOARD', KEYBOARD_upload.fields([{ name: 'product_image' }]), async (req, res) => {
+router.post('/keyboard', KEYBOARD_upload.fields([{ name: 'product_image' }]), async (req, res) => {
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
 
    const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
-   let query = `insert into KEYBOARD(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
+   let query = `insert into keyboard(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
    connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -434,12 +434,12 @@ const storage6 = multer.diskStorage({
 })
 
 const LAPTOP_upload = multer({ storage: storage6 })
-router.post('/LAPTOP', LAPTOP_upload.fields([{ name: 'product_image' }]), async (req, res) => {
+router.post('/laptop', LAPTOP_upload.fields([{ name: 'product_image' }]), async (req, res) => {
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
 
    const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
-   let query = `insert into LAPTOP(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
+   let query = `insert into laptop(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
    connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -458,12 +458,12 @@ const storage7 = multer.diskStorage({
 })
 
 const MOUSE_upload = multer({ storage: storage7 })
-router.post('/MOUSE', MOUSE_upload.fields([{ name: 'product_image' }]), async (req, res) => {
+router.post('/mouse', MOUSE_upload.fields([{ name: 'product_image' }]), async (req, res) => {
    const ppicFiles = req.files['product_image'];
    const product_image = ppicFiles ? ppicFiles.map(file => file.filename) : [];
 
    const { product_category, product_id, product_name, product_dis, product_price, orignal_price } = req.body
-   let query = `insert into MOUSE(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
+   let query = `insert into mouse(product_category,product_id,product_image,product_name,product_dis,product_price,orignal_price) values('${product_category}','${product_id}','${product_image.join(',')}','${product_name}','${product_dis}','${product_price}','${orignal_price}')`
    connection.query(query, (err, results) => {
       if (err) throw err;
 
@@ -564,35 +564,35 @@ router.get('/PC', async (req, res) => {
 })
 
 
-router.get('/CONTROLLER', async (req, res) => {
-   query = `select * from CONTROLLER`
+router.get('/controller', async (req, res) => {
+   query = `select * from controller`
    connection.query(query, (err, results) => {
       if (err) throw err;
-      query1 = `select product_banner,product_title,product_link from product_banner inner join category  on product_banner.product_category = category.product_category where product_banner.product_category ='CONTROLLER'`
+      query1 = `select product_banner,product_title,product_link from product_banner inner join category  on product_banner.product_category = category.product_category where product_banner.product_category ='controller'`
       connection.query(query1, (err, banner) => {
          if (err) throw err;
          query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
          connection.query(query5,(err,name)=>{
             coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
             connection.query(coun,(err,cou)=>{
-         res.render('CONTROLLER', { CONTROLLER: results, banner: banner,name:name,cou:cou })
+         res.render('controller', { controller: results, banner: banner,name:name,cou:cou })
       })})})
    })
 })
 
 
-router.get('/LAPTOP', async (req, res) => {
-   query = `select * from LAPTOP`
+router.get('/laptop', async (req, res) => {
+   query = `select * from laptop`
    connection.query(query, (err, results) => {
       if (err) throw err;
-      query1 = `select product_banner,product_title,product_link from product_banner inner join category  on product_banner.product_category = category.product_category where product_banner.product_category ='LAPTOP'`
+      query1 = `select product_banner,product_title,product_link from product_banner inner join category  on product_banner.product_category = category.product_category where product_banner.product_category ='laptop'`
       connection.query(query1, (err, banner) => {
          if (err) throw err;
          query5= `select distinct user_profile from signup where user_email = '${req.session.user}'`
          connection.query(query5,(err,name)=>{
             coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
             connection.query(coun,(err,cou)=>{
-         res.render('LAPTOP', { LAPTOP: results, banner: banner,name:name,cou:cou })
+         res.render('laptop', { laptop: results, banner: banner,name:name,cou:cou })
       })})})
    })
 })
@@ -885,7 +885,7 @@ const storage33 = multer.diskStorage({
 const bnr_uploadb = multer({ storage: storage33 }); // Use 'storage' instead of 'storageb'
 
 router.post('/banner_update', bnr_uploadb.single('main_banner'), async (req, res) => {
-   console.log(req.body, 'fwafwa');
+   
    const main_banner = req.file.filename; // Use 'filename' instead of 'originalname'
    const { banner_id, banner_title, banner_dis, banner_link } = req.body;
 
