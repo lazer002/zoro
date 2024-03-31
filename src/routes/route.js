@@ -59,7 +59,7 @@ router.get('/signup', async (req, res) => {
 
 const storge = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/profile')
+      cb(null, '/public/images/category/profile')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -159,7 +159,7 @@ router.get('/dashboard_banner', async (req, res) => {
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/banner')
+      cb(null, '/public/images/category/banner')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -197,7 +197,7 @@ router.get('/category', async (req, res) => {
 
 const storage1 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/pro_category')
+      cb(null, '/public/images/category/pro_category')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -252,7 +252,7 @@ router.get('/carausal_banner', async (req, res) => {
 
 const storag = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/carousel')
+      cb(null, '/public/images/category/carousel')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -344,7 +344,7 @@ router.get('/product', async (req, res) => {
 
 const storage2 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/product')
+      cb(null, '/public/images/category/product')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -375,7 +375,7 @@ router.post('/pc', product_upload.fields([{ name: 'product_image' }]), async (re
 
 const storage4 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/product')
+      cb(null, '/public/images/category/product')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -402,7 +402,7 @@ router.post('/HEADPHONE', HEADPHONE_upload.fields([{ name: 'product_image' }]), 
 
 const storage5 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/product')
+      cb(null, '/public/images/category/product')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -426,7 +426,7 @@ router.post('/KEYBOARD', KEYBOARD_upload.fields([{ name: 'product_image' }]), as
 
 const storage6 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/product')
+      cb(null, '/public/images/category/product')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -450,7 +450,7 @@ router.post('/LAPTOP', LAPTOP_upload.fields([{ name: 'product_image' }]), async 
 
 const storage7 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/product')
+      cb(null, '/public/images/category/product')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -478,7 +478,7 @@ router.post('/MOUSE', MOUSE_upload.fields([{ name: 'product_image' }]), async (r
 
 const storage3 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/product')
+      cb(null, '/public/images/category/product')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -520,7 +520,7 @@ router.get('/product_banner', async (req, res) => {
 
 const storage_dash = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/productbanner')
+      cb(null, '/public/images/category/productbanner')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -666,10 +666,16 @@ router.get('/product/:product_category/:product_id', async (req, res) => {
 
 
 
+const storage_dashd = multer.diskStorage({
+   destination: function (req, file, cb) {
+      cb(null, '/public/images/category/cart')
+   },
+   filename: function (req, file, cb) {
+      cb(null, Date.now() + "_" + file.originalname)
+   }
+})
+const cart_upload = multer({ storage: storage_dashd })
 
-
-
-const cart_upload = multer({ dest: '/public/images/category/cart' })
 
 router.post('/cart', cart_upload.single('cart_img'), async (req, res) => {
 console.log(req.body);
@@ -788,7 +794,7 @@ router.post('/edit_product', async (req, res) => {
 
 const storage22 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/product')
+      cb(null, '/public/images/category/product')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -869,7 +875,7 @@ router.post('/banner_edit', async (req, res) => {
 
 const storage33 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/banner');
+      cb(null, '/public/images/category/banner');
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname);
@@ -927,7 +933,7 @@ router.post('/edit_banner', async (req, res) => {
 
 const storage_a = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/productbanner')
+      cb(null, '/public/images/category/productbanner')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -977,7 +983,7 @@ router.post('/edit_carausal', async (req, res) => {
 
 const storagf = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, 'public/images/category/carousel')
+      cb(null, '/public/images/category/carousel')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
