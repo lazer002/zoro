@@ -21,22 +21,22 @@
     <div class="row mx-auto my-auto justify-content-center 2">
       <div id="recipeCarousel" class="carousel slide ala " data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
-          <%for( let i=0; i< LAPTOP.length; i++ ) { %>
+          <%for( let i=0; i< laptop.length; i++ ) { %>
           <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla" data-bs-interval="2000">
             <div class="col-md-3  lol">
-              <a href="/product/<%= LAPTOP[i].product_category %>/<%= LAPTOP[i].product_id %>" class="text-decoration-none text-light">
+              <a href="/product/<%= laptop[i].product_category %>/<%= laptop[i].product_id %>" class="text-decoration-none text-light">
                 <div class="card bg-transparent border border-0">
                   <div class="card-img">
-                    <% var imgg=LAPTOP[i].product_image.split(',') %>
+                    <% var imgg=laptop[i].product_image.split(',') %>
                         
                             <img src="/static/images/category/product/<%=imgg[0].trim() %>"
                                 alt="" class="img-fluid ">
                            
                   </div>
                   <div class="card-body text-light">
-                    <h5><%=LAPTOP[i].product_name %></h5>
+                    <h5><%=laptop[i].product_name %></h5>
                     <img src="product/revv.png" alt="">
-                    <P class="fw-bold"> ₹<%=LAPTOP[i].product_price %> <del class="text-body">₹<%=LAPTOP[i].orignal_price %></del></p>
+                    <P class="fw-bold"> ₹<%=laptop[i].product_price %> <del class="text-body">₹<%=laptop[i].orignal_price %></del></p>
                   </div>
                 </div>
               </a>
@@ -348,12 +348,12 @@
         </div>
 
         <div class="row text-center">
-          <% for (let i = 0; i < LAPTOP.length; i++) { %>
+          <% for (let i = 0; i < laptop.length; i++) { %>
             <div class="card col-lg-4 col-md-6 bg-transparent border-0">
-                <a href="/product/<%= LAPTOP[i].product_category %>/<%= LAPTOP[i].product_id %>" class="text-decoration-none text-light">
+                <a href="/product/<%= laptop[i].product_category %>/<%= laptop[i].product_id %>" class="text-decoration-none text-light">
                 <div id="carouselExampleSlidesOnly<%= i %>" class="carousel-fade" data-bs-ride="carousel">
                   <div class="carousel-inner">
-                    <% var imgg = LAPTOP[i].product_image.split(',') %>
+                    <% var imgg = laptop[i].product_image.split(',') %>
                     <% imgg.forEach((element, index) => { %>
                       <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-bs-interval="2000">
                         <img src="/static/images/category/product/<%= element %>" class="d-block img-fluid" alt="...">
@@ -362,9 +362,9 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <p class="card-text"><%= LAPTOP[i].product_name %></p>
-                  <p class="card-text bg-transparent"><img src="LAPTOP/rev4.png" alt=""></p>
-                  <p class="card-text fw-bold fcolor">₹<%= LAPTOP[i].product_price %> </p><del>₹<%= LAPTOP[i].orignal_price %></del>
+                  <p class="card-text"><%= laptop[i].product_name %></p>
+                  <p class="card-text bg-transparent"><img src="laptop/rev4.png" alt=""></p>
+                  <p class="card-text fw-bold fcolor">₹<%= laptop[i].product_price %> </p><del>₹<%= laptop[i].orignal_price %></del>
                 </div>
               </a>
               </div>
@@ -390,22 +390,22 @@
       <div id="recipeCarousel3" class="carousel slide ala" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
         
-            <%for( let i=0; i< LAPTOP.length; i++ ) { %>
+            <%for( let i=0; i< laptop.length; i++ ) { %>
               <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla" data-bs-interval="2000">
                 <div class="col-md-3  lol">
-                  <a href="/product/<%= LAPTOP[i].product_category %>/<%= LAPTOP[i].product_id %>" class="text-decoration-none text-light">
+                  <a href="/product/<%= laptop[i].product_category %>/<%= laptop[i].product_id %>" class="text-decoration-none text-light">
                     <div class="card bg-transparent border border-0">
                       <div class="card-img">
-                        <% var imgg=LAPTOP[i].product_image.split(',') %>
+                        <% var imgg=laptop[i].product_image.split(',') %>
                             
                                 <img src="/static/images/category/product/<%=imgg[0].trim() %>"
                                     alt="" class="img-fluid ">
                                
                       </div>
                       <div class="card-body text-light">
-                        <h5><%=LAPTOP[i].product_name %></h5>
+                        <h5><%=laptop[i].product_name %></h5>
                         <img src="product/revv.png" alt="">
-                        <P class="fw-bold"> ₹<%=LAPTOP[i].product_price %> <del class="text-body">₹<%=LAPTOP[i].orignal_price %></del></p>
+                        <P class="fw-bold"> ₹<%=laptop[i].product_price %> <del class="text-body">₹<%=laptop[i].orignal_price %></del></p>
                       </div>
                     </div>
                   </a>

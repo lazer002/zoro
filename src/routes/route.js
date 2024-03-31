@@ -646,7 +646,7 @@ router.get('/community', async (req, res) => {
 router.get('/product/:product_category/:product_id', async (req, res) => {
   
       const { product_id, product_category } = req.params
-      let category = `select * from ${product_category} where product_id = '${product_id}'`
+      let category = `select * from ${product_category.toLowerCase()} where product_id = '${product_id}'`
       connection.query(category, (err, results) => {
 
          if (err) throw err;

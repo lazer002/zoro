@@ -21,22 +21,22 @@
     <div class="row mx-auto my-auto justify-content-center 2">
       <div id="recipeCarousel" class="carousel slide ala " data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
-          <%for( let i=0; i< CONTROLLER.length; i++ ) { %>
+          <%for( let i=0; i< controller.length; i++ ) { %>
           <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla" data-bs-interval="2000">
             <div class="col-md-3  lol">
-              <a href="/product/<%= CONTROLLER[i].product_category %>/<%= CONTROLLER[i].product_id %>" class="text-decoration-none text-light">
+              <a href="/product/<%= controller[i].product_category %>/<%= controller[i].product_id %>" class="text-decoration-none text-light">
                 <div class="card bg-transparent border border-0">
                   <div class="card-img">
-                    <% var imgg=CONTROLLER[i].product_image.split(',') %>
+                    <% var imgg=controller[i].product_image.split(',') %>
                         
                             <img src="/static/images/category/product/<%=imgg[0].trim() %>"
                                 alt="" class="img-fluid ">
                            
                   </div>
                   <div class="card-body text-light">
-                    <h5><%=CONTROLLER[i].product_name %></h5>
+                    <h5><%=controller[i].product_name %></h5>
                     <img src="product/revv.png" alt="">
-                    <P class="fw-bold"> ₹<%=CONTROLLER[i].product_price %> <del class="text-body">₹<%=CONTROLLER[i].orignal_price %></del></p>
+                    <P class="fw-bold"> ₹<%=controller[i].product_price %> <del class="text-body">₹<%=controller[i].orignal_price %></del></p>
                   </div>
                 </div>
               </a>
@@ -349,12 +349,12 @@
         </div>
 
         <div class="row text-center">
-          <% for (let i = 0; i < CONTROLLER.length; i++) { %>
+          <% for (let i = 0; i < controller.length; i++) { %>
             <div class="card col-lg-4 col-md-6 bg-transparent border-0">
-                <a href="/product/<%= CONTROLLER[i].product_category %>/<%= CONTROLLER[i].product_id %>" class="text-decoration-none text-light">
+                <a href="/product/<%= controller[i].product_category %>/<%= controller[i].product_id %>" class="text-decoration-none text-light">
                 <div id="carouselExampleSlidesOnly<%= i %>" class="carousel-fade" data-bs-ride="carousel">
                   <div class="carousel-inner">
-                    <% var imgg = CONTROLLER[i].product_image.split(',') %>
+                    <% var imgg = controller[i].product_image.split(',') %>
                     <% imgg.forEach((element, index) => { %>
                       <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-bs-interval="2000">
                         <img src="/static/images/category/product/<%= element %>" class="d-block img-fluid" alt="...">
@@ -363,9 +363,9 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <p class="card-text"><%= CONTROLLER[i].product_name %></p>
-                  <p class="card-text bg-transparent"><img src="CONTROLLER/rev4.png" alt=""></p>
-                  <p class="card-text fw-bold fcolor">₹<%= CONTROLLER[i].product_price %> </p><del>₹<%= CONTROLLER[i].orignal_price %></del>
+                  <p class="card-text"><%= controller[i].product_name %></p>
+                  <p class="card-text bg-transparent"><img src="controller/rev4.png" alt=""></p>
+                  <p class="card-text fw-bold fcolor">₹<%= controller[i].product_price %> </p><del>₹<%= controller[i].orignal_price %></del>
                 </div>
               </a>
               </div>
@@ -391,22 +391,22 @@
       <div id="recipeCarousel3" class="carousel slide ala" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
         
-            <%for( let i=0; i< CONTROLLER.length; i++ ) { %>
+            <%for( let i=0; i< controller.length; i++ ) { %>
               <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla" data-bs-interval="2000">
                 <div class="col-md-3  lol">
-                  <a href="/product/<%= CONTROLLER[i].product_category %>/<%= CONTROLLER[i].product_id %>" class="text-decoration-none text-light">
+                  <a href="/product/<%= controller[i].product_category %>/<%= controller[i].product_id %>" class="text-decoration-none text-light">
                     <div class="card bg-transparent border border-0">
                       <div class="card-img">
-                        <% var imgg=CONTROLLER[i].product_image.split(',') %>
+                        <% var imgg=controller[i].product_image.split(',') %>
                             
                                 <img src="/static/images/category/product/<%=imgg[0].trim() %>"
                                     alt="" class="img-fluid ">
                                
                       </div>
                       <div class="card-body text-light">
-                        <h5><%=CONTROLLER[i].product_name %></h5>
+                        <h5><%=controller[i].product_name %></h5>
                         <img src="product/revv.png" alt="">
-                        <P class="fw-bold"> ₹<%=CONTROLLER[i].product_price %> <del class="text-body">₹<%=CONTROLLER[i].orignal_price %></del></p>
+                        <P class="fw-bold"> ₹<%=controller[i].product_price %> <del class="text-body">₹<%=controller[i].orignal_price %></del></p>
                       </div>
                     </div>
                   </a>
