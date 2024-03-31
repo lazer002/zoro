@@ -12,3 +12,5 @@ connection.connect((err)=>{
 })
 
 module.exports=connection;
+
+// jdbc:mysql://sql6.freesqldatabase.com:3306/sql6695455
