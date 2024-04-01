@@ -15,7 +15,7 @@
         <div class="form">
           <div class="inputBox">
             <input type="text" id="user_email" required>
-            <i>Username</i>
+            <i>Useremail</i>
           </div>
           <div class="inputBox">
             <input type="password" id="user_pass" required >
@@ -69,7 +69,8 @@
                         } else if (user_type == 'admin') {
                             window.location.href = '/admin'
                         } else {
-                            window.location.href = '/signup'
+                          alert('Wrong Credentials')
+                            window.location.reload()
                         }
                     }
                 })

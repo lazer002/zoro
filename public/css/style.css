@@ -2,6 +2,8 @@
 
 body {
     background-image: url('/static/images/brand/bgg.jpg') !important;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .headcarousal {
@@ -128,7 +130,8 @@ top: -15px;
 }
 
 .lol:hover {
-    transform: scale(1.10)
+    transform: scale(1.10);
+    transition: transform 0.1s ease !important;
 }
 
 .lul:hover {

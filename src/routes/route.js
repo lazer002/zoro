@@ -8,6 +8,7 @@ const router = express.Router()
 
 
 router.get('/login', async (req, res) => {
+
    await res.render('admin/login')
 })
 
@@ -19,6 +20,13 @@ router.use((req, res, next) => {
 
 });
 
+const admingateway = function (req, res, next) {
+   if (req.session.role=='admin') {
+      next();
+   } else {
+      res.redirect('/login');
+   }
+};
 
 
 const gateway = function (req, res, next) {
@@ -59,7 +67,7 @@ router.get('/signup', async (req, res) => {
 
 const storge = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, '/public/images/category/profile')
+      cb(null, './public/images/category/profile')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)
@@ -69,12 +77,18 @@ const profile_upload = multer({ storage: storge })
 
 router.post('/new_signup', profile_upload.single('user_profile'), async (req, res) => {
    console.log(req.body);
-   const user_profile = req.file.filename;
+   let user_profile;
+   if (req.file) {
+      user_profile = req.file.filename;
+   } else {
+    
+      user_profile = 'default.jpg'; 
+   }
    const { user_email, user_pass, user_name, user_number, latitude, longitude } = req.body
    let query = `insert into signup(user_profile,user_email ,user_pass, user_name, user_number,latitude,longitude) values('${user_profile}','${user_email}','${user_pass}','${user_name}','${user_number}','${latitude}','${longitude}')`
    connection.query(query, (err, results) => {
       if (err) throw err;
-
+res.send({msg:'ok'})
 
    })
 })
@@ -136,9 +150,9 @@ connection.query(coun,(err,cou)=>{
    })
 })
 
-router.get('/admin', async (req, res) => {
+router.get('/admin',admingateway, async (req, res) => {
    if (req.session.user) {
-      query = `select * from signup`
+      query = `SELECT * FROM signup ORDER BY id DESC`
       await connection.query(query, (err, user) => {
          if (err) throw err;
          res.render('admin/dashboard', { user: user })
@@ -149,7 +163,7 @@ router.get('/admin', async (req, res) => {
 })
 
 // DASHBOARD BANNER
-router.get('/dashboard_banner', async (req, res) => {
+router.get('/dashboard_banner',admingateway, async (req, res) => {
    query = `select * from banner `
    connection.query(query, (err, banner) => {
       if (err) throw err;
@@ -186,7 +200,7 @@ router.post('/dash_banner', bnr_upload.single('main_banner'), async (req, res) =
 
 // CATOGARY
 
-router.get('/category', async (req, res) => {
+router.get('/category',admingateway, async (req, res) => {
    query = `select * from category`
    await connection.query(query, (err, results) => {
       if (err) throw err;
@@ -236,7 +250,7 @@ router.get('/user', async (req, res) => {
 
 // carausal banner
 
-router.get('/carausal_banner', async (req, res) => {
+router.get('/carausal_banner',admingateway, async (req, res) => {
    query = `select * from category`
    connection.query(query, (err, results) => {
       if (err) throw err;
@@ -280,7 +294,7 @@ router.post('/carausal_banner', dash_banner.single('carausal_image'), async (req
 
 
 // PC BANNER
-router.get('/product', async (req, res) => {
+router.get('/product',admingateway, async (req, res) => {
    query = `select * from category`
    connection.query(query, (err, results) => {
       if (err) throw err;
@@ -506,7 +520,7 @@ router.post('/controller', contro_upload.fields([{ name: 'product_image' }]), as
 
 // fwhaihfowajfojwaofjwaofj
 
-router.get('/product_banner', async (req, res) => {
+router.get('/product_banner',admingateway, async (req, res) => {
    query = `select * from category`
    connection.query(query, (err, category) => {
       if (err) throw err;

@@ -52,12 +52,12 @@
               <input type="search" name="" class="bcolor  rounded-2 text-light out">
             </div>
           </div>
-          <li class=" mx-4 "><a class="btn py-1" data-bs-toggle="collapse" href="#collapseExample" role="button"
+          <!-- <li class=" mx-4 "><a class="btn py-1" data-bs-toggle="collapse" href="#collapseExample" role="button"
               aria-expanded="false" aria-controls="collapseExample">
               <i class="fa-solid fa-magnifying-glass"></i>
             </a>
 
-          </li>
+          </li> -->
         </ul>
 
       </div>
@@ -76,7 +76,7 @@
           class="rounded-circle" width="45" height="45">  </a> 
           <% }else{%>
             <a href="/login" class="text-decoration-none text">
-<div class="btn">Sign Up</div>
+<div class="btn bcolor text-white">Sign Up</div>
             </a>
             
 
@@ -131,6 +131,10 @@
 
   <script>
     $(document).ready(function () {
+      (function () {
+        const locomotiveScroll = new LocomotiveScroll();
+    })();
+
 
       $.ajax({
         type: 'GET',
@@ -177,6 +181,7 @@
   </script>
   <script>
     $(document).ready(function () {
+
       $(document).on('keyup', '#product_quantity', function () {
         var a = $(this).closest('div').find('#product_quantity')
         var bb = a.val()

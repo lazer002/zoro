@@ -41,7 +41,7 @@
                 <i>Email</i>
               </div>
               <div class="inputBox">
-                <input type="text" name="" id="user_number">
+                <input type="number" name="" id="user_number">
                 <i>Phone Number</i>
               </div>
               <div class="inputBox">
@@ -89,8 +89,9 @@
     }
     $('#lala').on('click', function () {
 
-      var user_profile = $('#user_profile')[0].files[0];
 
+      var user_profile = $('#user_profile')[0].files[0];
+console.log(user_profile);
       var user_name = $('#user_name').val();
       var user_email = $('#user_email').val();
       var user_number = $('#user_number').val();
@@ -101,10 +102,10 @@
       formdata.append('user_profile', user_profile)
       formdata.append('user_name', user_name)
       formdata.append('user_email', user_email)
+      formdata.append('user_pass', user_pass)
       formdata.append('user_number', user_number)
       formdata.append('latitude', latitude)
       formdata.append('longitude', longitude)
-      console.log(formdata, 'formdata');
       $.ajax({
         type: 'POST',
         url: '/new_signup',
@@ -112,7 +113,9 @@
         contentType: false,
         processData: false,
         success: function (response) {
-          window.location.reload()
+          if(response.msg=='ok'){
+            window.location.href='/login'
+          }
         }
       })
     })
