@@ -2,6 +2,8 @@
 
 body {
     background-image: url('/static/images/brand/bgg.jpg') !important;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .headcarousal {
@@ -58,7 +60,13 @@ body {
 .fcolor {
     color: rgb(0, 196, 0);
 }
-
+.nuu{background-color: rgb(5, 173, 5);
+padding: 2px 10px;
+border-radius: 50%;
+position: absolute;
+left: -7px;
+top: -15px;
+}
 .bcolor {
     background-color: rgb(0, 196, 0);
 }
@@ -122,7 +130,8 @@ body {
 }
 
 .lol:hover {
-    transform: scale(1.10)
+    transform: scale(1.10);
+    transition: transform 0.1s ease !important;
 }
 
 .lul:hover {
@@ -134,6 +143,7 @@ body {
     position: fixed;
     bottom: 20px;
     right: 10px;
+    z-index: 10;
 }
 
 .discord:hover {
@@ -249,5 +259,16 @@ body {
 .f3 {
     font-family: f3;
 }
-
+.text{color: rgb(0, 228, 0);}
 /* animation tags */
+.profilebody{display: flex;
+    height: 80vh;
+justify-content: center;
+align-items: center;}
+
+.nav-pills{--bs-nav-pills-link-active-bg: #0bd300 !important;}
+
+.nav-link{color: white !important;}
+.h50{height: 400px !important;
+border-radius: 10px;
+border:1px solid #0bd300;}

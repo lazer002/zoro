@@ -24,12 +24,13 @@ transition: 2s;
 transform-origin: bottom ;
 animation:alternate;}
 .pro{
-    padding: 13px;
+    color: white;
+    padding:10px 13px;
     margin-bottom: 2px;
     margin-left: 8px;
     border-radius: 50%;
-   
-    background-color: rgba(0, 128, 0, 0.356)
+    background: rgb(93,255,0);
+    background: linear-gradient(180deg, rgb(63 144 17 / 88%) 9%, rgba(16,84,6,1) 47%, rgba(2, 138, 13, 0.336) 84%);
 }
 .fa{color: rgb(252, 7, 7) !important;}
 
@@ -37,7 +38,7 @@ animation:alternate;}
     left: 0px;
     top: 0px;}
 
-
+.side-body{z-index: -1 !important;}
  
 .sidebar {
     height: calc(100vh - 60px);
@@ -47,8 +48,7 @@ animation:alternate;}
     transition: 1s;
     position: sticky;
     left: 0px;
-    top: 62
-    px !important;
+    top: 62px !important;
     overflow-y: hidden;
 }
     .ws{white-space: nowrap;}
@@ -84,11 +84,6 @@ animation:alternate;}
 
     .brdr_l {
         border-left: 2px solid white;
-    }
-
-    .off_sidebar {
-        width: 66px !important;
-
     }
 
     .dash-tabs {
@@ -202,7 +197,7 @@ a {
 }
 
 .off_sidebar {
-    width: 66px !important;
+    width: 66px ;
 
 }
 
@@ -245,3 +240,169 @@ a {
     border-radius: 50%;
     object-fit: contain;
 }
+.dash-icon{padding: 10px 13px;
+    background: rgb(93,255,0);
+    background: linear-gradient(180deg, rgb(63 144 17 / 88%) 9%, rgba(16,84,6,1) 47%, rgba(2, 138, 13, 0.336) 84%);
+border-radius: 50%;}
+.card_bg{border: none;
+    background: rgb(93,255,0);
+    background: linear-gradient(180deg, rgb(63 144 17 / 88%) 9%, rgba(16,84,6,1) 47%, rgba(2, 138, 13, 0.336) 84%);
+}
+.acc{width: 49px;
+height: 49px;
+border-radius: 50%;}
+
+.acc_h{
+    height: 400px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.card_bgg{background: rgb(0,255,203);
+    background: radial-gradient(circle, rgb(4, 92, 1) 0%, rgba(0,56,9,1) 100%);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+
+    .bg_01{background-color: #191c24;
+    padding: 25px;
+border-radius: 15px;}
+.align-center{align-items: center;}
+.bbb{
+    background: rgb(0,255,203);
+    background: radial-gradient(circle, rgb(21 239 14 / 10%) 0%, rgb(6 97 21 / 23%) 100%),url('/static/images/brand/bggg.jpg');
+   background-attachment: fixed;
+z-index: -1;}
+
+.bggry{background-color: #0f1015}
+
+/* signup login page */
+.log_page{  
+    display:flex;
+justify-content:center;
+align-items: center;
+height:100vh;
+width:100vw;
+background:url('/static/images/brand/Background 132.jpg') no-repeat;
+background-size:cover;
+background-position:center;}
+.signin
+{
+    width: 400px;
+    backdrop-filter: blur(6px);
+    background: transparent;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 6px;
+    box-shadow: 0 15px 35px rgba(0,0,0,19);
+}
+.signin .content 
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+ .signin .content h2 
+{
+    font-size: 2em;
+    color: rgb(0, 160, 0);
+    text-transform: uppercase;
+}
+.signin .content .form 
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.signin .content .form .inputBox input 
+{
+    position: relative;
+    width: 100%;
+    background:#000;
+    border: none;
+    outline: none;
+    padding: 25px 10px 7.5px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1em;
+}
+.signin .content .form .inputBox i 
+{
+    position: absolute;
+    left: 0;
+    
+    padding: 15px 10px;
+    font-style: normal;
+    color: #aaa;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.signin .content .form .inputBox input:focus ~ i,
+.signin .content .form .inputBox input:valid ~ i
+{
+    transform: translateY(-7.5px);
+    font-size: 0.8em;
+    color: #fff;
+}
+.signin .content .form .links 
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.signin .content .form .links a 
+{
+    color: #bebeb0;
+    text-decoration: none;
+}
+.signin .content .form .links a:nth-child(2)
+{
+    color: rgb(0, 153, 0);
+    font-weight: 600;
+}
+.signin .content .form .inputBox input[type="submit"]
+{
+    padding: 10px;
+    background: rgb(3, 124, 3);
+    color: white;
+    font-weight: 600;
+    font-size: 1.35em;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+}
+input[type="submit"]:active
+{
+    opacity: 0.6;
+}
+
+.profile_holder{height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(48, 48, 48);
+    }
+    #icon_pro{z-index: 10;}
+    #preview{
+        height: 130px;
+        /* width: 130px; */
+    z-index: 2;
+    border-radius: 50%;
+    }
+input:focus-visible{background-color: #02be0c !important;}
+/* signup login page */
+.js , .node , .react{
+    background-color:rgb(15 16 21) !important;
+    padding: 15px 2px;
+    backdrop-filter: blur(10px);}

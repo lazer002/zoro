@@ -5,65 +5,79 @@
     <div class="container-fluid p-0">
         <div class="d-flex">
             <%- include('common/sidebar.ejs') %>
-            <div class="w-100  p-3">
-            <div class=" rounded-3 border p-3">
-            
-                    <div class="d-flex justify-content-between border-bottom pb-3">
-                        <div class="">
-                            <h3>Product</h3>
-                            <div>Manage Product in Store</div>
+                <div class="w-100  p-3">
+                    <div class=" rounded-3 border p-3">
+
+                        <div class="d-flex justify-content-between border-bottom pb-3">
+                            <div class="">
+                                <h3>Product</h3>
+                                <div>Manage Product in Store</div>
+                            </div>
+
+                            <div><button class="btn border" data-bs-toggle="modal" data-bs-target="#addproduct">+ Add
+                                    Product</button></div>
                         </div>
 
-                        <div><button class="btn border" data-bs-toggle="modal" data-bs-target="#addproduct">+ Add
-                                Product</button></div>
+                        <div class="py-3">
+                            <div id="search"><input type="text" placeholder="Search..." class="form-control w-25"></div>
+                        </div>
+                        <div class="container-fluid p-0">
+                            <div class="table-responsive border rounded-3">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>S.No</th>
+                                            <th>Carausal Title</th>
+                                            <th>Carausal Image</th>
+                                            <th>Carausal Category </th>
+                                            <th>Product Discription</th>
+                                            <th>Product Link</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%for(i=0;i< c_banner.length;i++) { %>
+
+                                            <tr class="text-center">
+                                                <td>
+                                                    <%= i +1%>
+                                                </td>
+                                                <input type="hidden" name="" id="banner_id" value="<%=c_banner[i].carausal_id %>">
+
+                                                <td>
+                                                    <%=c_banner[i].carausal_title %>
+                                                </td>
+                                                <td> <img
+                                                        src="/static/images/category/carousel/<%=c_banner[i].carausal_image %> "
+                                                        alt="" class="w200"> </td>
+                                                <td>
+                                                    <%=c_banner[i].carausal_category %>
+                                                </td>
+                                                <td>
+                                                    <%=c_banner[i].carausal_dis %>
+                                                </td>
+                                                <td>
+                                                    <%=c_banner[i]. carausal_link %>
+                                                </td>
+                                                <td>
+                                                    <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_carousal"></i></span>
+                                                    <span><i class="fa fa-solid fa-eye px-2"></i></span>
+                                                    <span><i class="fa fa-solid fa-trash px-2" id="delete_carausal"></i></span>
+
+                                                </td>
+                                            </tr>
+                                            <% } %>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
                     </div>
-                    
-                <div class="py-3">
-                    <div id="search"><input type="text" placeholder="Search..." class="form-control w-25"></div>
                 </div>
-                <div class="container-fluid p-0">
-                    <div class="table-responsive border rounded-3">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr class="text-center">
-                                    <th>S.No</th>
-                                    <th>Carausal Title</th>
-                                    <th>Carausal Image</th>
-                                    <th>Carausal Category </th>
-                                    <th>Product Discription</th>
-                                    <th>Product Link</th>
-                                    <th>Action</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%for(i=0;i< c_banner.length;i++)    {  %>
-    
-                                    <tr class="text-center">
-                                        <td><%= i +1%></td>
-                                        <td><%=c_banner[i].carausal_title %></td>
-                                        <td> <img src="/static/images/category/carousel/<%=c_banner[i].carausal_image %> " alt="" class="w200">  </td>
-                                        <td><%=c_banner[i].carausal_category %></td>
-                                        <td><%=c_banner[i].carausal_dis %></td>
-                                        <td><%=c_banner[i].	carausal_link %></td>
-                                        <td>
-                                            <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
-                                            <span><i class="fa fa-solid fa-eye px-2"></i></span>
-                                            <span><i class="fa fa-solid fa-trash px-2"></i></span>
-        
-                                        </td>
-                                    </tr>
-          <% } %>
-        
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
         </div>
     </div>
 
@@ -86,22 +100,22 @@
                         </div>
                         <div>
                             <div>Carausal Title</div>
-                        <input type="text" name="" id="carausal_title" class="form-control">
+                            <input type="text" name="" id="carausal_title" class="form-control">
                         </div>
                         <div>
                             <div>Carausal Category</div>
-                        <select name="" id="carausal_category"  class="form-control">
-                            <option value="first_carausal">First Carausal</option>
-                            <option value="second_carausal">Second Carausal</option>
-                        </select>
+                            <select name="" id="carausal_category" class="form-control">
+                                <option value="first_carausal">First Carausal</option>
+                                <option value="second_carausal">Second Carausal</option>
+                            </select>
                         </div>
                         <div>
                             <div>Carausal Discription</div>
-                        <input type="text" name="" id="carausal_dis" class="form-control">
+                            <input type="text" name="" id="carausal_dis" class="form-control">
                         </div>
                         <div>
                             <div>Product Link</div>
-                        <input type="text" name="" id="carausal_link" class="form-control">
+                            <input type="text" name="" id="carausal_link" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -129,7 +143,59 @@
 
 
 
-
+    <div class="modal" id="editModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Product</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal Body -->
+            <div class="modal-body" id="modeledit">
+          <div class="container-fluid">
+            <div>
+                <div>Banner ID</div>
+                <input type="text" name="" id="edit_id"  class="form-control" disabled readonly >
+            </div>
+                            <div>
+                                <div>Banner Image</div>
+                                <input type="text" name="product_image" id="edit_banner" class="form-control " required >
+                                <input type="file" name="product_image" id="product_image_edit" class="d-none form-control" required >
+                            </div>
+                            <div>
+                                <div>Banner Title</div>
+                                <input type="text" name="" class="form-control " id="edit_title">
+                            </div>
+                            <div>
+                                <div>Banner Category</div>
+                                <input name="" id="edit_category" class="form-control" readonly disabled>
+                           
+                            </div>
+                            <div>
+                                <div>Banner Dis</div>
+                                <input type="text" name="" class="form-control" id="edit_dis">
+                            </div>
+                            <div>
+                                <div>Banner Product Link</div>
+                                <input type="text" name="" class="form-control" id="edit_link">
+                            </div>
+                  
+    
+                        </div>
+            </div>
+      
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                <button type="submit" id="edit_bnnrrr" class="btn bcolor">Add Product</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
 
 
 
@@ -157,14 +223,24 @@
     <script>
         $(document).ready(function () {
             $('#category_sbbtn').on('click', function () {
+                function rendom(e) {
+                randomid = Math.floor(Math.random() * e)
+                _id = `carausal_${randomid}`
+                return _id
+            }
+            idd = rendom(1000)
+            alert(idd)
+            $('#carausal_id').val(idd);
                 var carausal_image = $('#carausal_image')[0].files[0];
                 var carausal_title = $('#carausal_title').val();
+                var carausal_id = $('#carausal_id').val();
                 var carausal_category = $('#carausal_category').val();
                 var carausal_dis = $('#carausal_dis').val();
                 var carausal_link = $('#carausal_link').val();
                 var formdata = new FormData()
                 formdata.append('carausal_image', carausal_image)
                 formdata.append('carausal_title', carausal_title)
+                formdata.append('carausal_id', carausal_id)
                 formdata.append('carausal_category', carausal_category)
                 formdata.append('carausal_dis', carausal_dis)
                 formdata.append('carausal_link', carausal_link)
@@ -176,10 +252,148 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                     window.location.reload()
+                        if(response.msg='ok'){
+
+                            window.location.reload()
+                        }
                     }
                 })
 
             })
         })
+
+
+
+
+
+
+
+        $(document).ready(function () {
+            $(document).on('click', '#edit_carousal', function () {
+
+                var trow = $(this).closest('tr')
+                var tdata = trow.find('input')
+
+                const carausal_id = tdata.val()
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/edit_carausal',
+                    data: {
+                        carausal_id: carausal_id
+
+                    },
+                    success: function (response) {
+
+                        $('#edit_id').val(response.product[0].carausal_id)
+                        $('#edit_category').val(response.product[0].carausal_category)
+                        $('#edit_banner').val(response.product[0].carausal_image)
+                        $('#edit_title').val(response.product[0].carausal_title)
+                        $('#edit_dis').val(response.product[0].carausal_dis)
+                        $('#edit_link').val(response.product[0].carausal_link)
+                        $('#editModal').modal('show');
+                    }
+
+                })
+            })
+        })
+
+
+
+
+
+        $(document).ready(function () {
+            $(document).on('click', '#edit_banner', function () {
+                let editb = $('#product_image_edit')
+                editb.click()
+                editb.text(editb.val())
+            })
+        })
+
+        $(document).on('click', '#edit_bnnrrr', function () {
+
+
+            var carausal_image = $('#product_image_edit')[0].files[0];
+                var carausal_title = $('#edit_title').val();
+                var carausal_id = $('#edit_id').val();
+                var carausal_category = $('#edit_category').val();
+                var carausal_dis = $('#edit_dis').val();
+                var carausal_link = $('#edit_link').val();
+                var formdata = new FormData()
+                formdata.append('carausal_image', carausal_image)
+                formdata.append('carausal_title', carausal_title)
+                formdata.append('carausal_id', carausal_id)
+                formdata.append('carausal_category', carausal_category)
+                formdata.append('carausal_dis', carausal_dis)
+                formdata.append('carausal_link', carausal_link)
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/update_brrrrrr',
+                data: formdata,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    alert('product added')
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                },
+
+                error: function (error) {
+
+                }
+            });
+        });
+
+
+
+
+        $(document).ready(function () {
+            $(document).on('click', '#delete_carausal', function () {
+
+                var trow = $(this).closest('tr')
+                var tdata = trow.find('input')
+
+                const carausal_id = tdata.val()
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/delete_carausal',
+                    data: {
+                        carausal_id: carausal_id
+
+                    },
+                    success: function (response) {
+                        alert("delete")
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1000);
+                    }
+
+                })
+            })
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
