@@ -563,6 +563,7 @@
                         <div>
                             <div>Carausal Category</div>
                             <select name="" id="product_category" class="form-control">
+                                <option value="">Select Category</option>
                                 <%for( let i=0; i< category.length; i++ ) { %>
                                     <option value="<%=category[i].product_category %>">
                                         <%=category[i].product_category %>
@@ -575,11 +576,11 @@
                             <input type="text" name="" class="form-control" id="product_dis">
                         </div>
                         <div>
-                            <div>Product Link</div>
+                            <div>Product Discount Price</div>
                             <input type="text" name="" id="product_price" class="form-control">
                         </div>
                         <div>
-                            <div>Product Link</div>
+                            <div>Product Orignal Price</div>
                             <input type="text" name="" id="orignal_price" class="form-control">
                         </div>
 

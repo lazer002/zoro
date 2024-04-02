@@ -30,28 +30,28 @@
 
                         <div class="rounded-3 out p-3">
 
-                            <img src="/static/images/category/profile/<%=user[0].user_profile %>" alt="" width="200"
+                            <img src="/static/images/category/profile/<%=name[0].user_profile %>" alt="" width="200"
                                 height="200" class="rounded-circle">
                             <div class="row justify-content-center pt-2 text-light">
 
 
                                 <div class="col-4 pt-1 text-end"> <i class="fa-solid fa-user text  fs-6 me-4"></i></div>
                                 <div class="col-6 text-start fs-4">
-                                    <%=user[0].user_name %>
+                                    <%=name[0].user_name %>
                                 </div>
                                 <div class="col-4 pt-1 text-end"> <i class="fa-solid fa-envelope text fs-6 me-4"></i>
                                 </div>
                                 <div class="col-6 text-start fs-6 fst-italic">
-                                    <%=user[0].user_email %>
+                                    <%=name[0].user_email %>
                                 </div>
                                 <div class="col-4 pt-1 text-end"> <i
                                         class="fa-solid fa-address-card text fs-6 me-4"></i></div>
                                 <div class="col-6 text-start fs-6 fst-italic">
-                                    <%=user[0].user_role %>
+                                    <%=name[0].user_role %>
                                 </div>
                                 <div class="col-4 pt-1 text-end"> <i class="fa-solid fa-phone text fs-6 me-4"></i></div>
                                 <div class="col-6 text-start fs-6 fst-italic">
-                                    <%=user[0].user_number %>
+                                    <%=name[0].user_number %>
                                 </div>
                                 <div class="col-12 my-3">
                                     <div class="btn bcolor w-50">Edit</div>
@@ -92,37 +92,33 @@
                                     aria-labelledby="pills-home-tab" tabindex="0">
 
                                     <div class="row">
-
-                                        <% for(i=0;i<pc.length;i++){ %>
-                                            <div class="col-md-3  lol">
-
-                                                <div class="h50">
-                                                    <a href="/product/<%= pc[i].product_category %>/<%= pc[i].product_id %>"
-                                                        class="text-decoration-none text-light ">
-                                                        <div class="card bg-transparent border border-0">
-                                                            <div class="card-img">
-
-
-                                                                <img src="/static/images/category/product/<%=pc[i].cart_image %>"
-                                                                    alt="" class="img-fluid ">
-
+                                        <% if( pc != 'undefined' && pc.length >0 ){ %>
+                                            <% for(i=0; i<pc.length; i++){ %>
+                                                <div class="col-md-3 lol">
+                                                    <div class="h50">
+                                                        <a href="/product/<%= pc[i].product_category %>/<%= pc[i].product_id %>"
+                                                            class="text-decoration-none text-light">
+                                                            <div class="card bg-transparent border border-0">
+                                                                <div class="card-img">
+                                                                    <img src="/static/images/category/product/<%= pc[i].cart_image %>"
+                                                                        alt="" class="img-fluid">
+                                                                </div>
+                                                                <div class="card-body text-light">
+                                                                    <h5><%= pc[i].cart_pname %></h5>
+                                                                    <p class="fw-bold m-0"> ₹<%= pc[i].cart_pprice %> <del class="text-body">₹</del></p>
+                                                                    <div>Quantity :- <span> <%= pc[i].product_quantity %></span></div>
+                                                                </div>
                                                             </div>
-                                                            <div class="card-body text-light">
-                                                                <h5>
-                                                                    <%=pc[i].cart_pname %>
-                                                                </h5>
-                                                                
-                                                                <P class="fw-bold m-0"> ₹<%=pc[i].cart_pprice %> <del
-                                                                            class="text-body">₹</del></p>
-                                                                           <div>Quantity :- <span> <%=pc[i].product_quantity %></span></div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
+                                                        </a>
+                                                    </div>
                                                 </div>
-
-
+                                            <% } %>
+                                        <% } else { %>
+                                            <div class="text-center">
+                                                <div class="display-2">No Items In Cart</div>
                                             </div>
-                                            <%}%>
+                                        <% } %>
+                                        
                                     </div>
 
 
