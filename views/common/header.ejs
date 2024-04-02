@@ -61,28 +61,42 @@
         </ul>
 
       </div>
+      <div class="px-4 d-md-none">
 
+        <%if(name.length>0){%>
+          <a href="/profile">
+            <img src="/static/images/category/profile/<%= name[0].user_profile %>" alt="" class="rounded-circle"
+              width="45" height="45"> </a>
+          <% }else{%>
+            <a href="/login" class="text-decoration-none text">
+              <div class="btn bcolor text-white">Sign Up</div>
+            </a>
+  
+  
+            <%}%>
+  
+      </div>
 
 
 
 
 
     </div>
-    <div class="px-4"> 
-      
-        <%if(name.length>0){%>
-          <a href="/profile">
-        <img src="/static/images/category/profile/<%= name[0].user_profile %>" alt=""
-          class="rounded-circle" width="45" height="45">  </a> 
-          <% }else{%>
-            <a href="/login" class="text-decoration-none text">
-<div class="btn bcolor text-white">Sign Up</div>
-            </a>
-            
+    <div class="px-4 d-md-block d-none">
 
-            <%}%>
-      
-      </div>
+      <%if(name.length>0){%>
+        <a href="/profile">
+          <img src="/static/images/category/profile/<%= name[0].user_profile %>" alt="" class="rounded-circle"
+            width="45" height="45"> </a>
+        <% }else{%>
+          <a href="/login" class="text-decoration-none text">
+            <div class="btn bcolor text-white">Sign Up</div>
+          </a>
+
+
+          <%}%>
+
+    </div>
   </nav>
 
 
@@ -91,7 +105,9 @@
 
 
   <button class="btn btn-transparent bg-black px-3 out lol carts" data-bs-toggle="offcanvas"
-    data-bs-target="#offcanvasScrolling"><span class="nuu"><%= cou[0].num_results %></span> <img src="/static/images/icon/cart.png" alt=""></button>
+    data-bs-target="#offcanvasScrolling"><span class="nuu">
+      <%= cou[0].num_results %>
+    </span> <img src="/static/images/icon/cart.png" alt=""></button>
   <div class="offcanvas offcanvas-end bg-black" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
     id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <div class="offcanvas-header border-bottom border-2 border-success ">
@@ -131,9 +147,7 @@
 
   <script>
     $(document).ready(function () {
-      (function () {
-        const locomotiveScroll = new LocomotiveScroll();
-    })();
+
 
 
       $.ajax({
@@ -190,76 +204,76 @@
         var d = c.val()
 
         if (b !== '' && b !== 0) {
-        $.ajax({
-          type: 'POST',
-          url: '/quantity_change',
-          data: {
-            product_quantity: b, product_id: d
-          },
-          success: function (response) {
-          }
-        })
-      } 
+          $.ajax({
+            type: 'POST',
+            url: '/quantity_change',
+            data: {
+              product_quantity: b, product_id: d
+            },
+            success: function (response) {
+            }
+          })
+        }
         else if (b === 0) {
+          $.ajax({
+            type: 'POST',
+            url: '/delete_cart',
+            data: { product_id: d },
+            success: function (response) {
+              window.location.reload()
+            }
+          })
+        }
+
+        else {
+          alert('quantity cant be null')
+        }
+      })
+
+      $(document).on('click', '.dddd', function () {
+
+
+
+        var product_id = $(this).closest('button').parent().parent('div').find('#product_id').val()
+        console.log(product_id)
         $.ajax({
           type: 'POST',
           url: '/delete_cart',
-          data: { product_id: d },
+          data: {
+            product_id: product_id
+
+          },
           success: function (response) {
-           window.location.reload()
+            alert("delete")
+            setTimeout(function () {
+              window.location.reload();
+            }, 1000);
           }
+
+
         })
-      }
-
-      else {
-        alert('quantity cant be null')
-      }
-    })
-
-    $(document).on('click', '.dddd', function () {
-
-
-
-      var product_id = $(this).closest('button').parent().parent('div').find('#product_id').val()
-      console.log(product_id)
-      $.ajax({
-        type: 'POST',
-        url: '/delete_cart',
-        data: {
-          product_id: product_id
-
-        },
-        success: function (response) {
-          alert("delete")
-          setTimeout(function () {
-            window.location.reload();
-          }, 1000);
-        }
-
 
       })
-
-    })
     })
 
 
 
 
-    $(document).on('click', function(event) {
-    var clickedOutsideCollapse = true;
+    $(document).on('click', function (event) {
+      var clickedOutsideCollapse = true;
 
-    // Check if the click is outside of any collapse area
-    $('.collapse').each(function() {
-      if ($(this).hasClass('show') && $(event.target).closest('.collapse').is($(this))) {
-        clickedOutsideCollapse = false;
+      // Check if the click is outside of any collapse area
+      $('.collapse').each(function () {
+        if ($(this).hasClass('show') && $(event.target).closest('.collapse').is($(this))) {
+          clickedOutsideCollapse = false;
+        }
+      });
+
+      // If the click is outside of any collapse area, close the opened collapse
+      if (clickedOutsideCollapse) {
+        $('.collapse.show').collapse('hide');
       }
     });
-
-    // If the click is outside of any collapse area, close the opened collapse
-    if (clickedOutsideCollapse) {
-      $('.collapse.show').collapse('hide');
-    }
-  });
   </script>
 
 
