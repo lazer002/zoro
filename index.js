@@ -3,7 +3,7 @@ const app = express()
 const bodyparser = require('body-parser')
 
 const router=  require('./src/routes/route.js')
-const session = require('cookie-session')
+const session = require('express-session')
 const path = require('path')
 const cookie=require('cookie-parser')
 app.set('view engine','ejs')

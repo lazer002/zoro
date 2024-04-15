@@ -112,7 +112,7 @@ router.get('/profile', gateway, async (req, res) => {
             res.render('profile', { role: req.session, name: name, pc: pc, cou: cou })
          })
       }else{
-         res.render('profile', { role: req.session, name:name, pc: ' ', cou: ' ' })
+         res.render('profile', { role: req.session, name:name, pc: ' ', cou: '0' })
 
       }
       })
@@ -146,7 +146,7 @@ router.get('/', async (req, res) => {
                connection.query(query5, (err, reslt5) => {
                   coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
                   connection.query(coun, (err, cou) => {
-                     console.log(cou);
+                  
                      res.render('index', { banner: banner, product: category, carausal: carausal, carausal2: carausal2, name: reslt5, cou: cou })
                   })
                })
@@ -727,21 +727,25 @@ router.post('/cart', cart_upload.single('cart_img'), async (req, res) => {
                let quantity = `UPDATE cart SET product_quantity = '${product_quantity}'  where product_id = '${product_id}' and user_email = '${user}'`
                connection.query(quantity, (err, results) => {
                   if (err) throw err;
-                  else { }
+                  else {
+                     res.send({ msg: 'user' })
+                   }
                })
             } else {
                let query = `INSERT INTO cart (product_category, product_quantity, product_id,cart_image,cart_pname,cart_pprice,user_email) VALUES ('${product_category}', '${product_quantity}','${product_id}', '${cart_img}','${cart_pname}', '${cart_pprice}','${user}')`;
-
+console.log(query);
                connection.query(query, (err, results) => {
                   if (err) throw err;
-                  else { }
+                  else { 
+                     res.send({ msg: 'user' })
+                  }
                })
 
             }
          }
       })
 
-      res.send({ msg: 'user' })
+    
 
    } else {
       res.send({ msg: 'login' })
@@ -958,7 +962,19 @@ router.post('/delete_banner', async (req, res) => {
 })
 
 
+router.get("/logout", async (req, res) => {
 
+   if (req.session) {
+   
+     req.session.destroy(function (err) {
+       if (err) {
+         return next(err);
+       } else {
+       res.json({msg:"logout"})
+       }
+     });
+   }
+ })
 
 
 router.post('/edit_banner', async (req, res) => {
@@ -1070,6 +1086,7 @@ router.post('/delete_cart', async (req, res) => {
 
       const { product_id } = req.body
       let category = `delete from cart where product_id = '${product_id}' and user_email = '${req.session.user}' `
+      console.log(category);
       connection.query(category, (err, results) => {
 
          if (err) throw err;

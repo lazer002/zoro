@@ -32,7 +32,7 @@
 
                             <img src="/static/images/category/profile/<%=name[0].user_profile %>" alt="" width="200"
                                 height="200" class="rounded-circle">
-                            <div class="row justify-content-center pt-2 text-light">
+                            <div class="row justify-content-center pt-2 text-light pb-5">
 
 
                                 <div class="col-4 pt-1 text-end"> <i class="fa-solid fa-user text  fs-6 me-4"></i></div>
@@ -53,8 +53,11 @@
                                 <div class="col-6 text-start fs-6 fst-italic">
                                     <%=name[0].user_number %>
                                 </div>
-                                <div class="col-12 my-3">
+                                <div class="col-12 mt-3 pb-3">
                                     <div class="btn bcolor w-50">Edit</div>
+                                </div>
+                                <div class="col-12  pb-3">
+                                    <div class="btn bcolor w-50" id="logout">Logout</div>
                                 </div>
                             </div>
 
@@ -153,5 +156,18 @@
 
 
 </body>
+<script>
+        $(document).ready(function(){
+$(document).on('click','#logout',function(){
+    $.ajax({
+          type: 'GET',
+          url: '/logout',
+          data:{"lala":'lalal'},
+          success: function (response) {
+            if(response.msg=='logout'){
+console.log(response.msg);
+window.location.reload()}
+          }})})})
 
+</script>
 </html>

@@ -64,15 +64,14 @@
       <div class="px-4 d-md-none">
 
         <%if(name.length>0){%>
-          <a href="/profile">
+
+          <a href="/profile" >
             <img src="/static/images/category/profile/<%= name[0].user_profile %>" alt="" class="rounded-circle"
               width="45" height="45"> </a>
           <% }else{%>
             <a href="/login" class="text-decoration-none text">
               <div class="btn bcolor text-white">Sign Up</div>
             </a>
-  
-  
             <%}%>
   
       </div>
@@ -163,22 +162,22 @@
               <div class="py-3 border-bottom border-success">
                 <div class="row">
                
-                  <img src="/static/images/category/product/${response.product[i].cart_image}" alt="" class="w-25">
+                  <img src="/static/images/category/product/${response.product[i].cart_image}" alt="" class="img-fluid">
               
-                <div class="col-2">
+                <div class="col-6">
                   <span class="ps-2">${response.product[i].cart_pname}</span>
                 </div> 
-                <div class="col-2">
+                <div class="col-2 pt-1">
                  ${response.product[i].cart_pprice}
                 </div>
-                  <div class="col-3">
+                  <div class="col-2">
                     <input type="number" value="${response.product[i].product_quantity}"
-            class="bg-black text-light w-100 out" id="product_quantity">
+            class="bg-black text-light w-100 out rounded-2 p-2" id="product_quantity">
               <input type="hidden" name="" id="product_id" value="${response.product[i].product_id}">
 
                 </div>
                   <div class="col-2 ">
-                  <button class="dddd">
+                    <button class="dddd bcolor rounded-2 border-0 p-2">
                     <img src="/static/images/icon/delete.png" alt="">
                   </button>
                 </div> 
@@ -230,30 +229,30 @@
         }
       })
 
-      $(document).on('click', '.dddd', function () {
-
-
-
-        var product_id = $(this).closest('button').parent().parent('div').find('#product_id').val()
-        console.log(product_id)
-        $.ajax({
-          type: 'POST',
-          url: '/delete_cart',
-          data: {
-            product_id: product_id
-
-          },
-          success: function (response) {
-            alert("delete")
-            setTimeout(function () {
-              window.location.reload();
-            }, 1000);
-          }
-
-
-        })
-
-      })
+       $(document).on('click', '.dddd', function () {
+ 
+ 
+ 
+         var product_id = $(this).closest('button').parent().parent('div').find('#product_id').val()
+        
+         $.ajax({
+           type: 'POST',
+           url: '/delete_cart',
+           data: {
+             product_id: product_id
+ 
+           },
+           success: function (response) {
+             alert("delete")
+             setTimeout(function () {
+               window.location.reload();
+             }, 1000);
+           }
+ 
+ 
+         })
+ 
+       })
     })
 
 
@@ -274,6 +273,27 @@
         $('.collapse.show').collapse('hide');
       }
     });
+
+
+
+
+
+    $(document).ready(function(){
+$(document).on('click','#logout',function(){
+    $.ajax({
+          type: 'GET',
+          url: '/logout',
+          data:{"lala":'lalal'},
+          success: function (response) {
+            if(response.msg=='logout'){
+console.log(response.msg);
+window.location.reload()}
+          }})})})
+
+
+
+
+
   </script>
 
 

@@ -335,7 +335,7 @@
     
         var product_category = $('#product_category').val()
         var _quantity = $('.product_quantity').val()
-        alert(_quantity)
+      
         product_quantity = Number(_quantity) + quantity
 console.log(product_quantity);
         data = { product_category: product_category, product_quantity: product_quantity, product_id: product_id, cart_img: cart_img, cart_pname: cart_pname, cart_pprice: cart_pprice };
@@ -348,7 +348,7 @@ console.log(data);
             if(response.msg=='user'){
             setTimeout(
             function(){ 
-            window.location.reload()} ,1000)
+            window.location.reload()} ,2000)
           }   else{
             window.location.href='/login'
           }  
