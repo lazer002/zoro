@@ -482,3 +482,161 @@ $(document).on('click', '#edit_sbbtn', function () {
                                                     }
                             
                             })})})
+
+
+
+
+
+
+
+
+
+
+
+                            $(document).ready(function () {
+
+
+
+                                $.ajax({
+                                  type: 'GET',
+                                  url: '/cartonpage',
+                          
+                                  success: function (response) {
+                          
+                                    document.getElementById('cartbody').innerHTML = ' ';
+                          
+                                    for (let i = 0; i < response.product.length; i++) {
+                                      $('#cartbody').append(`
+                                        <div class="py-3 border-bottom border-success">
+                                          <div class="row">
+                                         
+                                            <img src="/static/images/category/product/${response.product[i].cart_image}" alt="" class="img-fluid">
+                                        
+                                          <div class="col-6">
+                                            <span class="ps-2">${response.product[i].cart_pname}</span>
+                                          </div> 
+                                          <div class="col-2 pt-1">
+                                           ${response.product[i].cart_pprice}
+                                          </div>
+                                            <div class="col-2">
+                                              <input type="number" value="${response.product[i].product_quantity}"
+                                      class="bg-black text-light w-100 out rounded-2 p-2" id="product_quantity">
+                                        <input type="hidden" name="" id="product_id" value="${response.product[i].product_id}">
+                          
+                                          </div>
+                                            <div class="col-2 ">
+                                              <button class="dddd bcolor rounded-2 border-0 p-2">
+                                              <img src="/static/images/icon/delete.png" alt="">
+                                            </button>
+                                          </div> 
+                                          </div> 
+                                        </div>
+                                      `);
+                                    }
+                                  }
+                                });
+                              })
+                          
+                          
+                          
+                        
+                              $(document).ready(function () {
+                          
+                                $(document).on('keyup', '#product_quantity', function () {
+                                  var a = $(this).closest('div').find('#product_quantity')
+                                  var bb = a.val()
+                                  var b = Number(bb)
+                                  var c = $(this).closest('div').find('#product_id')
+                                  var d = c.val()
+                          
+                                  if (b !== '' && b !== 0) {
+                                    $.ajax({
+                                      type: 'POST',
+                                      url: '/quantity_change',
+                                      data: {
+                                        product_quantity: b, product_id: d
+                                      },
+                                      success: function (response) {
+                                      }
+                                    })
+                                  }
+                                  else if (b === 0) {
+                                    $.ajax({
+                                      type: 'POST',
+                                      url: '/delete_cart',
+                                      data: { product_id: d },
+                                      success: function (response) {
+                                        window.location.reload()
+                                      }
+                                    })
+                                  }
+                          
+                                  else {
+                                    alert('quantity cant be null')
+                                  }
+                                })
+                          
+                                 $(document).on('click', '.dddd', function () {
+                           
+                           
+                           
+                                   var product_id = $(this).closest('button').parent().parent('div').find('#product_id').val()
+                                  
+                                   $.ajax({
+                                     type: 'POST',
+                                     url: '/delete_cart',
+                                     data: {
+                                       product_id: product_id
+                           
+                                     },
+                                     success: function (response) {
+                                       alert("delete")
+                                       setTimeout(function () {
+                                         window.location.reload();
+                                       }, 1000);
+                                     }
+                           
+                           
+                                   })
+                           
+                                 })
+                              })
+                          
+                          
+                          
+                          
+                              $(document).on('click', function (event) {
+                                var clickedOutsideCollapse = true;
+                          
+                                // Check if the click is outside of any collapse area
+                                $('.collapse').each(function () {
+                                  if ($(this).hasClass('show') && $(event.target).closest('.collapse').is($(this))) {
+                                    clickedOutsideCollapse = false;
+                                  }
+                                });
+                          
+                                // If the click is outside of any collapse area, close the opened collapse
+                                if (clickedOutsideCollapse) {
+                                  $('.collapse.show').collapse('hide');
+                                }
+                              });
+                          
+                          
+                          
+                          
+                          
+                              $(document).ready(function(){
+                          $(document).on('click','#logout',function(){
+                              $.ajax({
+                                    type: 'GET',
+                                    url: '/logout',
+                                    data:{"lala":'lalal'},
+                                    success: function (response) {
+                                      if(response.msg=='logout'){
+                          console.log(response.msg);
+                          window.location.reload()}
+                                    }})})})
+                          
+                          
+                          
+                       

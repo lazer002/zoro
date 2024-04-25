@@ -8,9 +8,13 @@ const router = express.Router()
 
 
 router.get('/login', async (req, res) => {
-
-   await res.render('admin/login')
-})
+   query5 = `select *  from signup where user_email = '${req.session.user}' and user_role = '${req.session.role}'`
+   connection.query(query5, (err, name) => {
+      coun = `select count(*) as num_results from cart where user_email = '${req.session.user}'`
+      connection.query(coun, (err, cou) => {
+      
+    res.render('admin/login',{name:name,cou:cou})
+})})})
 
 router.use((req, res, next) => {
 
@@ -99,9 +103,11 @@ router.get('/profile', gateway, async (req, res) => {
 
    query5 = `select *  from signup where user_email = '${req.session.user}' and user_role = '${req.session.role}'`
    connection.query(query5, (err, name) => {
-      qry = `select * from cart where user_email = '${req.session.user}' and user_role = '${req.session.role}'`
-      console.log(qry);
+      qry = `select * from cart where user_email = '${req.session.user}' `
+      console.log(qry,'kjk');
       connection.query(qry, (err, pc) => {
+      console.log(pc,'kjk');
+
          if(typeof pc !='undefined'){
 
         
