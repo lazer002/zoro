@@ -329,8 +329,9 @@ $(document).on('click', '#edit_but', function () {
             var tdata = trow.find('td')
          
            const product_id = tdata[1].innerText
-           const product_category = tdata[4].innerText
-     
+           a = tdata[4].innerText
+           const product_category =  a.toLowerCase()
+     alert(product_category)
                     $.ajax({
                         type: 'POST',
                         url: '/edit_product',

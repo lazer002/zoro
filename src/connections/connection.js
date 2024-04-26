@@ -1,14 +1,11 @@
 const sql = require("mysql")
 
-
-
-
 const connection=sql.createConnection({
-    host:'zwd.h.filess.io',
-    database :'ZORO_tropicalus',
-    password:'80df73de28af06379700325d859e092c31cffbf5',
+    host:'z94.h.filess.io',
+    database :'zoro_thankpart',
+    password:'8e4734e5ccc75a0e1c583d6aa24eb20229e16618',
     port:3306,
-    user:'ZORO_tropicalus'
+    user:'zoro_thankpart'
 })
 connection.connect((err)=>{
     if (err) throw err;
@@ -42,4 +39,3 @@ connection.connect((err)=>{
 
 module.exports=connection;
 
-// jdbc:mysql://sql6.freesqldatabase.com:3306/sql6695455

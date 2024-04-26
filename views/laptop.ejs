@@ -74,7 +74,7 @@
             </a>
             <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
               <div class="card-body">
-                <input type="search" class="bg-dark w-100 text-light rounded-2 out">
+                <input type="search" class="bg-dark w-100 text-light rounded-2 out searchInput">
               </div>
             </div>
           </div>
@@ -349,7 +349,7 @@
 
         <div class="row text-center">
           <% for (let i = 0; i < laptop.length; i++) { %>
-            <div class="card col-lg-4 col-md-6 bg-transparent border-0">
+            <div class="card col-lg-4 col-md-6 bg-transparent border-0 pcard">
                 <a href="/product/<%= laptop[i].product_category %>/<%= laptop[i].product_id %>" class="text-decoration-none text-light">
                 <div id="carouselExampleSlidesOnly<%= i %>" class="carousel-fade" data-bs-ride="carousel">
                   <div class="carousel-inner">
@@ -371,13 +371,13 @@
           <% } %>
           
 
-          <ul class="pagination justify-content-center mt-5 ">
+          <!-- <ul class="pagination justify-content-center mt-5 ">
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">Previous</a></li>
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">1</a></li>
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">2</a></li>
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">3</a></li>
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">Next</a></li>
-          </ul>
+          </ul> -->
 
         </div>
       </div>
@@ -431,7 +431,7 @@
 
 
 
-
+  <script src="/static/js/card_search.js"></script>
 
 
 

@@ -850,7 +850,7 @@ router.post('/edit_product', async (req, res) => {
 
 const storage22 = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, '/public/images/category/product')
+      cb(null, 'public/images/category/product')
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname)

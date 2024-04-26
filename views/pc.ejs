@@ -22,7 +22,7 @@
       <div id="recipeCarousel" class="carousel slide ala " data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <%for( let i=0; i< pc.length; i++ ) { %>
-          <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla" data-bs-interval="2000">
+          <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla  " data-bs-interval="2000">
             <div class="col-md-3  lol">
               <a href="/product/<%= pc[i].product_category %>/<%= pc[i].product_id %>" class="text-decoration-none text-light">
                 <div class="card bg-transparent border border-0">
@@ -74,7 +74,7 @@
             </a>
             <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
               <div class="card-body">
-                <input type="search" class="bg-dark w-100 text-light rounded-2 out">
+                <input type="search" class="bg-dark w-100 text-light rounded-2 out searchInput">
               </div>
             </div>
           </div>
@@ -349,7 +349,7 @@
 
         <div class="row text-center">
           <% for (let i = 0; i < pc.length; i++) { %>
-            <div class="card col-lg-4 col-md-6 bg-transparent border-0">
+            <div class="card col-lg-4 col-md-6 bg-transparent border-0 pcard">
                 <a href="/product/<%= pc[i].product_category %>/<%= pc[i].product_id %>" class="text-decoration-none text-light">
                 <div id="carouselExampleSlidesOnly<%= i %>" class="carousel-fade" data-bs-ride="carousel">
                   <div class="carousel-inner">
@@ -371,13 +371,13 @@
           <% } %>
           
 
-          <ul class="pagination justify-content-center mt-5 ">
+          <!-- <ul class="pagination justify-content-center mt-5 ">
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">Previous</a></li>
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">1</a></li>
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">2</a></li>
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">3</a></li>
             <li class="page-item"><a class="page-link bcolor text-dark" href="#">Next</a></li>
-          </ul>
+          </ul> -->
 
         </div>
       </div>
@@ -391,7 +391,7 @@
         <div class="carousel-inner" role="listbox">
         
             <%for( let i=0; i< pc.length; i++ ) { %>
-              <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla" data-bs-interval="2000">
+              <div class="carousel-item <%= i === 0 ?  'active' : ' ' %> alla " data-bs-interval="2000">
                 <div class="col-md-3  lol">
                   <a href="/product/<%= pc[i].product_category %>/<%= pc[i].product_id %>" class="text-decoration-none text-light">
                     <div class="card bg-transparent border border-0">
@@ -435,7 +435,7 @@
 
 
 
-
+  <script src="/static/js/card_search.js"></script>
 
 
 

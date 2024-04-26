@@ -8,7 +8,10 @@
 
                 <%- include('common/sidebar.ejs') %>
 
-
+<!--                 
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+              
+                <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
             </div>
             <div class="w-100   p-3">
                 <div class=" rounded-3 border p-3  bggry ">
@@ -56,7 +59,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="search"><input type="text" placeholder="Search..." class="form-control "></div>
+                        <div id="search"><input type="text" aria-controls="DataTables_Table_0" placeholder="Search..." class="form-control " id="search-input"></div>
                     </div>
                     <div class="container-fluid p-0">
 
@@ -103,7 +106,7 @@
                                                         <td>
                                                             <%=pro[0].pc[i].product_category %>
                                                         </td>
-                                                        <td>
+                                                        <td class="linclamp">
                                                             <%=pro[0].pc[i].product_dis %>
                                                         </td>
                                                         <td>
@@ -114,11 +117,12 @@
                                                         </td>
 
                                                         <td>
+                                                            <div class="d-flex">
                                                             <span><i
                                                                     class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
                                                             <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
                                                             <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
-
+                                                        </div>
                                                         </td>
                                                 </tr>
                                                 <% } %>
@@ -169,7 +173,7 @@
                                                         <td>
                                                             <%=pro[0].laptop[i].product_category %>
                                                         </td>
-                                                        <td>
+                                                        <td class="linclamp">
                                                             <%=pro[0].laptop[i].product_dis %>
                                                         </td>
                                                         <td>
@@ -180,11 +184,12 @@
                                                         </td>
 
                                                         <td>
+                                                            <div class="d-flex">
                                                             <span><i
                                                                     class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
                                                             <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
                                                             <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
-
+                                                            </div>
                                                         </td>
                                                 </tr>
                                                 <% } %>
@@ -233,7 +238,7 @@
                                                     <td>
                                                         <%=pro[0].controller[i].product_category %>
                                                     </td>
-                                                    <td>
+                                                    <td class="linclamp">
                                                         <%=pro[0].controller[i].product_dis %>
                                                     </td>
                                                     <td>
@@ -244,10 +249,11 @@
                                                     </td>
 
                                                     <td>
+                                                        <div class="d-flex">
                                                         <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
                                                         <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
                                                         <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
-
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <% } %>
@@ -296,7 +302,7 @@
                                                     <td>
                                                         <%=pro[0].headphone[i].product_category %>
                                                     </td>
-                                                    <td>
+                                                    <td class="linclamp">
                                                         <%=pro[0].headphone[i].product_dis %>
                                                     </td>
                                                     <td>
@@ -307,10 +313,11 @@
                                                     </td>
 
                                                     <td>
+                                                        <div class="d-flex">
                                                         <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
                                                         <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
                                                         <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
-
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <% } %>
@@ -358,7 +365,7 @@
                                                     <td>
                                                         <%=pro[0].keyboard[i].product_category %>
                                                     </td>
-                                                    <td>
+                                                    <td class="linclamp">
                                                         <%=pro[0].keyboard[i].product_dis %>
                                                     </td>
                                                     <td>
@@ -369,10 +376,11 @@
                                                     </td>
 
                                                     <td>
-                                                        <span><i class="fa fa-solid fa-pen-to-square px-2"></i></span>
+                                                        <div class="d-flex">
+                                                        <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
                                                         <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
                                                         <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
-
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <% } %>
@@ -427,7 +435,7 @@
                                                         <td>
                                                             <%=pro[0].mouse[i].product_category %>
                                                         </td>
-                                                        <td>
+                                                        <td class="linclamp">
                                                             <%=pro[0].mouse[i].product_dis %>
                                                         </td>
                                                         <td>
@@ -438,11 +446,12 @@
                                                         </td>
 
                                                         <td>
+                                                            <div class="d-flex">
                                                             <span><i
                                                                     class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
                                                             <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
                                                             <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
-
+                                                            </div>
                                                         </td>
                                                 </tr>
                                                 <% } %>
@@ -525,8 +534,8 @@
   
         <!-- Modal Footer -->
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
-            <button type="submit" id="edit_sbbtn" class="btn bcolor">Add Product</button>
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancle</button>
+            <button type="submit" id="edit_sbbtn" class="btn bg">Update Product</button>
         </div>
   
       </div>
