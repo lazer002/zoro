@@ -1,7 +1,7 @@
 
 
 $(document).on('change', '#product_category', function () {
-  alert('FWAF')
+
   var value = $('#product_category').val();
   if (value === 'PC') {
 

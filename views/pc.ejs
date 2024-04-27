@@ -35,7 +35,7 @@
                   </div>
                   <div class="card-body text-light">
                     <h5><%=pc[i].product_name %></h5>
-                    <img src="product/revv.png" alt="">
+                    <span class="text-light star fs-4"></span>
                     <P class="fw-bold"> ₹<%=pc[i].product_price %> <del class="text-body">₹<%=pc[i].orignal_price %></del></p>
                   </div>
                 </div>
@@ -59,11 +59,11 @@
 
   <!--left list   -->
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-evenly">
       <div class="col-lg-3 border border-success  rounded-2 bg-black ">
         <button class="btn  accordion-toggle lol" type="button" data-bs-toggle="collapse" data-bs-target="#acco"
           aria-controls="acco" aria-expanded="true" aria-label="Toggle-navigation">
-          <h2 class="  ps-3  fw-bold fcolor pt-2 ">FILTER <img src="image/down.png" alt=""></h6>
+          <h2 class="  ps-3  fw-bold fcolor pt-2 ">FILTER <img src="/static/down.png" alt=""></h6>
         </button>
         <div class="collapse accordion-collapse show" id="acco">
           <div class="card bg-black text-light py-0 ">
@@ -335,19 +335,19 @@
           <div class="col-12">
 
             Sort By
-            <select name="country" id="" class="bg-black fcolor ps-2 out">
-              <option value="location">Name (A-Z)</option>
-              <option value="location">Name (Z-A)</option>
-              <option value="location">Price(High-To-Low)</option>
-              <option value="location">Price(Low-To-High)</option>
-              <option value="location">Rating(High-To-Low)</option>
-              <option value="location">Rating(Low-To-High)</option>
-              <option value="location"></option>
-            </select>
+            <select name="sort" id="sortSelect" class="bg-black fcolor ps-2 out">
+              <option value="name-asc">Name (A-Z)</option>
+              <option value="name-desc">Name (Z-A)</option>
+              <option value="price-desc">Price (High-To-Low)</option>
+              <option value="price-asc">Price (Low-To-High)</option>
+              <option value="rating-desc">Rating (High-To-Low)</option>
+              <option value="rating-asc">Rating (Low-To-High)</option>
+          </select>
+          
           </div>
         </div>
 
-        <div class="row text-center">
+        <div class="row text-center" id="productContainer">
           <% for (let i = 0; i < pc.length; i++) { %>
             <div class="card col-lg-4 col-md-6 bg-transparent border-0 pcard">
                 <a href="/product/<%= pc[i].product_category %>/<%= pc[i].product_id %>" class="text-decoration-none text-light">
@@ -363,7 +363,7 @@
                 </div>
                 <div class="card-body">
                   <p class="card-text"><%= pc[i].product_name %></p>
-                  <p class="card-text bg-transparent"><img src="pc/rev4.png" alt=""></p>
+                  <p class="card-text bg-transparent">  <span class="text star fs-4"></span></p>
                   <p class="card-text fw-bold fcolor">₹<%= pc[i].product_price %> </p><del>₹<%= pc[i].orignal_price %></del>
                 </div>
               </a>
@@ -404,7 +404,7 @@
                       </div>
                       <div class="card-body text-light">
                         <h5><%=pc[i].product_name %></h5>
-                        <img src="product/revv.png" alt="">
+                        <span class="text-light star fs-4"></span>
                         <P class="fw-bold"> ₹<%=pc[i].product_price %> <del class="text-body">₹<%=pc[i].orignal_price %></del></p>
                       </div>
                     </div>

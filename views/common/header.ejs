@@ -49,15 +49,15 @@
           </li>
           <div class="collapse " id="collapseExample">
             <div class="card card-body bg-black ">
-              <input type="search" name="" class="bcolor  rounded-2 text-light out"  id="searchInput">
+              <input type="search" name="" class="bcolor  rounded-2 text-light out searchInput">
             </div>
           </div>
-          <!-- <li class=" mx-4 "><a class="btn py-1" data-bs-toggle="collapse" href="#collapseExample" role="button"
+          <li class=" mx-4 "><a class="btn py-1" data-bs-toggle="collapse" href="#collapseExample" role="button"
               aria-expanded="false" aria-controls="collapseExample">
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-magnifying-glass text"></i>
             </a>
 
-          </li> -->
+          </li>
         </ul>
 
       </div>
@@ -157,7 +157,7 @@
         success: function (response) {
 
           document.getElementById('cartbody').innerHTML = ' ';
-
+if(response.product){
           for (let i = 0; i < response.product.length; i++) {
             $('#cartbody').append(`
               <div class="py-3 border-bottom border-success">
@@ -185,6 +185,8 @@
                 </div> 
               </div>
             `);
+          }}else{
+            
           }
         }
       });

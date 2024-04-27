@@ -277,5 +277,9 @@ border-radius: 10px;
 border:1px solid #0bd300;}
 
 
-
-.carousel-item >img {}
+#productContainer{height: 100vh;}
+.card-img >img {
+    width: 200px;
+    object-fit: contain;
+    aspect-ratio: 4/5;
+}

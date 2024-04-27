@@ -35,7 +35,7 @@
                   </div>
                   <div class="card-body text-light">
                     <h5><%=laptop[i].product_name %></h5>
-                    <img src="product/revv.png" alt="">
+                    <span class="text-light star fs-4"></span>
                     <P class="fw-bold"> ₹<%=laptop[i].product_price %> <del class="text-body">₹<%=laptop[i].orignal_price %></del></p>
                   </div>
                 </div>
@@ -59,11 +59,11 @@
 
   <!--left list   -->
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-evenly">
       <div class="col-lg-3 border border-success  rounded-2 bg-black ">
         <button class="btn  accordion-toggle lol" type="button" data-bs-toggle="collapse" data-bs-target="#acco"
           aria-controls="acco" aria-expanded="true" aria-label="Toggle-navigation">
-          <h2 class="  ps-3  fw-bold fcolor pt-2 ">FILTER <img src="image/down.png" alt=""></h6>
+          <h2 class="  ps-3  fw-bold fcolor pt-2 ">FILTER <img src="/static/down.png" alt=""></h6>
         </button>
         <div class="collapse accordion-collapse show" id="acco">
           <div class="card bg-black text-light py-0 ">
@@ -347,7 +347,7 @@
           </div>
         </div>
 
-        <div class="row text-center">
+        <div class="row text-center" id="productContainer">
           <% for (let i = 0; i < laptop.length; i++) { %>
             <div class="card col-lg-4 col-md-6 bg-transparent border-0 pcard">
                 <a href="/product/<%= laptop[i].product_category %>/<%= laptop[i].product_id %>" class="text-decoration-none text-light">
@@ -363,7 +363,7 @@
                 </div>
                 <div class="card-body">
                   <p class="card-text"><%= laptop[i].product_name %></p>
-                  <p class="card-text bg-transparent"><img src="laptop/rev4.png" alt=""></p>
+                  <p class="card-text bg-transparent">  <span class="text-light star fs-4"></span></p>
                   <p class="card-text fw-bold fcolor">₹<%= laptop[i].product_price %> </p><del>₹<%= laptop[i].orignal_price %></del>
                 </div>
               </a>
@@ -404,7 +404,7 @@
                       </div>
                       <div class="card-body text-light">
                         <h5><%=laptop[i].product_name %></h5>
-                        <img src="product/revv.png" alt="">
+                        <span class="text-light star fs-4"></span>
                         <P class="fw-bold"> ₹<%=laptop[i].product_price %> <del class="text-body">₹<%=laptop[i].orignal_price %></del></p>
                       </div>
                     </div>
