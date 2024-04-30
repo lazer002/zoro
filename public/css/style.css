@@ -277,7 +277,7 @@ border-radius: 10px;
 border:1px solid #0bd300;}
 
 
-#productContainer{height: 200vh;}
+#productContainer{min-height: 200vh;}
 .card-img >img {
     width: 200px;
     object-fit: contain;
