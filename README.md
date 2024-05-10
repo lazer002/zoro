@@ -1,3 +1,11 @@
 # zoro
-My First fullstack project with all logics and functionality touchups are remaining overall all done 
+one of my fav projects 
+
+
+
+
+1.download
+2. npm install 
+3.npm start 
+4.enjoy
 
