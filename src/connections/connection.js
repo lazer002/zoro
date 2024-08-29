@@ -1,22 +1,49 @@
-const sql = require("mysql")
+const mysql = require("mysql");
 
-const connection=sql.createConnection({
-    host:'y27.h.filess.io',
-    database :'ZORO_icericeago',
-    password:'90c37be5b0f2d6e48a26dd8ec6f1d411eba577da',
-    port:3307,
-    user:'ZORO_icericeago'
-})
+// Function to create a new connection
+function createConnection() {
+  return mysql.createConnection({
+    host: 'y27.h.filess.io',
+    database: 'ZORO_icericeago',
+    password: '90c37be5b0f2d6e48a26dd8ec6f1d411eba577da',
+    port: 3307,
+    user: 'ZORO_icericeago'
+  });
+}
 
-connection.connect((err)=>{
-    if (err) throw err;
-    console.log('db connected')
-})
+// Function to execute a query and close the connection
+function executeQuery(query, params = [], callback) {
+  const connection = createConnection(); // Create a new connection
 
+  connection.connect((err) => {
+    if (err) {
+      console.error('Error connecting to the database:', err);
+      callback(err, null);
+      return;
+    }
 
+    console.log('Database connected');
 
+    // Execute the query
+    connection.query(query, params, (queryErr, results) => {
+      if (queryErr) {
+        console.error('Error executing query:', queryErr);
+        callback(queryErr, null);
+      } else {
+        callback(null, results);
+      }
 
-
+      // Close the connection
+      connection.end((endErr) => {
+        if (endErr) {
+          console.error('Error closing the connection:', endErr);
+        } else {
+          console.log('Connection closed');
+        }
+      });
+    });
+  });
+}
 
 
 //const connection=sql.createConnection({
@@ -43,5 +70,5 @@ connection.connect((err)=>{
 //     console.log('db connected')
 // })
 
-module.exports=connection;
+module.exports=executeQuery;
 
