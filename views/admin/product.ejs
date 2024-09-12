@@ -82,51 +82,35 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%for( let i=0; i< pro[0].pc.length; i++ ) { %>
-                                                <tr>
-                                                    <td>
-                                                        <%=i+1%>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].pc[i].product_id %>
-                                                    </td>
-
-                                                    <% var imgg=pro[0].pc[i].product_image.split(',') %>
-
+                                            <% for (const [productType, products] of Object.entries(pro)) { %>
+                                                <% for (let i = 0; i < products.length; i++) { %>
+                                                    <tr>
+                                                        <td><%= i + 1 %></td>
+                                                        <td><%= products[i].product_id %></td>
+                                        
+                                                        <% var imgg = products[i].product_image ? products[i].product_image.split(',') : []; %>
                                                         <td>
-                                                            <% imgg.forEach(element=> { %>
-                                                                <img src="/static/images/category/product/<%=element %>"
-                                                                    alt="" class="rounded-curcle pro_img">
-                                                                <% }) %>
-
+                                                            <% imgg.forEach(element => { %>
+                                                                <img src="/static/images/category/product/<%= element %>" alt="" class="rounded-circle pro_img">
+                                                            <% }) %>
                                                         </td>
-                                                        <td>
-                                                            <%=pro[0].pc[i].product_name %>
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].pc[i].product_category %>
-                                                        </td>
-                                                        <td class="linclamp">
-                                                            <%=pro[0].pc[i].product_dis %>
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].pc[i].product_price %>
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].pc[i].orignal_price %>
-                                                        </td>
-
+                                                        <td><%= products[i].product_name %></td>
+                                                        <td><%= products[i].product_category %></td>
+                                                        <td class="linclamp"><%= products[i].product_dis %></td>
+                                                        <td><%= products[i].product_price %></td>
+                                                        <td><%= products[i].original_price %></td>
                                                         <td>
                                                             <div class="d-flex">
-                                                            <span><i
-                                                                    class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
-                                                            <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
-                                                            <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
-                                                        </div>
+                                                                <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                                <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                                <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
+                                                            </div>
                                                         </td>
-                                                </tr>
+                                                    </tr>
                                                 <% } %>
+                                            <% } %>
                                         </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -150,50 +134,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%for( let i=0; i< pro[0].laptop.length; i++ ) { %>
+                                            <% for (let i = 0; i < pro.laptop.length; i++) { %>
                                                 <tr>
+                                                    <td><%= i + 1 %></td>
+                                                    <td><%= pro.laptop[i].product_id %></td>
+                                                    <% var imgg = pro.laptop[i].product_image ? pro.laptop[i].product_image.split(',') : []; %>
                                                     <td>
-                                                        <%=i+1%>
+                                                        <% imgg.forEach(element => { %>
+                                                            <img src="/static/images/category/product/<%= element %>" alt="" class="rounded-circle pro_img">
+                                                        <% }) %>
                                                     </td>
+                                                    <td><%= pro.laptop[i].product_name %></td>
+                                                    <td><%= pro.laptop[i].product_category %></td>
+                                                    <td class="linclamp"><%= pro.laptop[i].product_dis %></td>
+                                                    <td><%= pro.laptop[i].product_price %></td>
+                                                    <td><%= pro.laptop[i].original_price %></td>
                                                     <td>
-                                                        <%=pro[0].laptop[i].product_id %>
-                                                    </td>
-                                                    <% var imgg=pro[0].laptop[i].product_image.split(',') %>
-
-                                                        <td>
-                                                            <% imgg.forEach(element=> { %>
-                                                                <img src="/static/images/category/product/<%=element %>"
-                                                                    alt="" class="rounded-curcle pro_img">
-                                                                <% }) %>
-
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].laptop[i].product_name %>
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].laptop[i].product_category %>
-                                                        </td>
-                                                        <td class="linclamp">
-                                                            <%=pro[0].laptop[i].product_dis %>
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].laptop[i].product_price %>
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].laptop[i].orignal_price %>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="d-flex">
-                                                            <span><i
-                                                                    class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                        <div class="d-flex">
+                                                            <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
                                                             <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
                                                             <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
-                                                            </div>
-                                                        </td>
+                                                        </div>
+                                                    </td>
                                                 </tr>
-                                                <% } %>
+                                            <% } %>
                                         </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -215,49 +181,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%for( let i=0; i< pro[0].controller.length; i++ ) { %>
+                                            <% for (let i = 0; i < pro.controller.length; i++) { %>
                                                 <tr>
+                                                    <td><%= i + 1 %></td>
+                                                    <td><%= pro.controller[i].product_id %></td>
+                                                    <% var imgg = pro.controller[i].product_image ? pro.controller[i].product_image.split(',') : []; %>
                                                     <td>
-                                                        <%=i+1%>
+                                                        <% imgg.forEach(element => { %>
+                                                            <img src="/static/images/category/product/<%= element %>" alt="" class="rounded-circle pro_img">
+                                                        <% }) %>
                                                     </td>
-                                                    <td>
-                                                        <%=pro[0].controller[i].product_id %>
-                                                    </td>
-                                                    <% var imgg=pro[0].controller[i].product_image.split(',') %>
-
-                                                    <td>
-                                                        <% imgg.forEach(element=> { %>
-                                                            <img src="/static/images/category/product/<%=element %>"
-                                                                alt="" class="rounded-curcle pro_img">
-                                                            <% }) %>
-
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].controller[i].product_name %>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].controller[i].product_category %>
-                                                    </td>
-                                                    <td class="linclamp">
-                                                        <%=pro[0].controller[i].product_dis %>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].controller[i].product_price %>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].controller[i].orignal_price %>
-                                                    </td>
-
+                                                    <td><%= pro.controller[i].product_name %></td>
+                                                    <td><%= pro.controller[i].product_category %></td>
+                                                    <td class="linclamp"><%= pro.controller[i].product_dis %></td>
+                                                    <td><%= pro.controller[i].product_price %></td>
+                                                    <td><%= pro.controller[i].original_price %></td>
                                                     <td>
                                                         <div class="d-flex">
-                                                        <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
-                                                        <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
-                                                        <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <% } %>
+                                            <% } %>
                                         </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -279,49 +228,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%for( let i=0; i< pro[0].headphone.length; i++ ) { %>
+                                            <% for (let i = 0; i < pro.headphone.length; i++) { %>
                                                 <tr>
+                                                    <td><%= i + 1 %></td>
+                                                    <td><%= pro.headphone[i].product_id %></td>
+                                                    <% var imgg = pro.headphone[i].product_image ? pro.headphone[i].product_image.split(',') : []; %>
                                                     <td>
-                                                        <%=i+1%>
+                                                        <% imgg.forEach(element => { %>
+                                                            <img src="/static/images/category/product/<%= element %>" alt="" class="rounded-circle pro_img">
+                                                        <% }) %>
                                                     </td>
-                                                    <td>
-                                                        <%=pro[0].headphone[i].product_id %>
-                                                    </td>
-                                                    <% var imgg=pro[0].headphone[i].product_image.split(',') %>
-
-                                                    <td>
-                                                        <% imgg.forEach(element=> { %>
-                                                            <img src="/static/images/category/product/<%=element %>"
-                                                                alt="" class="rounded-curcle pro_img">
-                                                            <% }) %>
-
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].headphone[i].product_name %>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].headphone[i].product_category %>
-                                                    </td>
-                                                    <td class="linclamp">
-                                                        <%=pro[0].headphone[i].product_dis %>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].headphone[i].product_price %>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].headphone[i].orignal_price %>
-                                                    </td>
-
+                                                    <td><%= pro.headphone[i].product_name %></td>
+                                                    <td><%= pro.headphone[i].product_category %></td>
+                                                    <td class="linclamp"><%= pro.headphone[i].product_dis %></td>
+                                                    <td><%= pro.headphone[i].product_price %></td>
+                                                    <td><%= pro.headphone[i].original_price %></td>
                                                     <td>
                                                         <div class="d-flex">
-                                                        <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
-                                                        <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
-                                                        <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <% } %>
+                                            <% } %>
                                         </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -342,49 +274,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%for( let i=0; i< pro[0].keyboard.length; i++ ) { %>
+                                            <% for (let i = 0; i < pro.keyboard.length; i++) { %>
                                                 <tr>
+                                                    <td><%= i + 1 %></td>
+                                                    <td><%= pro.keyboard[i].product_id %></td>
+                                                    <% var imgg = pro.keyboard[i].product_image ? pro.keyboard[i].product_image.split(',') : []; %>
                                                     <td>
-                                                        <%=i+1%>
+                                                        <% imgg.forEach(element => { %>
+                                                            <img src="/static/images/category/product/<%= element %>" alt="" class="rounded-circle pro_img">
+                                                        <% }) %>
                                                     </td>
-                                                    <td>
-                                                        <%=pro[0].keyboard[i].product_id %>
-                                                    </td>
-                                                    <% var imgg=pro[0].keyboard[i].product_image.split(',') %>
-
-                                                    <td>
-                                                        <% imgg.forEach(element=> { %>
-                                                            <img src="/static/images/category/product/<%=element %>"
-                                                                alt="" class="rounded-curcle pro_img">
-                                                            <% }) %>
-
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].keyboard[i].product_name %>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].keyboard[i].product_category %>
-                                                    </td>
-                                                    <td class="linclamp">
-                                                        <%=pro[0].keyboard[i].product_dis %>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].keyboard[i].product_price %>
-                                                    </td>
-                                                    <td>
-                                                        <%=pro[0].keyboard[i].orignal_price %>
-                                                    </td>
-
+                                                    <td><%= pro.keyboard[i].product_name %></td>
+                                                    <td><%= pro.keyboard[i].product_category %></td>
+                                                    <td class="linclamp"><%= pro.keyboard[i].product_dis %></td>
+                                                    <td><%= pro.keyboard[i].product_price %></td>
+                                                    <td><%= pro.keyboard[i].original_price %></td>
                                                     <td>
                                                         <div class="d-flex">
-                                                        <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
-                                                        <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
-                                                        <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
+                                                            <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <% } %>
+                                            <% } %>
                                         </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -405,57 +320,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%for( let i=0; i< pro[0].mouse.length; i++ ) { %>
+                                            <% for (let i = 0; i < pro.mouse.length; i++) { %>
                                                 <tr>
+                                                    <td><%= i + 1 %></td>
+                                                    <td><%= pro.mouse[i].product_id %></td>
+                                                    <% var imgg = pro.mouse[i].product_image ? pro.mouse[i].product_image.split(',') : []; %>
                                                     <td>
-                                                        <%=i+1%>
+                                                        <% imgg.forEach(element => { %>
+                                                            <img src="/static/images/category/product/<%= element %>" alt="" class="pro_img">
+                                                        <% }) %>
                                                     </td>
+                                                    <td><%= pro.mouse[i].product_name %></td>
+                                                    <td><%= pro.mouse[i].product_category %></td>
+                                                    <td class="linclamp"><%= pro.mouse[i].product_dis %></td>
+                                                    <td><%= pro.mouse[i].product_price %></td>
+                                                    <td><%= pro.mouse[i].original_price %></td>
                                                     <td>
-                                                        <%=pro[0].mouse[i].product_id %>
-                                                    </td>
-
-
-
-
-                                                    <% var imgg=pro[0].mouse[i].product_image.split(',') %>
-
-                                                        <td>
-                                                            <% imgg.forEach(element=> { %>
-                                                                <img src="/static/images/category/product/<%=element %>"
-                                                                    alt="" class="pro_img">
-                                                                <% }) %>
-
-                                                        </td>
-
-
-
-                                                        <td>
-                                                            <%=pro[0].mouse[i].product_name %>
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].mouse[i].product_category %>
-                                                        </td>
-                                                        <td class="linclamp">
-                                                            <%=pro[0].mouse[i].product_dis %>
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].mouse[i].product_price %>
-                                                        </td>
-                                                        <td>
-                                                            <%=pro[0].mouse[i].orignal_price %>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="d-flex">
-                                                            <span><i
-                                                                    class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
+                                                        <div class="d-flex">
+                                                            <span><i class="fa fa-solid fa-pen-to-square px-2" id="edit_but"></i></span>
                                                             <span><i class="fa fa-solid fa-eye px-2" id="show_but"></i></span>
                                                             <span><i class="fa fa-solid fa-trash px-2" id="delete_but"></i></span>
-                                                            </div>
-                                                        </td>
+                                                        </div>
+                                                    </td>
                                                 </tr>
-                                                <% } %>
+                                            <% } %>
                                         </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
