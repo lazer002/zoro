@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const async = require('async'); // Ensure async package is installed
 
 // Create the connection pool
 const pool = mysql.createPool({
@@ -8,6 +9,44 @@ const pool = mysql.createPool({
   database: 'zoro_enjoyfrom',
   port: '3307'
 });
+
+// Retry settings
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 1000; // in milliseconds
+
+// Function to terminate a single connection with retry
+function terminateConnection(id, callback) {
+  let attempt = 0;
+
+  const tryTerminate = () => {
+    pool.getConnection((err, connection) => {
+      if (err) {
+        console.error('Error getting connection from pool during termination:', err);
+        callback(err);
+        return;
+      }
+
+      connection.query(`KILL ${id}`, (killErr) => {
+        connection.release();
+        if (killErr) {
+          if (attempt < MAX_RETRIES) {
+            attempt++;
+            console.warn(`Retry ${attempt}/${MAX_RETRIES} for terminating connection ${id}.`);
+            setTimeout(tryTerminate, RETRY_DELAY);
+          } else {
+            console.error(`Error terminating connection ${id}:`, killErr);
+            callback(killErr);
+          }
+        } else {
+          console.log(`Connection ${id} terminated.`);
+          callback(null);
+        }
+      });
+    });
+  };
+
+  tryTerminate();
+}
 
 // Function to terminate all connections for the user at server start
 function terminateAllConnections(callback) {
@@ -31,14 +70,13 @@ function terminateAllConnections(callback) {
       if (results.length > 0) {
         console.log(`Terminating ${results.length} connections for 'zoro_enjoyfrom'...`);
 
-        // Generate kill queries for all existing connections
-        const killQueries = results.map(row => `KILL ${row.ID};`).join(' ');
+        // Terminate each connection individually
+        const terminateTasks = results.map(row => (cb) => terminateConnection(row.ID, cb));
 
-        // Terminate all connections
-        connection.query(killQueries, (killErr) => {
+        // Execute termination for all connections sequentially
+        async.series(terminateTasks, (killErr) => {
           connection.release();
           if (killErr) {
-            console.error('Error terminating connections:', killErr);
             callback(killErr);
           } else {
             console.log('All connections for user terminated.');
