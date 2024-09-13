@@ -5,7 +5,7 @@ const router = require('./src/routes/route.js');
 const session = require('express-session'); // Use express-session
 const path = require('path');
 const cookie = require('cookie-parser');
-const RedisStore = require('connect-redis')(session); // Correct import for RedisStore
+const RedisStore = require('connect-redis').default; // Newer version of connect-redis
 const redis = require('redis');
 
 app.set('view engine', 'ejs');
@@ -20,8 +20,12 @@ app.set('trust proxy', 1);
 // Create a Redis client
 const redisClient = redis.createClient();
 
+redisClient.on('error', (err) => console.log('Redis Client Error', err));
+
+redisClient.connect(); // Use connect method if you're using the newer redis client version
+
 app.use(session({
-  store: new RedisStore({ client: redisClient }), // Use RedisStore with redis client
+  store: new RedisStore({ client: redisClient }), // New RedisStore
   secret: 'gjiangkwenighwaigkwangiwhigwaigknwik',
   resave: false,
   saveUninitialized: true,
