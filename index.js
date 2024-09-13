@@ -5,7 +5,7 @@ const router = require('./src/routes/route.js');
 const session = require('express-session'); // Use express-session
 const path = require('path');
 const cookie = require('cookie-parser');
-const RedisStore = require('connect-redis') // Correct import for RedisStore
+const RedisStore = require('connect-redis')(session); // Correct import for RedisStore
 const redis = require('redis');
 
 app.set('view engine', 'ejs');
